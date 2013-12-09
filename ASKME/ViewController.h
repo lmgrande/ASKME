@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    NSTimer *timer;
+}
+
+@property (strong, nonatomic) NSString *nickNombre;
+
+- (void) leerUsuarioPlist;
 
 @end

@@ -21,6 +21,12 @@
 		70639E30184D324A0028A98B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E12184D32490028A98B /* UIKit.framework */; };
 		70639E38184D324A0028A98B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70639E36184D324A0028A98B /* InfoPlist.strings */; };
 		70639E3A184D324A0028A98B /* ASKMETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70639E39184D324A0028A98B /* ASKMETests.m */; };
+		70B3395718549E6C0072A60D /* pant_inicio_cabecera.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B3395418549E6C0072A60D /* pant_inicio_cabecera.png */; };
+		70B3395818549E6C0072A60D /* pant_inicio_cuerpo_carga.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B3395518549E6C0072A60D /* pant_inicio_cuerpo_carga.png */; };
+		70B3395918549E6C0072A60D /* pant_inicio_pie.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B3395618549E6C0072A60D /* pant_inicio_pie.png */; };
+		70B3395C1854C2320072A60D /* NickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B3395B1854C2320072A60D /* NickViewController.m */; };
+		70B3395F1854D74B0072A60D /* usuario.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70B3395E1854D74B0072A60D /* usuario.plist */; };
+		70B339621854F79A0072A60D /* OpcionesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B339611854F79A0072A60D /* OpcionesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,14 @@
 		70639E35184D324A0028A98B /* ASKMETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ASKMETests-Info.plist"; sourceTree = "<group>"; };
 		70639E37184D324A0028A98B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		70639E39184D324A0028A98B /* ASKMETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASKMETests.m; sourceTree = "<group>"; };
+		70B3395418549E6C0072A60D /* pant_inicio_cabecera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pant_inicio_cabecera.png; sourceTree = "<group>"; };
+		70B3395518549E6C0072A60D /* pant_inicio_cuerpo_carga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pant_inicio_cuerpo_carga.png; sourceTree = "<group>"; };
+		70B3395618549E6C0072A60D /* pant_inicio_pie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pant_inicio_pie.png; sourceTree = "<group>"; };
+		70B3395A1854C2320072A60D /* NickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickViewController.h; sourceTree = "<group>"; };
+		70B3395B1854C2320072A60D /* NickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NickViewController.m; sourceTree = "<group>"; };
+		70B3395E1854D74B0072A60D /* usuario.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usuario.plist; sourceTree = "<group>"; };
+		70B339601854F79A0072A60D /* OpcionesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpcionesViewController.h; sourceTree = "<group>"; };
+		70B339611854F79A0072A60D /* OpcionesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpcionesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +126,15 @@
 		70639E14184D32490028A98B /* ASKME */ = {
 			isa = PBXGroup;
 			children = (
+				70B3395318549B700072A60D /* imagenes */,
 				70639E1D184D32490028A98B /* AppDelegate.h */,
 				70639E1E184D32490028A98B /* AppDelegate.m */,
 				70639E20184D32490028A98B /* Main.storyboard */,
+				70B339631854F79F0072A60D /* OpcionesViewController */,
+				70B3395D1854C23A0072A60D /* NickViewController */,
 				70639E23184D32490028A98B /* ViewController.h */,
 				70639E24184D32490028A98B /* ViewController.m */,
+				70B3395E1854D74B0072A60D /* usuario.plist */,
 				70639E26184D32490028A98B /* Images.xcassets */,
 				70639E15184D32490028A98B /* Supporting Files */,
 			);
@@ -150,6 +168,34 @@
 				70639E36184D324A0028A98B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70B3395318549B700072A60D /* imagenes */ = {
+			isa = PBXGroup;
+			children = (
+				70B3395418549E6C0072A60D /* pant_inicio_cabecera.png */,
+				70B3395518549E6C0072A60D /* pant_inicio_cuerpo_carga.png */,
+				70B3395618549E6C0072A60D /* pant_inicio_pie.png */,
+			);
+			name = imagenes;
+			sourceTree = "<group>";
+		};
+		70B3395D1854C23A0072A60D /* NickViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70B3395A1854C2320072A60D /* NickViewController.h */,
+				70B3395B1854C2320072A60D /* NickViewController.m */,
+			);
+			name = NickViewController;
+			sourceTree = "<group>";
+		};
+		70B339631854F79F0072A60D /* OpcionesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70B339601854F79A0072A60D /* OpcionesViewController.h */,
+				70B339611854F79A0072A60D /* OpcionesViewController.m */,
+			);
+			name = OpcionesViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +275,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				70639E27184D32490028A98B /* Images.xcassets in Resources */,
+				70B3395718549E6C0072A60D /* pant_inicio_cabecera.png in Resources */,
+				70B3395818549E6C0072A60D /* pant_inicio_cuerpo_carga.png in Resources */,
+				70B3395F1854D74B0072A60D /* usuario.plist in Resources */,
 				70639E19184D32490028A98B /* InfoPlist.strings in Resources */,
+				70B3395918549E6C0072A60D /* pant_inicio_pie.png in Resources */,
 				70639E22184D32490028A98B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,7 +301,9 @@
 			files = (
 				70639E25184D32490028A98B /* ViewController.m in Sources */,
 				70639E1F184D32490028A98B /* AppDelegate.m in Sources */,
+				70B339621854F79A0072A60D /* OpcionesViewController.m in Sources */,
 				70639E1B184D32490028A98B /* main.m in Sources */,
+				70B3395C1854C2320072A60D /* NickViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +512,7 @@
 				70639E3F184D324A0028A98B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		70639E40184D324A0028A98B /* Build configuration list for PBXNativeTarget "ASKMETests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +521,7 @@
 				70639E42184D324A0028A98B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
