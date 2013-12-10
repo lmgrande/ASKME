@@ -32,8 +32,7 @@
     
     if (![nickNombre  isEqual: @""]) {
         NSLog(@" El usuario es: %@", nickNombre);
-        pantalla = @"Opciones";
-        [self empezar];
+        [self leerUsuarioMysql];
     }else{
         NSLog(@" No existe usuario");
         pantalla = @"CrearUsuario";
@@ -51,7 +50,7 @@
     // Probando repositorio 1
 }
 
-#pragma mark - leerPlist
+#pragma mark - leerDatos
 
 - (void) leerUsuarioPlist{
     
@@ -79,6 +78,33 @@
     
 }
 
+- (void) leerUsuarioMysql
+{
+    NSString *strURL = [NSString stringWithFormat:@"http://www.askmeapp.com/php_IOS/leeruser.php?nombre=%@",nickNombre];
+    NSLog(@"%@",strURL);
+    
+    NSData *dataURL = [NSData dataWithContentsOfURL:[NSURL URLWithString:strURL]];
+    NSLog(@"dataURL: %@",dataURL);
+    
+    NSString *strResult = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
+    NSLog(@"strResult: %@",strResult);
+    
+    if (![strResult  isEqual: nickNombre]) {
+        if ([strResult isEqual:@""]) {
+            NSLog(@"No puede conectarse.");
+            [self verAlertaNoConecta];
+        }else{
+            NSLog(@"No existe en la Base de Datos del Servidor");
+            pantalla = @"CrearUsuario";
+            [self empezar];
+        }
+    }else{
+        pantalla = @"Opciones";
+        [self empezar];
+    }
+}
+
+
 #pragma mark - pasarPantalla
 
 - (void) empezar{
@@ -97,13 +123,27 @@
 
 }
 
-//#pragma mark - PrepareForSegue
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"irACrearUsuario"]) {
-//        NickViewController *nickViewController = (NickViewController *)segue.destinationViewController;
-//    }
-//}
+#pragma mark - Alertas
+
+- (void) verAlertaNoConecta
+{
+    UIAlertView *alerta = [[UIAlertView alloc] initWithTitle:@"Conexión"
+                                                     message:@"No puede conectarse."
+                                                    delegate:self
+                                           cancelButtonTitle:@"Volver a Intentar"
+                                           otherButtonTitles:nil, nil];
+    
+    [alerta setTag:0];
+    [alerta show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 0) {
+        if (buttonIndex == 0) {
+            [self leerUsuarioMysql];
+        }
+    }
+}
 
 @end
