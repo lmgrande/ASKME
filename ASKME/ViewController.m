@@ -80,7 +80,9 @@
 
 - (void) leerUsuarioMysql
 {
-    NSString *strURL = [NSString stringWithFormat:@"http://www.askmeapp.com/php_IOS/leeruser.php?nombre=%@",nickNombre];
+    // CFURLCreateStringByAddingPercentEscapes se utiliza para comvertir caracteres especiales (ej: el espacio) por códigos entendibles al enviar por una url
+    NSString *nombre = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)nickNombre,NULL,CFSTR("!*'();:@&=+$,/?%#[]\" "),kCFStringEncodingUTF8));
+    NSString *strURL = [NSString stringWithFormat:@"http://www.askmeapp.com/php_IOS/leeruser.php?nombre=%@",nombre];
     NSLog(@"%@",strURL);
     
     NSData *dataURL = [NSData dataWithContentsOfURL:[NSURL URLWithString:strURL]];

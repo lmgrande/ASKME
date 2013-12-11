@@ -39,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="359" y="718"/>
+            <point key="canvasLocation" x="-123" y="708"/>
         </scene>
         <!--Opciones View Controller-->
         <scene sceneID="GZj-gh-llu">
@@ -61,11 +61,15 @@
                                 <rect key="frame" x="0.0" y="400" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bienvenido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-cr-aj6">
-                                <rect key="frame" x="30" y="215" width="260" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="otW-st-zs3">
+                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.25828463779999999" green="0.43726581149999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bienvenido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-cr-aj6">
+                                <rect key="frame" x="30" y="368" width="260" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -78,7 +82,229 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9I-T5-kuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="983"/>
+            <point key="canvasLocation" x="418" y="973"/>
+        </scene>
+        <!--View Controller - Info.-->
+        <scene sceneID="LJJ-7a-bdj">
+            <objects>
+                <viewController id="o8h-QF-dBx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7dn-7J-BDj"/>
+                        <viewControllerLayoutGuide type="bottom" id="VmR-pH-h9t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m1B-am-bEq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="0hx-uS-daH">
+                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-bi-CLi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Información" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2X-5q-8im">
+                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.64598542449999996" green="0.7484704442771084" blue="0.003649635008" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Info." image="ico-Tab-Bar-Info.png" id="86Q-62-Krb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WmB-zT-dNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1491" y="692"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ihm-R1-GwN">
+            <objects>
+                <tabBarController storyboardIdentifier="OpcionesTapBar" definesPresentationContext="YES" id="3lf-b0-ZRu" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="FONDO_Tab_Bar_Opciones.png" shadowImage="linea-superior-Tab-Bar-1x1.png" id="N11-Nf-aJJ">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="o8h-QF-dBx" kind="relationship" relationship="viewControllers" id="RiC-Vj-gIr"/>
+                        <segue destination="Nij-dT-hzE" kind="relationship" relationship="viewControllers" id="Hw0-ap-pr5"/>
+                        <segue destination="cbP-2G-Pj4" kind="relationship" relationship="viewControllers" id="r0H-Fn-AWN"/>
+                        <segue destination="gFn-4u-LBd" kind="relationship" relationship="viewControllers" id="F0Q-Ti-75f"/>
+                        <segue destination="duU-Ts-6Rf" kind="relationship" relationship="viewControllers" id="bUg-4f-7Gg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C0s-Yp-IyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957" y="974"/>
+        </scene>
+        <!--View Controller - Jugador-->
+        <scene sceneID="Tom-aI-Cpn">
+            <objects>
+                <viewController id="Nij-dT-hzE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZQI-PY-Q0I"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z9s-7N-KVK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a0B-PC-JyV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-vE-a9S">
+                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="RLr-pL-UBV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jugador" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydH-5X-jSE">
+                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2997197970202507" green="0.65435931431511041" blue="0.7484704442771084" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Jugador" image="ico-Tab-Bar-Usuario.png" id="FY9-0e-2fO">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vI5-6g-yek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1491" y="1256"/>
+        </scene>
+        <!--View Controller - Jugadores-->
+        <scene sceneID="gzh-Kk-wpN">
+            <objects>
+                <viewController id="cbP-2G-Pj4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kAq-b2-h92"/>
+                        <viewControllerLayoutGuide type="bottom" id="jNV-iR-8Hb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4CH-8p-yqK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="U5h-vO-gzW">
+                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="mED-oZ-azf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jugadores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHe-aB-9zF">
+                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cyan="0.0" magenta="0.34000000359999999" yellow="0.90999996660000004" black="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Jugadores" image="ico-Tab-Bar-Usuarios.png" id="w2O-BO-2Jx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cmV-cV-jRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1489" y="1834"/>
+        </scene>
+        <!--View Controller - Gráficas-->
+        <scene sceneID="kM0-wf-cgL">
+            <objects>
+                <viewController id="gFn-4u-LBd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3di-cq-DAU"/>
+                        <viewControllerLayoutGuide type="bottom" id="4P5-jS-q5H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gZV-hx-WnZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fu3-jp-lYA">
+                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="670-yt-IgC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estadística" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfZ-dU-ApQ">
+                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92549026010000002" green="0.65098041299999998" blue="0.79607850309999995" alpha="0.10000000000000001" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Gráficas" image="ico-Tab-Bar-Estadistica.png" id="2aT-Xs-UPO">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pco-ij-su4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1491" y="2406"/>
+        </scene>
+        <!--View Controller - Gonfig.-->
+        <scene sceneID="6gU-nx-AQ1">
+            <objects>
+                <viewController id="duU-Ts-6Rf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tZ5-1S-CVl"/>
+                        <viewControllerLayoutGuide type="bottom" id="WUv-5r-kR9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uNk-8M-eZB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="utE-J0-t1G">
+                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="05v-kx-dNG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Configuración" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjl-fG-bkG">
+                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.89974755048751831" green="0.74926532063995033" blue="0.66795136168134539" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Gonfig." image="ico-Tab-Bar-Configuracion.png" id="HMe-xa-Pwl">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lD8-iN-adc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1493" y="2980"/>
         </scene>
         <!--Nick View Controller-->
         <scene sceneID="T4g-Hz-J96">
@@ -151,10 +377,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HH-bt-BaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="355"/>
+            <point key="canvasLocation" x="418" y="345"/>
         </scene>
     </scenes>
     <resources>
+        <image name="FONDO_Tab_Bar_Opciones.png" width="320" height="49"/>
+        <image name="ico-Tab-Bar-Configuracion.png" width="48" height="32"/>
+        <image name="ico-Tab-Bar-Estadistica.png" width="48" height="32"/>
+        <image name="ico-Tab-Bar-Info.png" width="48" height="32"/>
+        <image name="ico-Tab-Bar-Usuario.png" width="48" height="32"/>
+        <image name="ico-Tab-Bar-Usuarios.png" width="48" height="32"/>
+        <image name="linea-superior-Tab-Bar-1x1.png" width="1" height="1"/>
+        <image name="pant_bienvenida_cuerpo.png" width="640" height="640"/>
         <image name="pant_inicio_cabecera.png" width="640" height="160"/>
         <image name="pant_inicio_cuerpo_carga.png" width="640" height="640"/>
         <image name="pant_inicio_pie.png" width="640" height="160"/>

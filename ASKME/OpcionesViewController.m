@@ -33,8 +33,9 @@
     ViewController *nickNombreViewController = [[ViewController alloc]init];
     [nickNombreViewController leerUsuarioPlist];
     
-    NSString *result=[NSString stringWithFormat:@"%@ %@", @"Bienvenido", nickNombreViewController.nickNombre];
+    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
     nombreUsuarioLabel.text = result;
+    [self empezar];
     
 }
 
@@ -43,5 +44,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - pasarPantalla
+
+- (void) empezar{
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:2.0         // El timer se ejcuta cada segundo
+                                             target:self        // Se ejecuta este timer en este view
+                                           selector:@selector(pasarPantalla)      // Se ejecuta el método contar
+                                           userInfo:nil
+                                            repeats:NO];
+}
+
+-(void) pasarPantalla{
+    UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
+    [self presentViewController:cambiarViewController animated:YES completion:nil];
+    
+}
+
 
 @end

@@ -75,7 +75,9 @@
 
 - (void) guardarNickEnMySql
 {
-    NSString *strURL = [NSString stringWithFormat:@"http://www.askmeapp.com/php_IOS/insertuser.php?nombre=%@",nick];
+    // CFURLCreateStringByAddingPercentEscapes se utiliza para comvertir caracteres especiales (ej: el espacio) por códigos entendibles al enviar por una url
+    NSString *nombre = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)nick,NULL,CFSTR("!*'();:@&=+$,/?%#[]\" "),kCFStringEncodingUTF8));
+    NSString *strURL = [NSString stringWithFormat:@"http://www.askmeapp.com/php_IOS/insertuser.php?nombre=%@",nombre];
     NSLog(@"%@",strURL);
     
     NSError* error = nil;
