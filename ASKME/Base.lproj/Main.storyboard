@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="418" y="973"/>
         </scene>
-        <!--View Controller - Info.-->
+        <!--Primera View Controller-->
         <scene sceneID="LJJ-7a-bdj">
             <objects>
-                <viewController id="o8h-QF-dBx" sceneMemberID="viewController">
+                <viewController id="o8h-QF-dBx" customClass="PrimeraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7dn-7J-BDj"/>
                         <viewControllerLayoutGuide type="bottom" id="VmR-pH-h9t"/>
@@ -96,40 +96,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="0hx-uS-daH">
-                                <rect key="frame" x="0.0" y="80" width="320" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-bi-CLi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Información" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2X-5q-8im">
-                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPCION-INFO-informacion.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yry-1u-sCL">
+                                <rect key="frame" x="0.0" y="99" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.64598542449999996" green="0.7484704442771084" blue="0.003649635008" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="-1" height="-1"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info." image="ico-Tab-Bar-Info.png" id="86Q-62-Krb">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    <tabBarItem key="tabBarItem" title="" id="86Q-62-Krb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmB-zT-dNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1491" y="692"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="ihm-R1-GwN">
             <objects>
-                <tabBarController storyboardIdentifier="OpcionesTapBar" definesPresentationContext="YES" id="3lf-b0-ZRu" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="FONDO_Tab_Bar_Opciones.png" shadowImage="linea-superior-Tab-Bar-1x1.png" id="N11-Nf-aJJ">
+                <tabBarController storyboardIdentifier="OpcionesTapBar" definesPresentationContext="YES" id="3lf-b0-ZRu" customClass="TabBarViewController" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="N11-Nf-aJJ">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="957" y="974"/>
         </scene>
-        <!--View Controller - Jugador-->
+        <!--Segunda View Controller-->
         <scene sceneID="Tom-aI-Cpn">
             <objects>
-                <viewController id="Nij-dT-hzE" sceneMemberID="viewController">
+                <viewController id="Nij-dT-hzE" customClass="SegundaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZQI-PY-Q0I"/>
                         <viewControllerLayoutGuide type="bottom" id="Z9s-7N-KVK"/>
@@ -178,18 +169,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Jugador" image="ico-Tab-Bar-Usuario.png" id="FY9-0e-2fO">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    <tabBarItem key="tabBarItem" title="" id="FY9-0e-2fO">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI5-6g-yek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1491" y="1256"/>
         </scene>
-        <!--View Controller - Jugadores-->
+        <!--Tercera View Controller-->
         <scene sceneID="gzh-Kk-wpN">
             <objects>
-                <viewController id="cbP-2G-Pj4" sceneMemberID="viewController">
+                <viewController id="cbP-2G-Pj4" customClass="TerceraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kAq-b2-h92"/>
                         <viewControllerLayoutGuide type="bottom" id="jNV-iR-8Hb"/>
@@ -218,18 +209,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Jugadores" image="ico-Tab-Bar-Usuarios.png" id="w2O-BO-2Jx">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    <tabBarItem key="tabBarItem" title="" id="w2O-BO-2Jx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmV-cV-jRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1489" y="1834"/>
         </scene>
-        <!--View Controller - Gráficas-->
+        <!--Cuarta View Controller-->
         <scene sceneID="kM0-wf-cgL">
             <objects>
-                <viewController id="gFn-4u-LBd" sceneMemberID="viewController">
+                <viewController id="gFn-4u-LBd" customClass="CuartaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3di-cq-DAU"/>
                         <viewControllerLayoutGuide type="bottom" id="4P5-jS-q5H"/>
@@ -258,18 +249,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gráficas" image="ico-Tab-Bar-Estadistica.png" id="2aT-Xs-UPO">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    <tabBarItem key="tabBarItem" title="" id="2aT-Xs-UPO">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pco-ij-su4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1491" y="2406"/>
         </scene>
-        <!--View Controller - Gonfig.-->
+        <!--Quinta View Controller-->
         <scene sceneID="6gU-nx-AQ1">
             <objects>
-                <viewController id="duU-Ts-6Rf" sceneMemberID="viewController">
+                <viewController id="duU-Ts-6Rf" customClass="QuintaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tZ5-1S-CVl"/>
                         <viewControllerLayoutGuide type="bottom" id="WUv-5r-kR9"/>
@@ -298,8 +289,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gonfig." image="ico-Tab-Bar-Configuracion.png" id="HMe-xa-Pwl">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    <tabBarItem key="tabBarItem" title="" id="HMe-xa-Pwl">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lD8-iN-adc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,13 +372,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FONDO_Tab_Bar_Opciones.png" width="320" height="49"/>
-        <image name="ico-Tab-Bar-Configuracion.png" width="48" height="32"/>
-        <image name="ico-Tab-Bar-Estadistica.png" width="48" height="32"/>
-        <image name="ico-Tab-Bar-Info.png" width="48" height="32"/>
-        <image name="ico-Tab-Bar-Usuario.png" width="48" height="32"/>
-        <image name="ico-Tab-Bar-Usuarios.png" width="48" height="32"/>
-        <image name="linea-superior-Tab-Bar-1x1.png" width="1" height="1"/>
+        <image name="OPCION-INFO-informacion.png" width="640" height="640"/>
         <image name="pant_bienvenida_cuerpo.png" width="640" height="640"/>
         <image name="pant_inicio_cabecera.png" width="640" height="160"/>
         <image name="pant_inicio_cuerpo_carga.png" width="640" height="640"/>

@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		701D596A18595DD800DF3A68 /* OPCION-INFO-configuracion.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596518595DD800DF3A68 /* OPCION-INFO-configuracion.png */; };
+		701D596B18595DD800DF3A68 /* OPCION-INFO-graficas.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596618595DD800DF3A68 /* OPCION-INFO-graficas.png */; };
+		701D596C18595DD800DF3A68 /* OPCION-INFO-informacion.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596718595DD800DF3A68 /* OPCION-INFO-informacion.png */; };
+		701D596D18595DD800DF3A68 /* OPCION-INFO-Jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596818595DD800DF3A68 /* OPCION-INFO-Jugador.png */; };
+		701D596E18595DD800DF3A68 /* OPCION-INFO-Jugadores.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */; };
+		70332D64185A190F00CC61C3 /* PrimeraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D63185A190F00CC61C3 /* PrimeraViewController.m */; };
+		70332D68185A1BD400CC61C3 /* SegundaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D67185A1BD400CC61C3 /* SegundaViewController.m */; };
+		70332D6C185A1D4900CC61C3 /* TerceraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D6B185A1D4900CC61C3 /* TerceraViewController.m */; };
+		70332D70185A1E5700CC61C3 /* CuartaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D6F185A1E5700CC61C3 /* CuartaViewController.m */; };
+		70332D74185A1F0F00CC61C3 /* QuintaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D73185A1F0F00CC61C3 /* QuintaViewController.m */; };
+		70332D78185A227900CC61C3 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D77185A227900CC61C3 /* TabBarViewController.m */; };
 		70639E0F184D32490028A98B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E0E184D32490028A98B /* Foundation.framework */; };
 		70639E11184D32490028A98B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E10184D32490028A98B /* CoreGraphics.framework */; };
 		70639E13184D32490028A98B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E12184D32490028A98B /* UIKit.framework */; };
@@ -54,6 +65,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		701D596518595DD800DF3A68 /* OPCION-INFO-configuracion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-configuracion.png"; sourceTree = "<group>"; };
+		701D596618595DD800DF3A68 /* OPCION-INFO-graficas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-graficas.png"; sourceTree = "<group>"; };
+		701D596718595DD800DF3A68 /* OPCION-INFO-informacion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-informacion.png"; sourceTree = "<group>"; };
+		701D596818595DD800DF3A68 /* OPCION-INFO-Jugador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-Jugador.png"; sourceTree = "<group>"; };
+		701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-Jugadores.png"; sourceTree = "<group>"; };
+		70332D62185A190F00CC61C3 /* PrimeraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimeraViewController.h; sourceTree = "<group>"; };
+		70332D63185A190F00CC61C3 /* PrimeraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimeraViewController.m; sourceTree = "<group>"; };
+		70332D66185A1BD400CC61C3 /* SegundaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegundaViewController.h; sourceTree = "<group>"; };
+		70332D67185A1BD400CC61C3 /* SegundaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegundaViewController.m; sourceTree = "<group>"; };
+		70332D6A185A1D4900CC61C3 /* TerceraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TerceraViewController.h; path = ASKME/TerceraViewController.h; sourceTree = "<group>"; };
+		70332D6B185A1D4900CC61C3 /* TerceraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TerceraViewController.m; path = ASKME/TerceraViewController.m; sourceTree = "<group>"; };
+		70332D6E185A1E5700CC61C3 /* CuartaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CuartaViewController.h; path = ASKME/CuartaViewController.h; sourceTree = "<group>"; };
+		70332D6F185A1E5700CC61C3 /* CuartaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CuartaViewController.m; path = ASKME/CuartaViewController.m; sourceTree = "<group>"; };
+		70332D72185A1F0F00CC61C3 /* QuintaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuintaViewController.h; path = ASKME/QuintaViewController.h; sourceTree = "<group>"; };
+		70332D73185A1F0F00CC61C3 /* QuintaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuintaViewController.m; path = ASKME/QuintaViewController.m; sourceTree = "<group>"; };
+		70332D76185A227800CC61C3 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarViewController.h; path = ASKME/TabBarViewController.h; sourceTree = "<group>"; };
+		70332D77185A227900CC61C3 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarViewController.m; path = ASKME/TabBarViewController.m; sourceTree = "<group>"; };
 		70639E0B184D32490028A98B /* ASKME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASKME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70639E0E184D32490028A98B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		70639E10184D32490028A98B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +149,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70332D65185A191700CC61C3 /* PrimeraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70332D62185A190F00CC61C3 /* PrimeraViewController.h */,
+				70332D63185A190F00CC61C3 /* PrimeraViewController.m */,
+			);
+			name = PrimeraViewController;
+			sourceTree = "<group>";
+		};
+		70332D69185A1BDB00CC61C3 /* SegundaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70332D66185A1BD400CC61C3 /* SegundaViewController.h */,
+				70332D67185A1BD400CC61C3 /* SegundaViewController.m */,
+			);
+			name = SegundaViewController;
+			sourceTree = "<group>";
+		};
+		70332D6D185A1D4F00CC61C3 /* TerceraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70332D6A185A1D4900CC61C3 /* TerceraViewController.h */,
+				70332D6B185A1D4900CC61C3 /* TerceraViewController.m */,
+			);
+			name = TerceraViewController;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		70332D71185A1E5D00CC61C3 /* CuartaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70332D6E185A1E5700CC61C3 /* CuartaViewController.h */,
+				70332D6F185A1E5700CC61C3 /* CuartaViewController.m */,
+			);
+			name = CuartaViewController;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		70332D75185A1F1400CC61C3 /* QuintaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70332D72185A1F0F00CC61C3 /* QuintaViewController.h */,
+				70332D73185A1F0F00CC61C3 /* QuintaViewController.m */,
+			);
+			name = QuintaViewController;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		70332D79185A227C00CC61C3 /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70332D76185A227800CC61C3 /* TabBarViewController.h */,
+				70332D77185A227900CC61C3 /* TabBarViewController.m */,
+			);
+			name = TabBarViewController;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		70639E02184D32490028A98B = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +244,12 @@
 				70639E1D184D32490028A98B /* AppDelegate.h */,
 				70639E1E184D32490028A98B /* AppDelegate.m */,
 				70639E20184D32490028A98B /* Main.storyboard */,
+				70332D79185A227C00CC61C3 /* TabBarViewController */,
+				70332D65185A191700CC61C3 /* PrimeraViewController */,
+				70332D69185A1BDB00CC61C3 /* SegundaViewController */,
+				70332D6D185A1D4F00CC61C3 /* TerceraViewController */,
+				70332D71185A1E5D00CC61C3 /* CuartaViewController */,
+				70332D75185A1F1400CC61C3 /* QuintaViewController */,
 				70B339631854F79F0072A60D /* OpcionesViewController */,
 				70B3395D1854C23A0072A60D /* NickViewController */,
 				70639E23184D32490028A98B /* ViewController.h */,
@@ -219,6 +311,11 @@
 		70B3395318549B700072A60D /* imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				701D596518595DD800DF3A68 /* OPCION-INFO-configuracion.png */,
+				701D596618595DD800DF3A68 /* OPCION-INFO-graficas.png */,
+				701D596718595DD800DF3A68 /* OPCION-INFO-informacion.png */,
+				701D596818595DD800DF3A68 /* OPCION-INFO-Jugador.png */,
+				701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */,
 				709B675F1858D6C90052C344 /* iconosTabBarOpciones */,
 				709B67491858D2B70052C344 /* FONDO_Tab_Bar_Opciones.png */,
 				709B67471858D18A0052C344 /* FONDO_Tab_Bar_Opciones@2x.png */,
@@ -327,7 +424,9 @@
 				709B67571858D6BA0052C344 /* ico-Tab-Bar-Estadistica.png in Resources */,
 				709B67581858D6BA0052C344 /* ico-Tab-Bar-Estadistica@x2.png in Resources */,
 				709B674A1858D2B70052C344 /* FONDO_Tab_Bar_Opciones.png in Resources */,
+				701D596D18595DD800DF3A68 /* OPCION-INFO-Jugador.png in Resources */,
 				70639E27184D32490028A98B /* Images.xcassets in Resources */,
+				701D596B18595DD800DF3A68 /* OPCION-INFO-graficas.png in Resources */,
 				70EF263418573FF400E3CD0F /* pant_bienvenida_cuerpo.png in Resources */,
 				709B675E1858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png in Resources */,
 				709B675D1858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png in Resources */,
@@ -337,13 +436,16 @@
 				70B3395818549E6C0072A60D /* pant_inicio_cuerpo_carga.png in Resources */,
 				70B3395F1854D74B0072A60D /* usuario.plist in Resources */,
 				70639E19184D32490028A98B /* InfoPlist.strings in Resources */,
+				701D596A18595DD800DF3A68 /* OPCION-INFO-configuracion.png in Resources */,
 				709B67561858D6BA0052C344 /* ico-Tab-Bar-Configuracion@x2.png in Resources */,
 				70B3395918549E6C0072A60D /* pant_inicio_pie.png in Resources */,
+				701D596C18595DD800DF3A68 /* OPCION-INFO-informacion.png in Resources */,
 				709B67481858D18A0052C344 /* FONDO_Tab_Bar_Opciones@2x.png in Resources */,
 				709B675B1858D6BA0052C344 /* ico-Tab-Bar-Usuario.png in Resources */,
 				709B675C1858D6BA0052C344 /* ico-Tab-Bar-Usuario@x2.png in Resources */,
 				709B675A1858D6BA0052C344 /* ico-Tab-Bar-Info@x2.png in Resources */,
 				70639E22184D32490028A98B /* Main.storyboard in Resources */,
+				701D596E18595DD800DF3A68 /* OPCION-INFO-Jugadores.png in Resources */,
 				709B67641858E7090052C344 /* linea-superior-Tab-Bar-1x1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,10 +466,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				70639E25184D32490028A98B /* ViewController.m in Sources */,
+				70332D68185A1BD400CC61C3 /* SegundaViewController.m in Sources */,
+				70332D64185A190F00CC61C3 /* PrimeraViewController.m in Sources */,
 				70639E1F184D32490028A98B /* AppDelegate.m in Sources */,
 				70B339621854F79A0072A60D /* OpcionesViewController.m in Sources */,
 				70639E1B184D32490028A98B /* main.m in Sources */,
+				70332D74185A1F0F00CC61C3 /* QuintaViewController.m in Sources */,
+				70332D78185A227900CC61C3 /* TabBarViewController.m in Sources */,
 				70B3395C1854C2320072A60D /* NickViewController.m in Sources */,
+				70332D70185A1E5700CC61C3 /* CuartaViewController.m in Sources */,
+				70332D6C185A1D4900CC61C3 /* TerceraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
