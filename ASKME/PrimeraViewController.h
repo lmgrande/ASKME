@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PrimeraViewController : UIViewController
+@interface PrimeraViewController : UIViewController <UIScrollViewDelegate>
+{
+    NSTimer *timer;
+}
+
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
 @end

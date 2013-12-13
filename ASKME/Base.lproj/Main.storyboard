@@ -9,33 +9,48 @@
             <objects>
                 <viewController storyboardIdentifier="Inicio" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nFg-LC-gVp"/>
-                        <viewControllerLayoutGuide type="bottom" id="oa7-LQ-6uv"/>
+                        <viewControllerLayoutGuide type="top" id="DTU-kl-V8h"/>
+                        <viewControllerLayoutGuide type="bottom" id="rrr-0U-DXi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="WbO-xe-d9v">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pant_inicio_cabecera.png" translatesAutoresizingMaskIntoConstraints="NO" id="WbO-xe-d9v">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="RT2-oA-qku"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_cuerpo_carga.png" translatesAutoresizingMaskIntoConstraints="NO" id="YnI-WU-Wtu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" image="pant_inicio_cuerpo_carga.png" translatesAutoresizingMaskIntoConstraints="NO" id="YnI-WU-Wtu">
                                 <rect key="frame" x="0.0" y="80" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_inicio_pie.png" translatesAutoresizingMaskIntoConstraints="NO" id="SRf-n5-BVT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pant_inicio_pie.png" translatesAutoresizingMaskIntoConstraints="NO" id="SRf-n5-BVT">
                                 <rect key="frame" x="0.0" y="400" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="MBA-S8-3yP"/>
+                                </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1iX-Xe-3Ng">
-                                <rect key="frame" x="151" y="231" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1iX-Xe-3Ng">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SRf-n5-BVT" firstAttribute="centerX" secondItem="1iX-Xe-3Ng" secondAttribute="centerX" id="6S5-3c-hbN"/>
+                            <constraint firstAttribute="trailing" secondItem="SRf-n5-BVT" secondAttribute="trailing" id="7Uz-Yy-O4Z"/>
+                            <constraint firstItem="1iX-Xe-3Ng" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="B0U-VQ-ldw"/>
+                            <constraint firstItem="SRf-n5-BVT" firstAttribute="leading" secondItem="WbO-xe-d9v" secondAttribute="leading" id="Z15-Ag-1dy"/>
+                            <constraint firstItem="SRf-n5-BVT" firstAttribute="trailing" secondItem="WbO-xe-d9v" secondAttribute="trailing" id="nW4-aW-0rv"/>
+                            <constraint firstItem="SRf-n5-BVT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="pHR-vL-5pC"/>
+                            <constraint firstItem="WbO-xe-d9v" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="qtQ-4s-KJh"/>
+                            <constraint firstItem="rrr-0U-DXi" firstAttribute="top" secondItem="SRf-n5-BVT" secondAttribute="bottom" id="yJd-Bu-B37"/>
+                        </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,8 +61,8 @@
             <objects>
                 <viewController storyboardIdentifier="Opciones" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XBe-mE-xzx" customClass="OpcionesViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vt9-pc-g7F"/>
-                        <viewControllerLayoutGuide type="bottom" id="C0n-c8-9ef"/>
+                        <viewControllerLayoutGuide type="top" id="dDb-Ea-gMS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bjv-rR-Txw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="68s-KP-peK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -89,8 +104,8 @@
             <objects>
                 <viewController id="o8h-QF-dBx" customClass="PrimeraViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7dn-7J-BDj"/>
-                        <viewControllerLayoutGuide type="bottom" id="VmR-pH-h9t"/>
+                        <viewControllerLayoutGuide type="top" id="iyL-1Z-Xfg"/>
+                        <viewControllerLayoutGuide type="bottom" id="jzU-Rw-ht5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m1B-am-bEq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -100,16 +115,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPCION-INFO-informacion.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yry-1u-sCL">
-                                <rect key="frame" x="0.0" y="99" width="320" height="320"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoN-Ba-opT">
+                                <rect key="frame" x="0.0" y="85" width="320" height="332"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wV5-Ek-veb">
+                                <rect key="frame" x="141" y="403" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="pageIndicatorTintColor" red="0.67078980489999995" green="0.67065986889999996" blue="0.7012188251" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.83010878359999996" green="0.82994798660000002" blue="0.8677649865" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="86Q-62-Krb">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="pageControl" destination="wV5-Ek-veb" id="yJg-YB-eza"/>
+                        <outlet property="scrollView" destination="yoN-Ba-opT" id="HeL-ty-x95"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmB-zT-dNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,7 +143,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="ihm-R1-GwN">
             <objects>
-                <tabBarController storyboardIdentifier="OpcionesTapBar" definesPresentationContext="YES" id="3lf-b0-ZRu" customClass="TabBarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="OpcionesTapBar" definesPresentationContext="YES" modalTransitionStyle="crossDissolve" id="3lf-b0-ZRu" customClass="TabBarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="N11-Nf-aJJ">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -142,8 +167,8 @@
             <objects>
                 <viewController id="Nij-dT-hzE" customClass="SegundaViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZQI-PY-Q0I"/>
-                        <viewControllerLayoutGuide type="bottom" id="Z9s-7N-KVK"/>
+                        <viewControllerLayoutGuide type="top" id="t6Q-R4-2mE"/>
+                        <viewControllerLayoutGuide type="bottom" id="e1r-sB-0rF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a0B-PC-JyV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -182,8 +207,8 @@
             <objects>
                 <viewController id="cbP-2G-Pj4" customClass="TerceraViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kAq-b2-h92"/>
-                        <viewControllerLayoutGuide type="bottom" id="jNV-iR-8Hb"/>
+                        <viewControllerLayoutGuide type="top" id="Wfg-kk-odt"/>
+                        <viewControllerLayoutGuide type="bottom" id="dCk-jy-RQw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4CH-8p-yqK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -222,8 +247,8 @@
             <objects>
                 <viewController id="gFn-4u-LBd" customClass="CuartaViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3di-cq-DAU"/>
-                        <viewControllerLayoutGuide type="bottom" id="4P5-jS-q5H"/>
+                        <viewControllerLayoutGuide type="top" id="zGg-jn-ZER"/>
+                        <viewControllerLayoutGuide type="bottom" id="B7a-md-zWG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gZV-hx-WnZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -262,8 +287,8 @@
             <objects>
                 <viewController id="duU-Ts-6Rf" customClass="QuintaViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tZ5-1S-CVl"/>
-                        <viewControllerLayoutGuide type="bottom" id="WUv-5r-kR9"/>
+                        <viewControllerLayoutGuide type="top" id="o1f-L1-57b"/>
+                        <viewControllerLayoutGuide type="bottom" id="hRe-zk-AIj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uNk-8M-eZB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -302,8 +327,8 @@
             <objects>
                 <viewController storyboardIdentifier="CrearUsuario" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EHl-g7-El7" customClass="NickViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qZQ-EJ-qb1"/>
-                        <viewControllerLayoutGuide type="bottom" id="ovl-94-e1n"/>
+                        <viewControllerLayoutGuide type="top" id="bC6-er-qW7"/>
+                        <viewControllerLayoutGuide type="bottom" id="94I-t4-bQL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8GT-1a-4Dl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -372,7 +397,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="OPCION-INFO-informacion.png" width="640" height="640"/>
         <image name="pant_bienvenida_cuerpo.png" width="640" height="640"/>
         <image name="pant_inicio_cabecera.png" width="640" height="160"/>
         <image name="pant_inicio_cuerpo_carga.png" width="640" height="640"/>
