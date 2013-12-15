@@ -206,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="1491" y="1256"/>
         </scene>
-        <!--View Controller-->
+        <!--Preguntas View Controller-->
         <scene sceneID="UkH-ao-EDa">
             <objects>
-                <viewController id="IDI-0v-DVq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Preguntas" id="IDI-0v-DVq" customClass="PreguntasViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IO9-NB-NfL"/>
                         <viewControllerLayoutGuide type="bottom" id="ft7-wJ-8L6"/>

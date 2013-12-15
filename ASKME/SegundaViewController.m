@@ -7,7 +7,6 @@
 //
 
 #import "SegundaViewController.h"
-#import "Pregunta.h"
 
 @interface SegundaViewController ()
 
@@ -16,8 +15,6 @@
 #define urlParaTraerDatos @"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php"
 
 @implementation SegundaViewController
-
-@synthesize json, preguntasArray;
 
 #pragma mark - customizando icono tab bar
 
@@ -45,7 +42,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self recogerDatos];
+    [self recogerYGrabarDatosEnFicheroJSON];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,37 +53,70 @@
 
 #pragma mark - Metodos
 
-- (void) recogerDatos
+- (void) recogerYGrabarDatosEnFicheroJSON
 {
     NSURL *url = [NSURL URLWithString:urlParaTraerDatos];
-    NSData *data = [NSData dataWithContentsOfURL:url];
     
-    json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSError *error = nil; // This so that we can access the error if something goes wrong
+    NSData *jsonData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
     
-    preguntasArray = [[NSMutableArray alloc] init];
+    NSError *error1;
     
-    for (int i = 0; i<json.count; i++)
-    {
-        NSLog(@"REGISTRO JSON: %D",i);
-        NSString *textPregunta = [[json objectAtIndex:i] objectForKey:@"pregunta"];
-        NSLog(@"Pregunta JSON: %@",textPregunta);
-        NSString *textMateria = [[json objectAtIndex:i] objectForKey:@"materia"];
-        NSLog(@"Materia JSON: %@",textMateria);
-        NSString *textCorrecta = [[json objectAtIndex:i] objectForKey:@"correcta"];
-        NSLog(@"Correcta JSON: %@",textCorrecta);
-        NSString *textIncorrecta1 = [[json objectAtIndex:i] objectForKey:@"incorrecta1"];
-        NSLog(@"Incorrecta1 JSON: %@",textIncorrecta1);
-        NSString *textIncorrecta2 = [[json objectAtIndex:i] objectForKey:@"incorrecta2"];
-        NSLog(@"Incorrecta2 JSON: %@",textIncorrecta2);
-        NSString *textIncorrecta3 = [[json objectAtIndex:i] objectForKey:@"incorrecta3"];
-        NSLog(@"Incorrecta3 JSON: %@",textIncorrecta3);
+    // array of dictionary
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&error1];
+    
+    if (error1) {
+        NSLog(@"Error: %@", error1.localizedDescription);
+    } else {
+        // para sobreescribir fichero json
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        //
         
-        Pregunta *miPregunta = [[Pregunta alloc] initWithTextoPregunta:textPregunta andTextoMateria:textMateria andTextoCorrecta:textCorrecta andTextoIncorrecta1:textIncorrecta1 andTextoIncorrecta2:textIncorrecta2 andTextoIncorrecta3:textIncorrecta3];
+        NSArray *documentsSearchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [documentsSearchPaths count] == 0 ? nil : [documentsSearchPaths objectAtIndex:0];
         
-        [preguntasArray addObject:miPregunta];
-
+        NSString *fileName = @"preguntas.json";
+        
+        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+        
+        // para sobreescribir fichero json
+        if ([fileManager fileExistsAtPath:filePath] == YES) {
+            NSError *errorfileExistsAtPath;
+            [fileManager removeItemAtPath:filePath error:&errorfileExistsAtPath];
+        }
+        //
+        
+        NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:YES];
+        [outputStream open];
+        
+        [NSJSONSerialization writeJSONObject:array
+                                    toStream:outputStream
+                                     options:kNilOptions
+                                       error:&error1];
+        [outputStream close];
+        NSLog(@"Path JSON: %@",filePath);
+        [self empezar];
     }
+
+}
+
+#pragma mark - pasarPantalla
+
+- (void) empezar{
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:2.0         // El timer se ejcuta cada segundo
+                                             target:self        // Se ejecuta este timer en este view
+                                           selector:@selector(pasarPantalla)      // Se ejecuta el método contar
+                                           userInfo:nil
+                                            repeats:NO];
+}
+
+-(void) pasarPantalla{
+    UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Preguntas"];
+    [self presentViewController:cambiarViewController animated:YES completion:nil];
     
 }
+
 
 @end

@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface SegundaViewController : UIViewController
-
-@property (nonatomic, strong) NSMutableArray *json;
-@property (nonatomic, strong) NSMutableArray *preguntasArray;
+{
+    NSTimer *timer;
+}
 
 #pragma mark - Metodos
 
-- (void) recogerDatos;
+- (void) recogerYGrabarDatosEnFicheroJSON;
 
 @end

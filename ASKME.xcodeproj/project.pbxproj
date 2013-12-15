@@ -33,6 +33,7 @@
 		70639E38184D324A0028A98B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70639E36184D324A0028A98B /* InfoPlist.strings */; };
 		70639E3A184D324A0028A98B /* ASKMETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70639E39184D324A0028A98B /* ASKMETests.m */; };
 		706C86AC185BC76500D51120 /* CARGA-ASKME-LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 706C86AB185BC76500D51120 /* CARGA-ASKME-LaunchImage.png */; };
+		7099D5E3185DE64E00241684 /* PreguntasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7099D5E2185DE64E00241684 /* PreguntasViewController.m */; };
 		709B67481858D18A0052C344 /* FONDO_Tab_Bar_Opciones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67471858D18A0052C344 /* FONDO_Tab_Bar_Opciones@2x.png */; };
 		709B674A1858D2B70052C344 /* FONDO_Tab_Bar_Opciones.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67491858D2B70052C344 /* FONDO_Tab_Bar_Opciones.png */; };
 		709B67551858D6BA0052C344 /* ico-Tab-Bar-Configuracion.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B674B1858D6BA0052C344 /* ico-Tab-Bar-Configuracion.png */; };
@@ -107,6 +108,8 @@
 		70639E37184D324A0028A98B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		70639E39184D324A0028A98B /* ASKMETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASKMETests.m; sourceTree = "<group>"; };
 		706C86AB185BC76500D51120 /* CARGA-ASKME-LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CARGA-ASKME-LaunchImage.png"; sourceTree = "<group>"; };
+		7099D5E1185DE64E00241684 /* PreguntasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreguntasViewController.h; sourceTree = "<group>"; };
+		7099D5E2185DE64E00241684 /* PreguntasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreguntasViewController.m; sourceTree = "<group>"; };
 		709B67471858D18A0052C344 /* FONDO_Tab_Bar_Opciones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FONDO_Tab_Bar_Opciones@2x.png"; sourceTree = "<group>"; };
 		709B67491858D2B70052C344 /* FONDO_Tab_Bar_Opciones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FONDO_Tab_Bar_Opciones.png; sourceTree = "<group>"; };
 		709B674B1858D6BA0052C344 /* ico-Tab-Bar-Configuracion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico-Tab-Bar-Configuracion.png"; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 				70639E1D184D32490028A98B /* AppDelegate.h */,
 				70639E1E184D32490028A98B /* AppDelegate.m */,
 				70639E20184D32490028A98B /* Main.storyboard */,
+				7099D5E4185DE65600241684 /* PreguntasViewController */,
 				70332D79185A227C00CC61C3 /* TabBarViewController */,
 				70332D65185A191700CC61C3 /* PrimeraViewController */,
 				70332D69185A1BDB00CC61C3 /* SegundaViewController */,
@@ -301,6 +305,15 @@
 				70639E36184D324A0028A98B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7099D5E4185DE65600241684 /* PreguntasViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7099D5E1185DE64E00241684 /* PreguntasViewController.h */,
+				7099D5E2185DE64E00241684 /* PreguntasViewController.m */,
+			);
+			name = PreguntasViewController;
 			sourceTree = "<group>";
 		};
 		709B675F1858D6C90052C344 /* iconosTabBarOpciones */ = {
@@ -500,6 +513,7 @@
 				70639E1F184D32490028A98B /* AppDelegate.m in Sources */,
 				70B339621854F79A0072A60D /* OpcionesViewController.m in Sources */,
 				70639E1B184D32490028A98B /* main.m in Sources */,
+				7099D5E3185DE64E00241684 /* PreguntasViewController.m in Sources */,
 				70332D74185A1F0F00CC61C3 /* QuintaViewController.m in Sources */,
 				70332D78185A227900CC61C3 /* TabBarViewController.m in Sources */,
 				70B3395C1854C2320072A60D /* NickViewController.m in Sources */,
