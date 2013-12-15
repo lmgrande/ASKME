@@ -49,7 +49,7 @@
 
 - (void) empezar{
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:2.0         // El timer se ejcuta cada segundo
+    timer = [NSTimer scheduledTimerWithTimeInterval:4.0         // El timer se ejcuta cada segundo
                                              target:self        // Se ejecuta este timer en este view
                                            selector:@selector(pasarPantalla)      // Se ejecuta el método contar
                                            userInfo:nil

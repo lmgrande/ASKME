@@ -10,4 +10,11 @@
 
 @interface SegundaViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray *json;
+@property (nonatomic, strong) NSMutableArray *preguntasArray;
+
+#pragma mark - Metodos
+
+- (void) recogerDatos;
+
 @end

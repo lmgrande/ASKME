@@ -174,7 +174,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pant_bienvenida_cuerpo.png" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-vE-a9S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPCION-Jugador.png" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-vE-a9S">
                                 <rect key="frame" x="0.0" y="80" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -183,7 +183,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jugador" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydH-5X-jSE">
-                                <rect key="frame" x="63" y="375" width="194" height="32"/>
+                                <rect key="frame" x="63" y="368" width="194" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.2997197970202507" green="0.65435931431511041" blue="0.7484704442771084" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -191,6 +191,10 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="-1" height="-1"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="f9M-G2-Q3i">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -201,6 +205,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI5-6g-yek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1491" y="1256"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UkH-ao-EDa">
+            <objects>
+                <viewController id="IDI-0v-DVq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IO9-NB-NfL"/>
+                        <viewControllerLayoutGuide type="bottom" id="ft7-wJ-8L6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jHU-mj-IIH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="JUGADOR-ASKME.png" translatesAutoresizingMaskIntoConstraints="NO" id="OeV-NE-yHG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6b-XV-Ipn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2049" y="1250"/>
         </scene>
         <!--Tercera View Controller-->
         <scene sceneID="gzh-Kk-wpN">
@@ -397,6 +425,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="JUGADOR-ASKME.png" width="640" height="960"/>
+        <image name="OPCION-Jugador.png" width="640" height="640"/>
         <image name="pant_bienvenida_cuerpo.png" width="640" height="640"/>
         <image name="pant_inicio_cabecera.png" width="640" height="160"/>
         <image name="pant_inicio_cuerpo_carga.png" width="640" height="640"/>
