@@ -70,7 +70,7 @@
     } else {
         // para sobreescribir fichero json
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        //
+        // -------------------------------
         
         NSArray *documentsSearchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [documentsSearchPaths count] == 0 ? nil : [documentsSearchPaths objectAtIndex:0];
@@ -84,7 +84,7 @@
             NSError *errorfileExistsAtPath;
             [fileManager removeItemAtPath:filePath error:&errorfileExistsAtPath];
         }
-        //
+        // -------------------------------
         
         NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:YES];
         [outputStream open];

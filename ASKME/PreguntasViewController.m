@@ -7,6 +7,7 @@
 //
 
 #import "PreguntasViewController.h"
+#import "ViewController.h"
 #import "Pregunta.h"
 
 @interface PreguntasViewController ()
@@ -15,7 +16,7 @@
 
 @implementation PreguntasViewController
 
-@synthesize json, preguntasArray;
+@synthesize nickLabel, tableData, json, preguntasArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,10 +27,19 @@
     return self;
 }
 
+#pragma mark - Ciclo de vida de una View
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    ViewController *nickNombreViewController = [[ViewController alloc]init];
+    [nickNombreViewController leerUsuarioPlist];
+    
+    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
+    nickLabel.text = result;
+    
+    tableData = [[NSArray alloc] initWithObjects:@"Respuesta1 no se cuantas líneas me pueden caber en esta celda. Probemos a ver si caben dos líneas.", @"Respuesta2", @"Respuesta3", @"Respuesta4", nil];
     
     [self sacarDatosFicheroJSON];
 }
@@ -40,7 +50,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Metodos
+#pragma mark - métodos Data Source de la TableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [tableData count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:@"RespuestaCell"];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RespuestaCell"];
+    }
+    cell.textLabel.font = [UIFont systemFontOfSize:11];
+    cell.textLabel.numberOfLines = 0;
+
+    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+
+#pragma mark - métodos para archivo JSON
 
 - (void) sacarDatosFicheroJSON
 {
@@ -77,5 +118,12 @@
 
 }
 
+#pragma mark - métodos IBAction
 
+- (IBAction)casaBoton:(id)sender
+{
+    UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
+    [self presentViewController:cambiarViewController animated:YES completion:nil];
+}
 @end

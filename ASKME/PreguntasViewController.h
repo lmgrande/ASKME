@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PreguntasViewController : UIViewController
+@interface PreguntasViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
+//{
+//    NSArray *tableData;
+//}
+@property (weak, nonatomic) IBOutlet UILabel *nickLabel;
+
+@property (nonatomic, strong) NSArray *tableData;
 
 @property (nonatomic, strong) NSMutableArray *json;
 @property (nonatomic, strong) NSMutableArray *preguntasArray;
+
+- (IBAction)casaBoton:(id)sender;
 
 #pragma mark - Metodos
 
