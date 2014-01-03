@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *preguntasAcertadasLabel;
 @property (weak, nonatomic) IBOutlet UILabel *preguntasNoContestadasLabel;
 @property (weak, nonatomic) IBOutlet UILabel *preguntasFalladasLabel;
+@property (weak, nonatomic) IBOutlet UILabel *puntosMaximosPartida;
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconoPreguntaUIImageView;
 @property (weak, nonatomic) IBOutlet UILabel *materiaPreguntaLabel;

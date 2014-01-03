@@ -14,12 +14,22 @@
 
 @interface PreguntasViewController ()
 {
+    Pregunta *miPreguntaMateria;
     NSMutableDictionary *partida;
+    NSMutableDictionary *partidas;
     CGFloat contador;
     NSTimer *timerPartida;
     NSTimer *timerPregunta;
     int numero,j,segundosParaPuntos,puntosTotalesPartida,preguntasAcertadas,preguntasFalladas,preguntasNoContestadas;
     BOOL acertada;
+    NSInteger arteLiteraturaContestadas,arteLiteraturaAcertadas,arteLiteraturaPuntos;
+    NSInteger cienciasContestadas,cienciasAcertadas,cienciasPuntos;
+    NSInteger deportesContestadas,deportesAcertadas,deportesPuntos;
+    NSInteger geografiaContestadas,geografiaAcertadas,geografiaPuntos;
+    NSInteger historiaContestadas,historiaAcertadas,historiaPuntos;
+    NSInteger ocioContestadas,ocioAcertadas,ocioPuntos;
+    NSInteger otrosContestadas,otrosAcertadas,otrosPuntos;
+
 }
 
 
@@ -27,7 +37,7 @@
 
 @implementation PreguntasViewController
 
-@synthesize nickLabel, tableData, json, preguntasArray, preguntaLinearProgressView, partidaLinearProgressView, contadorGrafico, numerosContadorLabel, preguntaLabel, preguntasTableView, totalPreguntasPartida,numeroPreguntaActualPartida, puntosPreguntaLabel,puntosAcumuladosLabel,preguntasAcertadasLabel, preguntasFalladasLabel, preguntasNoContestadasLabel, iconoPreguntaUIImageView, materiaPreguntaLabel, fondoPiePreguntaImageView, proximaPreguntaButton;
+@synthesize nickLabel, tableData, json, preguntasArray, preguntaLinearProgressView, partidaLinearProgressView, contadorGrafico, numerosContadorLabel, preguntaLabel, preguntasTableView, totalPreguntasPartida,numeroPreguntaActualPartida, puntosPreguntaLabel, puntosMaximosPartida, puntosAcumuladosLabel,preguntasAcertadasLabel, preguntasFalladasLabel, preguntasNoContestadasLabel, iconoPreguntaUIImageView, materiaPreguntaLabel, fondoPiePreguntaImageView, proximaPreguntaButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,6 +83,33 @@
                @"0", @"total-preguntas-pasadas",
                @"0", @"puntos-totales-conseguidos",
                @"0", @"puntos-maximos-partida",
+               nil];
+    partidas = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+               @"0", @"arte-literatura-contestadas",
+               @"0", @"arte-literatura-acertadas",
+               @"0", @"arte-literatura-puntos",
+               @"0", @"ciencias-contestadas",
+               @"0", @"ciencias-acertadas",
+               @"0", @"ciencias-puntos",
+               @"0", @"deportes-contestadas",
+               @"0", @"deportes-acertadas",
+               @"0", @"deportes-puntos",
+               @"0", @"geografia-contestadas",
+               @"0", @"geografia-acertadas",
+               @"0", @"geografia-puntos",
+               @"0", @"historia-contestadas",
+               @"0", @"historia-acertadas",
+               @"0", @"historia-puntos",
+               @"0", @"ocio-contestadas",
+               @"0", @"ocio-acertadas",
+               @"0", @"ocio-puntos",
+               @"0", @"otros-contestadas",
+               @"0", @"otros-acertadas",
+               @"0", @"otros-puntos",
+               @"0", @"total-preguntas-contestadas",
+               @"0", @"total-preguntas-acertadas",
+               @"0", @"total-preguntas-falladas",
+               @"0", @"puntos-totales-conseguidos",
                nil];
     
     ViewController *nickNombreViewController = [[ViewController alloc]init];
@@ -216,6 +253,7 @@
         
         [preguntasArray addObject:miPregunta];
         totalPreguntasPartida.text = [NSString stringWithFormat:@"%lu", (unsigned long)json.count];
+        puntosMaximosPartida.text =[NSString stringWithFormat:@"%lu", 12*(unsigned long)json.count];;
         
     }
 
@@ -225,10 +263,10 @@
 
 - (void)cargarPregunta
 {
-    Pregunta *miPregunta = [preguntasArray objectAtIndex:j];
-    preguntaLabel.text = miPregunta.textoPregunta;
+    miPreguntaMateria = [preguntasArray objectAtIndex:j];
+    preguntaLabel.text = miPreguntaMateria.textoPregunta;
     
-    NSArray *desordenarArray = [[NSArray alloc] initWithObjects:miPregunta.textoCorrecta, miPregunta.textoIncorrecta1, miPregunta.textoIncorrecta2, miPregunta.textoIncorrecta3, nil];
+    NSArray *desordenarArray = [[NSArray alloc] initWithObjects:miPreguntaMateria.textoCorrecta, miPreguntaMateria.textoIncorrecta1, miPreguntaMateria.textoIncorrecta2, miPreguntaMateria.textoIncorrecta3, nil];
     NSMutableArray *temp = [NSMutableArray arrayWithArray:desordenarArray];
     NSUInteger count = [temp count];
     for (NSUInteger i = 0; i < count; ++i) {
@@ -241,34 +279,41 @@
     
     [self.preguntasTableView reloadData];
     
-    if ([miPregunta.textoMateria isEqual:@"general"]){
+    if ([miPreguntaMateria.textoMateria isEqual:@"general"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-otros.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-otros"];
         materiaPreguntaLabel.text = @"OTROS";
-    }else if ([miPregunta.textoMateria isEqual:@"arteliteratura"]){
+        otrosContestadas++;
+    }else if ([miPreguntaMateria.textoMateria isEqual:@"arteliteratura"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-arte-literatura.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-arte-literatura"];
         materiaPreguntaLabel.text = @"ARTE y LITERATURA";
-    }else if ([miPregunta.textoMateria isEqual:@"ciencias"]){
+        arteLiteraturaContestadas++;
+    }else if ([miPreguntaMateria.textoMateria isEqual:@"ciencias"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-ciencias.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-ciencias"];
         materiaPreguntaLabel.text = @"CIENCIAS";
-    }else if ([miPregunta.textoMateria isEqual:@"deportes"]){
+        cienciasContestadas++;
+    }else if ([miPreguntaMateria.textoMateria isEqual:@"deportes"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-deportes.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-deportes"];
         materiaPreguntaLabel.text = @"DEPORTES";
-    }else if ([miPregunta.textoMateria isEqual:@"espectaculosocio"]){
+        deportesContestadas++;
+    }else if ([miPreguntaMateria.textoMateria isEqual:@"espectaculosocio"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-ocio.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-ocio"];
         materiaPreguntaLabel.text = @"OCIO";
-    }else if ([miPregunta.textoMateria isEqual:@"geografia"]){
+        ocioContestadas++;
+    }else if ([miPreguntaMateria.textoMateria isEqual:@"geografia"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-geografia.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-geografia"];
         materiaPreguntaLabel.text = @"GEOGRAFÍA";
-    }else if ([miPregunta.textoMateria isEqual:@"historia"]){
+        geografiaContestadas++;
+    }else if ([miPreguntaMateria.textoMateria isEqual:@"historia"]){
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-historia.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-historia"];
         materiaPreguntaLabel.text = @"HISTORIA";
+        historiaContestadas++;
     }else {
         fondoPiePreguntaImageView.image = [UIImage imageNamed:@"FONDO-PIE-JUGADOR-base.png"];
         iconoPreguntaUIImageView.image = [UIImage imageNamed:@"icono-base"];
@@ -398,7 +443,46 @@
                 puntosPregunta=12;
             }
         }
+
+        if ([miPreguntaMateria.textoMateria isEqual:@"general"]&&(acertada==YES)){
+            otrosAcertadas++;
+            otrosPuntos=otrosPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"arteliteratura"]&&(acertada==YES)){
+            arteLiteraturaAcertadas++;
+            arteLiteraturaPuntos=arteLiteraturaPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"ciencias"]&&(acertada==YES)){
+            cienciasAcertadas++;
+            cienciasPuntos=cienciasPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"deportes"]&&(acertada==YES)){
+            deportesAcertadas++;
+            deportesPuntos=deportesPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"espectaculosocio"]&&(acertada==YES)){
+            ocioAcertadas++;
+            ocioPuntos=ocioPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"geografia"]&&(acertada==YES)){
+            geografiaAcertadas++;
+            geografiaPuntos=geografiaPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"historia"]&&(acertada==YES)){
+            historiaAcertadas++;
+            historiaPuntos=historiaPuntos+puntosPregunta;
+        }
+        if ([miPreguntaMateria.textoMateria isEqual:@"general"]&&(acertada==NO)){
+            otrosPuntos=otrosPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"arteliteratura"]&&(acertada==NO)){
+            arteLiteraturaPuntos=arteLiteraturaPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"ciencias"]&&(acertada==NO)){
+            cienciasPuntos=cienciasPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"deportes"]&&(acertada==NO)){
+            deportesPuntos=deportesPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"espectaculosocio"]&&(acertada==NO)){
+            ocioPuntos=ocioPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"geografia"]&&(acertada==NO)){
+            geografiaPuntos=geografiaPuntos+puntosPregunta;
+        }else if ([miPreguntaMateria.textoMateria isEqual:@"historia"]&&(acertada==NO)){
+            historiaPuntos=historiaPuntos+puntosPregunta;
+        }
     }
+    
     puntosTotalesPartida = puntosTotalesPartida+puntosPregunta;
     puntosPreguntaLabel.text = [NSString stringWithFormat:@"%d",puntosPregunta];
     puntosAcumuladosLabel.text = [NSString stringWithFormat:@"%d",puntosTotalesPartida];
@@ -408,7 +492,8 @@
 
 }
 
-- (void) empezarContadorPartida{
+- (void) empezarContadorPartida
+{
     
     //float newProgress = [self.partidaLinearProgressView progress] + 0.12;
     //[self.partidaLinearProgressView setProgress:newProgress animated:YES];
@@ -419,7 +504,14 @@
                                             repeats:NO];
 }
 
--(void) pasarPantalla{
+-(void) pasarPantalla
+{
+    if (preguntasTableView.indexPathForSelectedRow==nil) {
+        segundosParaPuntos=0;
+        [self calcularPuntos];
+    }
+    
+    [self grabarDatosPartidaPlist];
     [timerPregunta invalidate];
     [timerPartida invalidate];
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
@@ -428,19 +520,219 @@
     
 }
 
-- (void)moverProgressBarPartida {
-    
+- (void)moverProgressBarPartida
+{
     float actual = [partidaLinearProgressView progress];
     if (actual < 1) {
         partidaLinearProgressView.progress = actual + 0.01;
         [NSTimer scheduledTimerWithTimeInterval:1.2 target:self selector:@selector(moverProgressBarPartida) userInfo:nil repeats:NO];
     }
-    else{
-        
-        
-        
-    }
-    
 }
 
+-(void)grabarDatosPartidaPlist
+{
+    [partida setObject:totalPreguntasPartida.text forKey:@"total-preguntas-partida"];
+    [partida setObject:numeroPreguntaActualPartida.text forKey:@"total-preguntas-contestadas"];
+    [partida setObject:preguntasAcertadasLabel.text forKey:@"total-preguntas-acertadas"];
+//    NSInteger resultado=(NSInteger)numeroPreguntaActualPartida.text-(NSInteger)preguntasAcertadasLabel.text;
+//    NSString *preguntasFalladasPartida=[NSString stringWithFormat:@"%d", resultado];
+//    [partida setObject:preguntasFalladasPartida forKey:@"total-preguntas-falladas"];
+    [partida setObject:preguntasFalladasLabel.text forKey:@"total-preguntas-falladas"];
+    [partida setObject:preguntasNoContestadasLabel.text forKey:@"total-preguntas-pasadas"];
+    [partida setObject:puntosAcumuladosLabel.text forKey:@"puntos-totales-conseguidos"];
+    [partida setObject:puntosMaximosPartida.text forKey:@"puntos-maximos-partida"];
+    
+    NSString *alC=[NSString stringWithFormat:@"%d", arteLiteraturaContestadas];
+    NSString *alA=[NSString stringWithFormat:@"%d", arteLiteraturaAcertadas];
+    NSString *alP=[NSString stringWithFormat:@"%d", arteLiteraturaPuntos];
+    [partida setObject:alC forKey:@"arte-literatura-contestadas"];
+    [partida setObject:alA forKey:@"arte-literatura-acertadas"];
+    [partida setObject:alP forKey:@"arte-literatura-puntos"];
+    
+    NSString *cC=[NSString stringWithFormat:@"%d", cienciasContestadas];
+    NSString *cA=[NSString stringWithFormat:@"%d", cienciasAcertadas];
+    NSString *cP=[NSString stringWithFormat:@"%d", cienciasPuntos];
+    [partida setObject:cC forKey:@"ciencias-contestadas"];
+    [partida setObject:cA forKey:@"ciencias-acertadas"];
+    [partida setObject:cP forKey:@"ciencias-puntos"];
+    
+    NSString *dC=[NSString stringWithFormat:@"%d", deportesContestadas];
+    NSString *dA=[NSString stringWithFormat:@"%d", deportesAcertadas];
+    NSString *dP=[NSString stringWithFormat:@"%d", deportesPuntos];
+    [partida setObject:dC forKey:@"deportes-contestadas"];
+    [partida setObject:dA forKey:@"deportes-acertadas"];
+    [partida setObject:dP forKey:@"deportes-puntos"];
+    
+    NSString *gC=[NSString stringWithFormat:@"%d", geografiaContestadas];
+    NSString *gA=[NSString stringWithFormat:@"%d", geografiaAcertadas];
+    NSString *gP=[NSString stringWithFormat:@"%d", geografiaPuntos];
+    [partida setObject:gC forKey:@"geografia-contestadas"];
+    [partida setObject:gA forKey:@"geografia-acertadas"];
+    [partida setObject:gP forKey:@"geografia-puntos"];
+    
+    NSString *hC=[NSString stringWithFormat:@"%d", historiaContestadas];
+    NSString *hA=[NSString stringWithFormat:@"%d", historiaAcertadas];
+    NSString *hP=[NSString stringWithFormat:@"%d", historiaPuntos];
+    [partida setObject:hC forKey:@"historia-contestadas"];
+    [partida setObject:hA forKey:@"historia-acertadas"];
+    [partida setObject:hP forKey:@"historia-puntos"];
+    
+    NSString *oC=[NSString stringWithFormat:@"%d", ocioContestadas];
+    NSString *oA=[NSString stringWithFormat:@"%d", ocioAcertadas];
+    NSString *oP=[NSString stringWithFormat:@"%d", ocioPuntos];
+    [partida setObject:oC forKey:@"ocio-contestadas"];
+    [partida setObject:oA forKey:@"ocio-acertadas"];
+    [partida setObject:oP forKey:@"ocio-puntos"];
+
+    NSString *otrosC=[NSString stringWithFormat:@"%d", otrosContestadas];
+    NSString *otrosA=[NSString stringWithFormat:@"%d", otrosAcertadas];
+    NSString *otrosP=[NSString stringWithFormat:@"%d", otrosPuntos];
+    [partida setObject:otrosC forKey:@"otros-contestadas"];
+    [partida setObject:otrosA forKey:@"otros-acertadas"];
+    [partida setObject:otrosP forKey:@"otros-puntos"];
+    
+    NSString *error;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *plistPath = [rootPath stringByAppendingPathComponent:@"datosPartida.plist"];
+    NSLog(@"PATH datosPartida: %@",plistPath);
+    
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:partida
+                                                                   format:NSPropertyListXMLFormat_v1_0
+                                                         errorDescription:&error];
+    if(plistData) {
+        [plistData writeToFile:plistPath atomically:YES];
+        [self grabarDatosPartidasPlist];
+    }
+    else {
+        NSLog(@"%@d",error);
+    }
+}
+
+-(void)grabarDatosPartidasPlist
+{
+    NSString *errorDesc = nil;
+    NSPropertyListFormat format;
+    NSString *plistPath1;
+    NSString *rootPath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                              NSUserDomainMask, YES) objectAtIndex:0];
+    plistPath1 = [rootPath1 stringByAppendingPathComponent:@"datosPartidas.plist"];
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath1]) {
+//        plistPath1 = [[NSBundle mainBundle] pathForResource:@"datosPartidas" ofType:@"plist"];
+//    }
+    NSLog(@"PATH: %@",plistPath1);
+    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath1];
+    NSMutableDictionary *temp = (NSMutableDictionary *)[NSPropertyListSerialization
+                                          propertyListFromData:plistXML
+                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                          format:&format
+                                          errorDescription:&errorDesc];
+    if (!temp) {
+        //grabar partida
+        NSString *error;
+        NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:partida
+                                                                       format:NSPropertyListXMLFormat_v1_0
+                                                             errorDescription:&error];
+        if(plistData) {
+            [plistData writeToFile:plistPath1 atomically:YES];
+        }
+        else {
+            NSLog(@"%@d",error);
+        }
+
+    }else
+    {
+        //añadir partida
+        NSString *alC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"arte-literatura-contestadas"] integerValue]+[[partida objectForKey:@"arte-literatura-contestadas"] integerValue]];
+        [partidas setObject:alC forKey:@"arte-literatura-contestadas"];
+        
+        NSString *alA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"arte-literatura-acertadas"] integerValue]+[[partida objectForKey:@"arte-literatura-acertadas"] integerValue]];
+        [partidas setObject:alA forKey:@"arte-literatura-acertadas"];
+        
+        NSString *alP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"arte-literatura-puntos"] integerValue]+[[partida objectForKey:@"arte-literatura-puntos"] integerValue]];
+        [partidas setObject:alP forKey:@"arte-literatura-puntos"];
+        
+        NSString *cC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"ciencias-contestadas"] integerValue]+[[partida objectForKey:@"ciencias-contestadas"] integerValue]];
+        [partidas setObject:cC forKey:@"ciencias-contestadas"];
+        
+        NSString *cA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"ciencias-acertadas"] integerValue]+[[partida objectForKey:@"ciencias-acertadas"] integerValue]];
+        [partidas setObject:cA forKey:@"ciencias-acertadas"];
+        
+        NSString *cP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"ciencias-puntos"] integerValue]+[[partida objectForKey:@"ciencias-puntos"] integerValue]];
+        [partidas setObject:cP forKey:@"ciencias-puntos"];
+
+        NSString *dC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"deportes-contestadas"] integerValue]+[[partida objectForKey:@"deportes-contestadas"] integerValue]];
+        [partidas setObject:dC forKey:@"deportes-contestadas"];
+        
+        NSString *dA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"deportes-acertadas"] integerValue]+[[partida objectForKey:@"deportes-acertadas"] integerValue]];
+        [partidas setObject:dA forKey:@"deportes-acertadas"];
+        
+        NSString *dP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"deportes-puntos"] integerValue]+[[partida objectForKey:@"deportes-puntos"] integerValue]];
+        [partidas setObject:dP forKey:@"deportes-puntos"];
+        
+        NSString *gC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"geografia-contestadas"] integerValue]+[[partida objectForKey:@"geografia-contestadas"] integerValue]];
+        [partidas setObject:gC forKey:@"geografia-contestadas"];
+        
+        NSString *gA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"geografia-acertadas"] integerValue]+[[partida objectForKey:@"geografia-acertadas"] integerValue]];
+        [partidas setObject:gA forKey:@"geografia-acertadas"];
+        
+        NSString *gP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"geografia-puntos"] integerValue]+[[partida objectForKey:@"geografia-puntos"] integerValue]];
+        [partidas setObject:gP forKey:@"geografia-puntos"];
+        
+        NSString *hC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"historia-contestadas"] integerValue]+[[partida objectForKey:@"historia-contestadas"] integerValue]];
+        [partidas setObject:hC forKey:@"historia-contestadas"];
+        
+        NSString *hA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"historia-acertadas"] integerValue]+[[partida objectForKey:@"historia-acertadas"] integerValue]];
+        [partidas setObject:hA forKey:@"historia-acertadas"];
+        
+        NSString *hP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"historia-puntos"] integerValue]+[[partida objectForKey:@"historia-puntos"] integerValue]];
+        [partidas setObject:hP forKey:@"historia-puntos"];
+
+        NSString *oC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"ocio-contestadas"] integerValue]+[[partida objectForKey:@"ocio-contestadas"] integerValue]];
+        [partidas setObject:oC forKey:@"ocio-contestadas"];
+        
+        NSString *oA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"ocio-acertadas"] integerValue]+[[partida objectForKey:@"ocio-acertadas"] integerValue]];
+        [partidas setObject:oA forKey:@"ocio-acertadas"];
+        
+        NSString *oP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"ocio-puntos"] integerValue]+[[partida objectForKey:@"ocio-puntos"] integerValue]];
+        [partidas setObject:oP forKey:@"ocio-puntos"];
+        
+        NSString *otrosC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"otros-contestadas"] integerValue]+[[partida objectForKey:@"otros-contestadas"] integerValue]];
+        [partidas setObject:otrosC forKey:@"otros-contestadas"];
+        
+        NSString *otrosA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"otros-acertadas"] integerValue]+[[partida objectForKey:@"otros-acertadas"] integerValue]];
+        [partidas setObject:otrosA forKey:@"otros-acertadas"];
+        
+        NSString *otrosP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"otros-puntos"] integerValue]+[[partida objectForKey:@"otros-puntos"] integerValue]];
+        [partidas setObject:otrosP forKey:@"otros-puntos"];
+
+        NSString *preguntasC=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"total-preguntas-contestadas"] integerValue]+[[partida objectForKey:@"total-preguntas-contestadas"] integerValue]];
+        [partidas setObject:preguntasC forKey:@"total-preguntas-contestadas"];
+        
+        NSString *preguntasA=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"total-preguntas-acertadas"] integerValue]+[[partida objectForKey:@"total-preguntas-acertadas"] integerValue]];
+        [partidas setObject:preguntasA forKey:@"total-preguntas-acertadas"];
+        
+        NSString *preguntasF=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"total-preguntas-falladas"] integerValue]+[[partida objectForKey:@"total-preguntas-falladas"] integerValue]];
+        [partidas setObject:preguntasF forKey:@"total-preguntas-falladas"];
+
+        NSString *preguntasP=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"puntos-totales-conseguidos"] integerValue]+[[partida objectForKey:@"puntos-totales-conseguidos"] integerValue]];
+        [partidas setObject:preguntasP forKey:@"puntos-totales-conseguidos"];
+
+        NSString *error;
+        NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *plistPath = [rootPath stringByAppendingPathComponent:@"datosPartidas.plist"];
+        NSLog(@"PATH datosPartidas: %@",plistPath);
+        
+        NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:partidas
+                                                                       format:NSPropertyListXMLFormat_v1_0
+                                                             errorDescription:&error];
+        if(plistData) {
+            [plistData writeToFile:plistPath atomically:YES];
+        }
+        else {
+            NSLog(@"%@d",error);
+        }
+
+    }
+
+}
 @end

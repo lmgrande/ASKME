@@ -39,6 +39,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"pantallaEstadisticas"];
+    [self presentViewController:cambiarViewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

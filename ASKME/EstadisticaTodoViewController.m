@@ -1,20 +1,20 @@
 //
-//  EstadisticaViewController.m
+//  EstadisticaTodoViewController.m
 //  ASKME
 //
-//  Created by LUISMI on 24/12/13.
-//  Copyright (c) 2013 LUISMI. All rights reserved.
+//  Created by LUISMI on 03/01/14.
+//  Copyright (c) 2014 LUISMI. All rights reserved.
 //
 
-#import "EstadisticaViewController.h"
+#import "EstadisticaTodoViewController.h"
 #import "ViewController.h"
 
-@interface EstadisticaViewController ()
 
+@interface EstadisticaTodoViewController ()
 
 @end
 
-@implementation EstadisticaViewController
+@implementation EstadisticaTodoViewController
 
 @synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO;
 
@@ -38,7 +38,7 @@
     NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
     nickLabel.text = result;
     [self leerDatosPartidaPlist];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,14 +57,15 @@
     [self presentViewController:cambiarViewController animated:YES completion:nil];
 }
 
-- (IBAction)estadisticaPartidaActualBoton:(id)sender {
+- (IBAction)estadisticaPartidaActualBoton:(id)sender
+{
+    UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"pantallaEstadisticas"];
+    [self presentViewController:cambiarViewController animated:YES completion:nil];
 }
 
 - (IBAction)estadisticaTodasLasPartidasBoton:(id)sender
 {
-    UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
-    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"pantallaTodoEstadisticas"];
-    [self presentViewController:cambiarViewController animated:YES completion:nil];
 }
 
 #pragma mark - leerDatos
@@ -76,9 +77,9 @@
     NSString *plistPath;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                               NSUserDomainMask, YES) objectAtIndex:0];
-    plistPath = [rootPath stringByAppendingPathComponent:@"datosPartida.plist"];
+    plistPath = [rootPath stringByAppendingPathComponent:@"datosPartidas.plist"];
     if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
-        plistPath = [[NSBundle mainBundle] pathForResource:@"datosPartida" ofType:@"plist"];
+        plistPath = [[NSBundle mainBundle] pathForResource:@"datosPartidas" ofType:@"plist"];
     }
     NSLog(@"PATH: %@",plistPath);
     NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
@@ -91,15 +92,15 @@
         NSLog(@"Error reading plist: %@, format: %u", errorDesc, format);
     }
     
-    puntosMaximoPartidaLabel.text=[temp objectForKey:@"puntos-maximos-partida"];
-    preguntasMaximoPartidaLabel.text=[temp objectForKey:@"total-preguntas-partida"];
+    //puntosMaximoPartidaLabel.text=[temp objectForKey:@"puntos-maximos-partida"];
+    //preguntasMaximoPartidaLabel.text=[temp objectForKey:@"total-preguntas-partida"];
     
     preguntasContestadasLabel.text=[temp objectForKey:@"total-preguntas-contestadas"];
     preguntasAcertadasLabel.text=[temp objectForKey:@"total-preguntas-acertadas"];
-    NSString *todasLasNoAcertadas=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"total-preguntas-falladas"] integerValue]+[[temp objectForKey:@"total-preguntas-pasadas"] integerValue]];
-    preguntasNoAcertadasLabel.text=todasLasNoAcertadas;
+    NSString *todasLasPasadas=[NSString stringWithFormat:@"%d",[[temp objectForKey:@"total-preguntas-contestadas"] integerValue]-([[temp objectForKey:@"total-preguntas-acertadas"] integerValue]+[[temp objectForKey:@"total-preguntas-falladas"] integerValue])];
+    preguntasNoAcertadasLabel.text=[NSString stringWithFormat:@"%d",[todasLasPasadas integerValue]+[[temp objectForKey:@"total-preguntas-falladas"] integerValue]];
     preguntasFalladasLabel.text=[temp objectForKey:@"total-preguntas-falladas"];
-    preguntasPasadasLabel.text=[temp objectForKey:@"total-preguntas-pasadas"];
+    preguntasPasadasLabel.text=todasLasPasadas;
     
     puntosPartidaArteLiteraturaLabel.text=[temp objectForKey:@"arte-literatura-puntos"];
     puntosPartidaCienciasLabel.text=[temp objectForKey:@"ciencias-puntos"];
@@ -118,11 +119,11 @@
     [self.view addSubview:barraArteLiteratura];
     [self.view setNeedsDisplay];
     
-//    CGRect rectArteLiteratura = self.barraArteLiteratura.frame;
-//    rectArteLiteratura.origin = CGPointMake(origenXBarraArteLiteratura, rectArteLiteratura.origin.y);
-//    self.barraArteLiteratura.frame = rectArteLiteratura;
-//    [self.view addSubview:barraArteLiteratura];
-//    [self.view setNeedsDisplay];
+    //    CGRect rectArteLiteratura = self.barraArteLiteratura.frame;
+    //    rectArteLiteratura.origin = CGPointMake(origenXBarraArteLiteratura, rectArteLiteratura.origin.y);
+    //    self.barraArteLiteratura.frame = rectArteLiteratura;
+    //    [self.view addSubview:barraArteLiteratura];
+    //    [self.view setNeedsDisplay];
     
     NSLog(@"Origen X ArteLiteratura: %f",barraArteLiteratura.frame.origin.x);
     
@@ -135,13 +136,13 @@
     barraCiencias.image = imgbarraCiencias;
     [self.view addSubview:barraCiencias];
     [self.view setNeedsDisplay];
-
     
-//    CGRect rectCiencias = self.barraCiencias.frame;
-//    rectCiencias.origin = CGPointMake(origenXBarraCiencias, rectCiencias.origin.y);
-//    self.barraCiencias.frame = rectCiencias;
-//    [self.view setNeedsDisplay];
-
+    
+    //    CGRect rectCiencias = self.barraCiencias.frame;
+    //    rectCiencias.origin = CGPointMake(origenXBarraCiencias, rectCiencias.origin.y);
+    //    self.barraCiencias.frame = rectCiencias;
+    //    [self.view setNeedsDisplay];
+    
     NSLog(@"Origen X Ciencias: %f",barraCiencias.frame.origin.x);
     
     
@@ -207,6 +208,5 @@
     XdeYenTODO.text=[NSString stringWithFormat:@"%@ de %@",[temp objectForKey:@"total-preguntas-acertadas"],[temp objectForKey:@"total-preguntas-contestadas"]];
     
 }
-
 
 @end
