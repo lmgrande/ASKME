@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CircleUIView.h"
+#import "AppDelegate.h"
 
 
 @interface PreguntasViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
-//{
-//    NSArray *tableData;
-//}
+
 @property (weak, nonatomic) IBOutlet UITableView *preguntasTableView;
 @property (weak, nonatomic) IBOutlet UILabel *nickLabel;
 
