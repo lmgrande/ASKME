@@ -30,11 +30,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    ViewController *nickNombreViewController = [[ViewController alloc]init];
-    [nickNombreViewController leerUsuarioPlist];
-    
-    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
-    nombreUsuarioLabel.text = result;
+//    ViewController *nickNombreViewController = [[ViewController alloc]init];
+//    [nickNombreViewController leerUsuarioPlist];
+//    
+//    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
+    nombreUsuarioLabel.text = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
     [self empezar];
     
 }

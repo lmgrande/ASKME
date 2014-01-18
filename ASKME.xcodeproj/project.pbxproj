@@ -31,6 +31,7 @@
 		701D596C18595DD800DF3A68 /* OPCION-INFO-informacion.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596718595DD800DF3A68 /* OPCION-INFO-informacion.png */; };
 		701D596D18595DD800DF3A68 /* OPCION-INFO-Jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596818595DD800DF3A68 /* OPCION-INFO-Jugador.png */; };
 		701D596E18595DD800DF3A68 /* OPCION-INFO-Jugadores.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */; };
+		702494321887208400CAD9AA /* TrabajarConFicherosJason.m in Sources */ = {isa = PBXBuildFile; fileRef = 702494311887208400CAD9AA /* TrabajarConFicherosJason.m */; };
 		70332D64185A190F00CC61C3 /* PrimeraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D63185A190F00CC61C3 /* PrimeraViewController.m */; };
 		70332D68185A1BD400CC61C3 /* SegundaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D67185A1BD400CC61C3 /* SegundaViewController.m */; };
 		70332D6C185A1D4900CC61C3 /* TerceraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D6B185A1D4900CC61C3 /* TerceraViewController.m */; };
@@ -44,6 +45,7 @@
 		70488B491867382000952732 /* fondo_jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 70488B481867382000952732 /* fondo_jugador.png */; };
 		7056C1821877452B00B82221 /* EstadisticaTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7056C1811877452B00B82221 /* EstadisticaTodoViewController.m */; };
 		7056C18518774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png in Resources */ = {isa = PBXBuildFile; fileRef = 7056C18418774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png */; };
+		7057B87E188A9AFC001C204B /* TrabajarConFicherosPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057B87D188A9AFC001C204B /* TrabajarConFicherosPlist.m */; };
 		70639E0F184D32490028A98B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E0E184D32490028A98B /* Foundation.framework */; };
 		70639E11184D32490028A98B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E10184D32490028A98B /* CoreGraphics.framework */; };
 		70639E13184D32490028A98B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E12184D32490028A98B /* UIKit.framework */; };
@@ -76,6 +78,7 @@
 		709B675D1858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67531858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png */; };
 		709B675E1858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67541858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png */; };
 		709B67641858E7090052C344 /* linea-superior-Tab-Bar-1x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67601858E7090052C344 /* linea-superior-Tab-Bar-1x1.png */; };
+		709ED99D1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m in Sources */ = {isa = PBXBuildFile; fileRef = 709ED99C1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m */; };
 		70A1BA47185CCAEC003FD579 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A1BA46185CCAEC003FD579 /* Default-568h@2x.png */; };
 		70A1BA49185CD18A003FD579 /* OPCION-Jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A1BA48185CD18A003FD579 /* OPCION-Jugador.png */; };
 		70A1BA4C185D3DB5003FD579 /* Pregunta.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A1BA4B185D3DB5003FD579 /* Pregunta.m */; };
@@ -136,6 +139,8 @@
 		701D596718595DD800DF3A68 /* OPCION-INFO-informacion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-informacion.png"; sourceTree = "<group>"; };
 		701D596818595DD800DF3A68 /* OPCION-INFO-Jugador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-Jugador.png"; sourceTree = "<group>"; };
 		701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-Jugadores.png"; sourceTree = "<group>"; };
+		702494301887208400CAD9AA /* TrabajarConFicherosJason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrabajarConFicherosJason.h; sourceTree = "<group>"; };
+		702494311887208400CAD9AA /* TrabajarConFicherosJason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrabajarConFicherosJason.m; sourceTree = "<group>"; };
 		70332D62185A190F00CC61C3 /* PrimeraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimeraViewController.h; sourceTree = "<group>"; };
 		70332D63185A190F00CC61C3 /* PrimeraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimeraViewController.m; sourceTree = "<group>"; };
 		70332D66185A1BD400CC61C3 /* SegundaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegundaViewController.h; sourceTree = "<group>"; };
@@ -156,6 +161,8 @@
 		7056C1801877452B00B82221 /* EstadisticaTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstadisticaTodoViewController.h; sourceTree = "<group>"; };
 		7056C1811877452B00B82221 /* EstadisticaTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EstadisticaTodoViewController.m; sourceTree = "<group>"; };
 		7056C18418774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fondo-pantalla-todo-ESTADISTICA.png"; sourceTree = "<group>"; };
+		7057B87C188A9AFC001C204B /* TrabajarConFicherosPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrabajarConFicherosPlist.h; sourceTree = "<group>"; };
+		7057B87D188A9AFC001C204B /* TrabajarConFicherosPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrabajarConFicherosPlist.m; sourceTree = "<group>"; };
 		70639E0B184D32490028A98B /* ASKME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASKME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70639E0E184D32490028A98B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		70639E10184D32490028A98B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -194,6 +201,8 @@
 		709B67531858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico-Tab-Bar-Usuarios.png"; sourceTree = "<group>"; };
 		709B67541858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico-Tab-Bar-Usuarios@x2.png"; sourceTree = "<group>"; };
 		709B67601858E7090052C344 /* linea-superior-Tab-Bar-1x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linea-superior-Tab-Bar-1x1.png"; sourceTree = "<group>"; };
+		709ED99B1881BFD9007F2961 /* GestionarDatosYPuntosPartida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestionarDatosYPuntosPartida.h; sourceTree = "<group>"; };
+		709ED99C1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestionarDatosYPuntosPartida.m; sourceTree = "<group>"; };
 		70A1BA46185CCAEC003FD579 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		70A1BA48185CD18A003FD579 /* OPCION-Jugador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-Jugador.png"; sourceTree = "<group>"; };
 		70A1BA4A185D3DB5003FD579 /* Pregunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pregunta.h; sourceTree = "<group>"; };
@@ -286,6 +295,15 @@
 			name = CircleUIView;
 			sourceTree = "<group>";
 		};
+		702494331887208D00CAD9AA /* TrabajarConFicherosJason */ = {
+			isa = PBXGroup;
+			children = (
+				702494301887208400CAD9AA /* TrabajarConFicherosJason.h */,
+				702494311887208400CAD9AA /* TrabajarConFicherosJason.m */,
+			);
+			name = TrabajarConFicherosJason;
+			sourceTree = "<group>";
+		};
 		70332D65185A191700CC61C3 /* PrimeraViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +371,15 @@
 			name = EstadisticaTodoViewController;
 			sourceTree = "<group>";
 		};
+		7057B87F188A9B04001C204B /* TrabajarConFicherosPlist */ = {
+			isa = PBXGroup;
+			children = (
+				7057B87C188A9AFC001C204B /* TrabajarConFicherosPlist.h */,
+				7057B87D188A9AFC001C204B /* TrabajarConFicherosPlist.m */,
+			);
+			name = TrabajarConFicherosPlist;
+			sourceTree = "<group>";
+		};
 		70639E02184D32490028A98B = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +418,9 @@
 				70639E1D184D32490028A98B /* AppDelegate.h */,
 				70639E1E184D32490028A98B /* AppDelegate.m */,
 				70639E20184D32490028A98B /* Main.storyboard */,
+				7057B87F188A9B04001C204B /* TrabajarConFicherosPlist */,
+				702494331887208D00CAD9AA /* TrabajarConFicherosJason */,
+				709ED99E1881BFE3007F2961 /* GestionarDatosYPuntosPartida */,
 				70069DC1186C5862006BE094 /* RespuestaTableViewCell */,
 				70EB93991869EDFF00A71BB7 /* EstadisticaViewController */,
 				7056C1831877453200B82221 /* EstadisticaTodoViewController */,
@@ -470,6 +500,15 @@
 				709B67541858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png */,
 			);
 			name = iconosTabBarOpciones;
+			sourceTree = "<group>";
+		};
+		709ED99E1881BFE3007F2961 /* GestionarDatosYPuntosPartida */ = {
+			isa = PBXGroup;
+			children = (
+				709ED99B1881BFD9007F2961 /* GestionarDatosYPuntosPartida.h */,
+				709ED99C1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m */,
+			);
+			name = GestionarDatosYPuntosPartida;
 			sourceTree = "<group>";
 		};
 		70A1BA4D185D3DBD003FD579 /* Pregunta */ = {
@@ -723,7 +762,9 @@
 				70069DC0186C585A006BE094 /* RespuestaTableViewCell.m in Sources */,
 				70EB93981869EDF900A71BB7 /* EstadisticaViewController.m in Sources */,
 				70332D64185A190F00CC61C3 /* PrimeraViewController.m in Sources */,
+				709ED99D1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m in Sources */,
 				70639E1F184D32490028A98B /* AppDelegate.m in Sources */,
+				7057B87E188A9AFC001C204B /* TrabajarConFicherosPlist.m in Sources */,
 				70B339621854F79A0072A60D /* OpcionesViewController.m in Sources */,
 				70639E1B184D32490028A98B /* main.m in Sources */,
 				700D873118662AD90056FCD1 /* CircleUIView.m in Sources */,
@@ -735,6 +776,7 @@
 				7056C1821877452B00B82221 /* EstadisticaTodoViewController.m in Sources */,
 				70332D6C185A1D4900CC61C3 /* TerceraViewController.m in Sources */,
 				70A1BA4C185D3DB5003FD579 /* Pregunta.m in Sources */,
+				702494321887208400CAD9AA /* TrabajarConFicherosJason.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

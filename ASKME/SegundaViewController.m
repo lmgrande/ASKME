@@ -7,12 +7,14 @@
 //
 
 #import "SegundaViewController.h"
+#import "TrabajarConFicherosJason.h"
 
 @interface SegundaViewController ()
 
+@property TrabajarConFicherosJason *trabajarFicherosJason;
+
 @end
 
-#define urlParaTraerDatos @"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php"
 
 @implementation SegundaViewController
 
@@ -40,9 +42,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    [self recogerYGrabarDatosEnFicheroJSON];
+    self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
+    
+    BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON];
+    
+    if (guardadoJason) {
+        [self empezar];
+    }else{
+        NSLog(@"No se ha podido grabar el fichero JASON");
+    }
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,54 +61,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Metodos
-
-- (void) recogerYGrabarDatosEnFicheroJSON
-{
-    NSURL *url = [NSURL URLWithString:urlParaTraerDatos];
-    
-    NSError *error = nil; // This so that we can access the error if something goes wrong
-    NSData *jsonData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
-    
-    NSError *error1;
-    
-    // array of dictionary
-    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&error1];
-    
-    if (error1) {
-        NSLog(@"Error: %@", error1.localizedDescription);
-    } else {
-        // para sobreescribir fichero json
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        // -------------------------------
-        
-        NSArray *documentsSearchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [documentsSearchPaths count] == 0 ? nil : [documentsSearchPaths objectAtIndex:0];
-        
-        NSString *fileName = @"preguntas.json";
-        
-        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
-        
-        // para sobreescribir fichero json
-        if ([fileManager fileExistsAtPath:filePath] == YES) {
-            NSError *errorfileExistsAtPath;
-            [fileManager removeItemAtPath:filePath error:&errorfileExistsAtPath];
-        }
-        // -------------------------------
-        
-        NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:YES];
-        [outputStream open];
-        
-        [NSJSONSerialization writeJSONObject:array
-                                    toStream:outputStream
-                                     options:kNilOptions
-                                       error:&error1];
-        [outputStream close];
-        NSLog(@"Path JSON: %@",filePath);
-        [self empezar];
-    }
-
-}
 
 #pragma mark - pasarPantalla
 

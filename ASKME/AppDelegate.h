@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) id<UIApplicationDelegate>delagete;
+//@property (strong, nonatomic) id<UIApplicationDelegate>delagete;
 @property (nonatomic, strong) NSMutableDictionary* configuracionUsuario;
 
 @end

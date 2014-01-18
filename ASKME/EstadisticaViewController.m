@@ -7,16 +7,19 @@
 //
 
 #import "EstadisticaViewController.h"
-#import "ViewController.h"
+#import "TrabajarConFicherosPlist.h"
+
 
 @interface EstadisticaViewController ()
+
+    @property TrabajarConFicherosPlist *trabajarFicherosPlist;
 
 
 @end
 
 @implementation EstadisticaViewController
 
-@synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO;
+    @synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,12 +35,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    ViewController *nickNombreViewController = [[ViewController alloc]init];
-    [nickNombreViewController leerUsuarioPlist];
-    
-    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
-    nickLabel.text = result;
-    [self leerDatosPartidaPlist];
+//    ViewController *nickNombreViewController = [[ViewController alloc]init];
+//    [nickNombreViewController leerUsuarioPlist];
+//    
+//    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
+//    nickLabel.text = result;
+    nickLabel.text = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
+    self.trabajarFicherosPlist = [[TrabajarConFicherosPlist alloc]init];
+    [self leerDatosPartida];
 
 }
 
@@ -69,27 +74,9 @@
 
 #pragma mark - leerDatos
 
-- (void) leerDatosPartidaPlist{
+- (void) leerDatosPartida{
     
-    NSString *errorDesc = nil;
-    NSPropertyListFormat format;
-    NSString *plistPath;
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                              NSUserDomainMask, YES) objectAtIndex:0];
-    plistPath = [rootPath stringByAppendingPathComponent:@"datosPartida.plist"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
-        plistPath = [[NSBundle mainBundle] pathForResource:@"datosPartida" ofType:@"plist"];
-    }
-    NSLog(@"PATH: %@",plistPath);
-    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
-                                          propertyListFromData:plistXML
-                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
-                                          format:&format
-                                          errorDescription:&errorDesc];
-    if (!temp) {
-        NSLog(@"Error reading plist: %@, format: %u", errorDesc, format);
-    }
+    NSDictionary *temp = [[NSDictionary alloc] initWithDictionary:[self.trabajarFicherosPlist leerDatosPlist:@"datosPartida"]];
     
     puntosMaximoPartidaLabel.text=[temp objectForKey:@"puntos-maximos-partida"];
     preguntasMaximoPartidaLabel.text=[temp objectForKey:@"total-preguntas-partida"];
@@ -110,92 +97,85 @@
     puntosPartidaOtrosLabel.text=[temp objectForKey:@"otros-puntos"];
     puntosPartidaTODOLabel.text=[temp objectForKey:@"puntos-totales-conseguidos"];
     
-    NSInteger porcentajeArteLiteratura = ([[temp objectForKey:@"arte-literatura-acertadas"] integerValue]*100)/[[temp objectForKey:@"arte-literatura-contestadas"] integerValue];
-    //float origenXBarraArteLiteratura =barraArteLiteratura.frame.size.width*porcentajeArteLiteratura/100;
-    UIImageView *barraArteLiteratura = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeArteLiteratura/100)-140, 237, 140, 23)];
-    UIImage *imgbarraArteLiteratura = [UIImage imageNamed:@"barra-ARTELITERATURA.png"];
-    barraArteLiteratura.image = imgbarraArteLiteratura;
-    [self.view addSubview:barraArteLiteratura];
-    [self.view setNeedsDisplay];
+    if ([[temp objectForKey:@"arte-literatura-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeArteLiteratura = ([[temp objectForKey:@"arte-literatura-acertadas"] integerValue]*100)/[[temp objectForKey:@"arte-literatura-contestadas"] integerValue];
+        UIImageView *barraArteLiteratura = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeArteLiteratura/100)-140, 237, 140, 23)];
+        UIImage *imgbarraArteLiteratura = [UIImage imageNamed:@"barra-ARTELITERATURA.png"];
+        barraArteLiteratura.image = imgbarraArteLiteratura;
+        [self.view addSubview:barraArteLiteratura];
+        [self.view setNeedsDisplay];
+        porcentajePartidaArteLiteraturaLabel.text=[NSString stringWithFormat:@"%d",porcentajeArteLiteratura];
+    }
     
-//    CGRect rectArteLiteratura = self.barraArteLiteratura.frame;
-//    rectArteLiteratura.origin = CGPointMake(origenXBarraArteLiteratura, rectArteLiteratura.origin.y);
-//    self.barraArteLiteratura.frame = rectArteLiteratura;
-//    [self.view addSubview:barraArteLiteratura];
-//    [self.view setNeedsDisplay];
+    if ([[temp objectForKey:@"ciencias-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeCiencias = ([[temp objectForKey:@"ciencias-acertadas"] integerValue]*100)/[[temp objectForKey:@"ciencias-contestadas"] integerValue];
+        UIImageView *barraCiencias = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeCiencias/100)-140, 267, 140, 23)];
+        UIImage *imgbarraCiencias = [UIImage imageNamed:@"barra-CIENCIAS"];
+        barraCiencias.image = imgbarraCiencias;
+        [self.view addSubview:barraCiencias];
+        [self.view setNeedsDisplay];
+        porcentajePartidaCienciasLabel.text=[NSString stringWithFormat:@"%d",porcentajeCiencias];
+    }
     
-    NSLog(@"Origen X ArteLiteratura: %f",barraArteLiteratura.frame.origin.x);
+    if ([[temp objectForKey:@"deportes-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeDeportes = ([[temp objectForKey:@"deportes-acertadas"] integerValue]*100)/[[temp objectForKey:@"deportes-contestadas"] integerValue];
+        UIImageView *barraDeportes = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeDeportes/100)-140, 297, 140, 23)];
+        UIImage *imgbarraDeportes = [UIImage imageNamed:@"barra-DEPORTES"];
+        barraDeportes.image = imgbarraDeportes;
+        [self.view addSubview:barraDeportes];
+        [self.view setNeedsDisplay];
+        porcentajePartidaDeportesLabel.text=[NSString stringWithFormat:@"%d",porcentajeDeportes];
+    }
     
-    porcentajePartidaArteLiteraturaLabel.text=[NSString stringWithFormat:@"%d",porcentajeArteLiteratura];
+    if ([[temp objectForKey:@"geografia-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeGeografia = ([[temp objectForKey:@"geografia-acertadas"] integerValue]*100)/[[temp objectForKey:@"geografia-contestadas"] integerValue];
+        UIImageView *barraGeografia = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeGeografia/100)-140, 327, 140, 23)];
+        UIImage *imgbarraGeografia = [UIImage imageNamed:@"barra-GEOGRAFIA"];
+        barraGeografia.image = imgbarraGeografia;
+        [self.view addSubview:barraGeografia];
+        [self.view setNeedsDisplay];
+        porcentajePartidaGeografiaLabel.text=[NSString stringWithFormat:@"%d",porcentajeGeografia];
+    }
     
-    NSInteger porcentajeCiencias = ([[temp objectForKey:@"ciencias-acertadas"] integerValue]*100)/[[temp objectForKey:@"ciencias-contestadas"] integerValue];
-    //float origenXBarraCiencias =barraCiencias.frame.size.width*porcentajeCiencias/100;
-    UIImageView *barraCiencias = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeCiencias/100)-140, 267, 140, 23)];
-    UIImage *imgbarraCiencias = [UIImage imageNamed:@"barra-CIENCIAS"];
-    barraCiencias.image = imgbarraCiencias;
-    [self.view addSubview:barraCiencias];
-    [self.view setNeedsDisplay];
-
+    if ([[temp objectForKey:@"historia-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeHistoria = ([[temp objectForKey:@"historia-acertadas"] integerValue]*100)/[[temp objectForKey:@"historia-contestadas"] integerValue];
+        UIImageView *barraHistoria = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeHistoria/100)-140, 357, 140, 23)];
+        UIImage *imgbarraHistoria = [UIImage imageNamed:@"barra-HISTORIA"];
+        barraHistoria.image = imgbarraHistoria;
+        [self.view addSubview:barraHistoria];
+        [self.view setNeedsDisplay];
+        porcentajePartidaHistoriaLabel.text=[NSString stringWithFormat:@"%d",porcentajeHistoria];
+    }
     
-//    CGRect rectCiencias = self.barraCiencias.frame;
-//    rectCiencias.origin = CGPointMake(origenXBarraCiencias, rectCiencias.origin.y);
-//    self.barraCiencias.frame = rectCiencias;
-//    [self.view setNeedsDisplay];
-
-    NSLog(@"Origen X Ciencias: %f",barraCiencias.frame.origin.x);
+    if ([[temp objectForKey:@"ocio-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeOcio = ([[temp objectForKey:@"ocio-acertadas"] integerValue]*100)/[[temp objectForKey:@"ocio-contestadas"] integerValue];
+        UIImageView *barraOcio = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeOcio/100)-140, 387, 140, 23)];
+        UIImage *imgbarraOcio = [UIImage imageNamed:@"barra-OCIO"];
+        barraOcio.image = imgbarraOcio;
+        [self.view addSubview:barraOcio];
+        [self.view setNeedsDisplay];
+        porcentajePartidaOcioLabel.text=[NSString stringWithFormat:@"%d",porcentajeOcio];
+    }
     
+    if ([[temp objectForKey:@"otros-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeOtros = ([[temp objectForKey:@"otros-acertadas"] integerValue]*100)/[[temp objectForKey:@"otros-contestadas"] integerValue];
+        UIImageView *barraOtros = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeOtros/100)-140, 417, 140, 23)];
+        UIImage *imgbarraOtros = [UIImage imageNamed:@"barra-OTROS"];
+        barraOtros.image = imgbarraOtros;
+        [self.view addSubview:barraOtros];
+        [self.view setNeedsDisplay];
+        porcentajePartidaOtrosLabel.text=[NSString stringWithFormat:@"%d",porcentajeOtros];
+    }
     
-    
-    porcentajePartidaCienciasLabel.text=[NSString stringWithFormat:@"%d",porcentajeCiencias];
-    
-    NSInteger porcentajeDeportes = ([[temp objectForKey:@"deportes-acertadas"] integerValue]*100)/[[temp objectForKey:@"deportes-contestadas"] integerValue];
-    UIImageView *barraDeportes = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeDeportes/100)-140, 297, 140, 23)];
-    UIImage *imgbarraDeportes = [UIImage imageNamed:@"barra-DEPORTES"];
-    barraDeportes.image = imgbarraDeportes;
-    [self.view addSubview:barraDeportes];
-    [self.view setNeedsDisplay];
-    porcentajePartidaDeportesLabel.text=[NSString stringWithFormat:@"%d",porcentajeDeportes];
-    
-    NSInteger porcentajeGeografia = ([[temp objectForKey:@"geografia-acertadas"] integerValue]*100)/[[temp objectForKey:@"geografia-contestadas"] integerValue];
-    UIImageView *barraGeografia = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeGeografia/100)-140, 327, 140, 23)];
-    UIImage *imgbarraGeografia = [UIImage imageNamed:@"barra-GEOGRAFIA"];
-    barraGeografia.image = imgbarraGeografia;
-    [self.view addSubview:barraGeografia];
-    [self.view setNeedsDisplay];
-    porcentajePartidaGeografiaLabel.text=[NSString stringWithFormat:@"%d",porcentajeGeografia];
-    
-    NSInteger porcentajeHistoria = ([[temp objectForKey:@"historia-acertadas"] integerValue]*100)/[[temp objectForKey:@"historia-contestadas"] integerValue];
-    UIImageView *barraHistoria = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeHistoria/100)-140, 357, 140, 23)];
-    UIImage *imgbarraHistoria = [UIImage imageNamed:@"barra-HISTORIA"];
-    barraHistoria.image = imgbarraHistoria;
-    [self.view addSubview:barraHistoria];
-    [self.view setNeedsDisplay];
-    porcentajePartidaHistoriaLabel.text=[NSString stringWithFormat:@"%d",porcentajeHistoria];
-    
-    NSInteger porcentajeOcio = ([[temp objectForKey:@"ocio-acertadas"] integerValue]*100)/[[temp objectForKey:@"ocio-contestadas"] integerValue];
-    UIImageView *barraOcio = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeOcio/100)-140, 387, 140, 23)];
-    UIImage *imgbarraOcio = [UIImage imageNamed:@"barra-OCIO"];
-    barraOcio.image = imgbarraOcio;
-    [self.view addSubview:barraOcio];
-    [self.view setNeedsDisplay];
-    porcentajePartidaOcioLabel.text=[NSString stringWithFormat:@"%d",porcentajeOcio];
-    
-    NSInteger porcentajeOtros = ([[temp objectForKey:@"otros-acertadas"] integerValue]*100)/[[temp objectForKey:@"otros-contestadas"] integerValue];
-    UIImageView *barraOtros = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeOtros/100)-140, 417, 140, 23)];
-    UIImage *imgbarraOtros = [UIImage imageNamed:@"barra-OTROS"];
-    barraOtros.image = imgbarraOtros;
-    [self.view addSubview:barraOtros];
-    [self.view setNeedsDisplay];
-    porcentajePartidaOtrosLabel.text=[NSString stringWithFormat:@"%d",porcentajeOtros];
-    
-    NSInteger porcentajeTODO = ([[temp objectForKey:@"total-preguntas-acertadas"] integerValue]*100)/[[temp objectForKey:@"total-preguntas-contestadas"] integerValue];
-    UIImageView *barraTODO = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeTODO/100)-140, 447, 140, 23)];
-    UIImage *imgbarraTODO = [UIImage imageNamed:@"barra-TODOS"];
-    barraTODO.image = imgbarraTODO;
-    [self.view addSubview:barraTODO];
-    [self.view setNeedsDisplay];
-    porcentajePartidaTODOLabel.text=[NSString stringWithFormat:@"%d",porcentajeTODO];
-    
+    if ([[temp objectForKey:@"total-preguntas-contestadas"] integerValue]!=0) {
+        NSInteger porcentajeTODO = ([[temp objectForKey:@"total-preguntas-acertadas"] integerValue]*100)/[[temp objectForKey:@"total-preguntas-contestadas"] integerValue];
+        UIImageView *barraTODO = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeTODO/100)-140, 447, 140, 23)];
+        UIImage *imgbarraTODO = [UIImage imageNamed:@"barra-TODOS"];
+        barraTODO.image = imgbarraTODO;
+        [self.view addSubview:barraTODO];
+        [self.view setNeedsDisplay];
+        porcentajePartidaTODOLabel.text=[NSString stringWithFormat:@"%d",porcentajeTODO];
+    }
     
     XdeYenArteLiteratura.text=[NSString stringWithFormat:@"%@ de %@",[temp objectForKey:@"arte-literatura-acertadas"],[temp objectForKey:@"arte-literatura-contestadas"]];
     XdeYenCiencias.text=[NSString stringWithFormat:@"%@ de %@",[temp objectForKey:@"ciencias-acertadas"],[temp objectForKey:@"ciencias-contestadas"]];

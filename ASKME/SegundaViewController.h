@@ -13,8 +13,4 @@
     NSTimer *timer;
 }
 
-#pragma mark - Metodos
-
-- (void) recogerYGrabarDatosEnFicheroJSON;
-
 @end

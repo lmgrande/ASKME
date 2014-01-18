@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController (){
     NSString *pantalla;
 
@@ -74,6 +75,8 @@
             NSLog(@"Error reading plist: %@, format: %u", errorDesc, format);
         }
         nickNombre = [temp objectForKey:@"nombre_nick"];
+        [ApplicationDelegate.configuracionUsuario setObject:nickNombre forKey:@"nombre_nick"];
+    
     
     
 }

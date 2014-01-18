@@ -18,8 +18,8 @@
 
 @property (nonatomic, strong) NSArray *tableData;
 
-@property (nonatomic, strong) NSMutableArray *json;
-@property (nonatomic, strong) NSMutableArray *preguntasArray;
+//@property (nonatomic, strong) NSMutableArray *json;
+//@property (nonatomic, strong) NSMutableArray *preguntasArray;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *preguntaLinearProgressView;
 @property (weak, nonatomic) IBOutlet UIProgressView *partidaLinearProgressView;
@@ -45,8 +45,8 @@
 - (IBAction)casaBoton:(id)sender;
 - (IBAction)proximaPregunta:(id)sender;
 
-#pragma mark - Metodos
-
-- (void) sacarDatosFicheroJSON;
+//#pragma mark - Metodos
+//
+//- (void) sacarDatosFicheroJSON;
 
 @end
