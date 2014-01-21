@@ -15,7 +15,9 @@
     // Override point for customization after application launch.
     
     //IMPORTANTE: para ocultar la barra de arriba ahí que añadir en el plist "info" la propiedad "View controller-based status bar appearance" puesta a NO y tener puesta la propiedad "Status bar is initially hidden" a YES
-    self.configuracionUsuario =[[NSMutableDictionary alloc]init];
+    self.configuracionUsuario = [[NSMutableDictionary alloc]init];
+    self.numeroPartidaJugadores = [[NSString alloc]init];
+    self.tiempoPartidaJugadores = [[NSString alloc]init];
     
     return YES;
 }

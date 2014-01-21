@@ -60,6 +60,7 @@
 		70639E30184D324A0028A98B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E12184D32490028A98B /* UIKit.framework */; };
 		70639E38184D324A0028A98B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70639E36184D324A0028A98B /* InfoPlist.strings */; };
 		70639E3A184D324A0028A98B /* ASKMETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70639E39184D324A0028A98B /* ASKMETests.m */; };
+		70679ED5188D8F9800751929 /* PreguntasJugadoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70679ED4188D8F9800751929 /* PreguntasJugadoresViewController.m */; };
 		706C86AC185BC76500D51120 /* CARGA-ASKME-LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 706C86AB185BC76500D51120 /* CARGA-ASKME-LaunchImage.png */; };
 		708E528D1874B52A00BCC411 /* datosPartida.plist in Resources */ = {isa = PBXBuildFile; fileRef = 708E528C1874B52A00BCC411 /* datosPartida.plist */; };
 		708E528F1874B54100BCC411 /* datosPartidas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 708E528E1874B54100BCC411 /* datosPartidas.plist */; };
@@ -182,6 +183,8 @@
 		70639E35184D324A0028A98B /* ASKMETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ASKMETests-Info.plist"; sourceTree = "<group>"; };
 		70639E37184D324A0028A98B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		70639E39184D324A0028A98B /* ASKMETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASKMETests.m; sourceTree = "<group>"; };
+		70679ED3188D8F9800751929 /* PreguntasJugadoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreguntasJugadoresViewController.h; sourceTree = "<group>"; };
+		70679ED4188D8F9800751929 /* PreguntasJugadoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreguntasJugadoresViewController.m; sourceTree = "<group>"; };
 		706C86AB185BC76500D51120 /* CARGA-ASKME-LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CARGA-ASKME-LaunchImage.png"; sourceTree = "<group>"; };
 		708E528C1874B52A00BCC411 /* datosPartida.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = datosPartida.plist; sourceTree = "<group>"; };
 		708E528E1874B54100BCC411 /* datosPartidas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = datosPartidas.plist; path = ../datosPartidas.plist; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 				70EB93991869EDFF00A71BB7 /* EstadisticaViewController */,
 				7056C1831877453200B82221 /* EstadisticaTodoViewController */,
 				7099D5E4185DE65600241684 /* PreguntasViewController */,
+				70679ED6188D8F9F00751929 /* PreguntasJugadoresViewController */,
 				70332D79185A227C00CC61C3 /* TabBarViewController */,
 				70332D65185A191700CC61C3 /* PrimeraViewController */,
 				70332D69185A1BDB00CC61C3 /* SegundaViewController */,
@@ -473,6 +477,15 @@
 				70639E36184D324A0028A98B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70679ED6188D8F9F00751929 /* PreguntasJugadoresViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70679ED3188D8F9800751929 /* PreguntasJugadoresViewController.h */,
+				70679ED4188D8F9800751929 /* PreguntasJugadoresViewController.m */,
+			);
+			name = PreguntasJugadoresViewController;
 			sourceTree = "<group>";
 		};
 		7099D5E4185DE65600241684 /* PreguntasViewController */ = {
@@ -758,6 +771,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70639E25184D32490028A98B /* ViewController.m in Sources */,
+				70679ED5188D8F9800751929 /* PreguntasJugadoresViewController.m in Sources */,
 				70332D68185A1BD400CC61C3 /* SegundaViewController.m in Sources */,
 				70069DC0186C585A006BE094 /* RespuestaTableViewCell.m in Sources */,
 				70EB93981869EDF900A71BB7 /* EstadisticaViewController.m in Sources */,

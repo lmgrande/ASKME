@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CircleUIView.h"
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
 
 
 @interface PreguntasViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>

@@ -16,5 +16,7 @@
 
 //@property (strong, nonatomic) id<UIApplicationDelegate>delagete;
 @property (nonatomic, strong) NSMutableDictionary* configuracionUsuario;
+@property (nonatomic, strong) NSString* numeroPartidaJugadores;
+@property (nonatomic, strong) NSString* tiempoPartidaJugadores;
 
 @end
