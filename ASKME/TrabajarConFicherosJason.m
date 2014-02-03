@@ -9,7 +9,7 @@
 #import "TrabajarConFicherosJason.h"
 #import "Pregunta.h"
 
-#define urlParaTraerDatos @"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php"
+//#define urlParaTraerDatos @"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php"
 
 @implementation TrabajarConFicherosJason
 {
@@ -22,7 +22,7 @@
 
 #pragma mark - Metodos
 
-- (BOOL) recogerYGrabarDatosEnFicheroJSON
+- (BOOL) recogerYGrabarDatosEnFicheroJSON:(NSString*)urlParaTraerDatos
 {
     NSURL *url = [NSURL URLWithString:urlParaTraerDatos];
     

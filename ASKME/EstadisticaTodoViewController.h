@@ -49,6 +49,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *XdeYenOtros;
 @property (weak, nonatomic) IBOutlet UILabel *XdeYenTODO;
 
+@property (weak, nonatomic) IBOutlet UILabel *textoEsperarLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numerosEsperarLabel;
+
 
 - (IBAction)casaBoton:(id)sender;
 - (IBAction)estadisticaPartidaActualBoton:(id)sender;

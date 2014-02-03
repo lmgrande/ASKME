@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSMutableDictionary* configuracionUsuario;
 @property (nonatomic, strong) NSString* numeroPartidaJugadores;
 @property (nonatomic, strong) NSString* tiempoPartidaJugadores;
+@property (nonatomic, strong) NSString* opcionDeJuego;
 
 @end

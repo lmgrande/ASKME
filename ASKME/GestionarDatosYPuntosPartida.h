@@ -39,5 +39,12 @@
 -(void)grabarDatosPartidasPlist;
 -(NSArray*)comprobarMateria:(NSString*)materia;
 -(void) acumularPuntosAciertos:(NSString*)materia andAcertada:(BOOL)acierto andPuntosPregunta:(NSInteger)puntos;
+-(void)enviarPuntos:(NSString*)preguntas_Partida
+                   :(NSString*)puntos_Partida
+                   :(NSString*)preguntas_Contestadas
+                   :(NSString*)preguntas_Acertadas
+                   :(NSString*)preguntas_Falladas
+                   :(NSString*)preguntas_Pasadas
+                   :(NSString*)puntos_Conseguidos;
 
 @end

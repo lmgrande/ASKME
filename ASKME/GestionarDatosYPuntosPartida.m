@@ -363,6 +363,50 @@
     }
 }
 
+#pragma mark - Conexión con servidor para poner puntos en lista de puntuación
 
+-(void)enviarPuntos:(NSString*)preguntas_Partida
+                   :(NSString*)puntos_Partida
+                   :(NSString*)preguntas_Contestadas
+                   :(NSString*)preguntas_Acertadas
+                   :(NSString*)preguntas_Falladas
+                   :(NSString*)preguntas_Pasadas
+                   :(NSString*)puntos_Conseguidos
+{
+    NSString *nombre_Usuario = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
+//    NSString *preguntas_Partida = [NSString stringWithFormat:@"%d", totalPreguntasPartida];
+//    NSString *puntos_Partida = [NSString stringWithFormat:@"%d", puntosMaximosPartida];
+//    NSString *preguntas_Contestadas = [NSString stringWithFormat:@"%d", totalPreguntasContestadas];
+//    NSString *preguntas_Acertadas = [NSString stringWithFormat:@"%d", preguntasAcertadas];
+//    NSString *preguntas_Falladas = [NSString stringWithFormat:@"%d", preguntasFalladas];
+//    NSString *preguntas_Pasadas = [NSString stringWithFormat:@"%d", preguntasNoContestadas];
+//    NSString *puntos_Conseguidos = [NSString stringWithFormat:@"%d", puntosTotalesPartida];
+    
+    NSLog(@"nombreUsuario=%@&preguntasPartida=%@&puntosPartida=%@&preguntasContestadas=%@&preguntasAcertadas=%@&preguntasFalladas=%@&preguntasPasadas=%@&puntosConseguidos=%@", nombre_Usuario, preguntas_Partida, puntos_Partida, preguntas_Contestadas, preguntas_Acertadas, preguntas_Falladas, preguntas_Pasadas, puntos_Conseguidos);
+    
+    NSURLSessionConfiguration *configuracionConexion = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuracionConexion.timeoutIntervalForRequest = 10.0;
+    configuracionConexion.timeoutIntervalForResource = 10.0;
+    
+    NSURLSession *conexionSession = [NSURLSession sessionWithConfiguration:configuracionConexion];
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/php_IOS/grabarPuntosPartidaUsuario.php"];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *parametros = [NSString stringWithFormat:@"nombreUsuario=%@&preguntasPartida=%@&puntosPartida=%@&preguntasContestadas=%@&preguntasAcertadas=%@&preguntasFalladas=%@&preguntasPasadas=%@&puntosConseguidos=%@", nombre_Usuario, preguntas_Partida, puntos_Partida, preguntas_Contestadas, preguntas_Acertadas, preguntas_Falladas, preguntas_Pasadas, puntos_Conseguidos];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[parametros dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLSessionDataTask *dataTask = [conexionSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSDictionary *respuestaDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        
+        if (!error) {
+            NSLog(@"%@", response);
+            NSLog(@"%@", respuestaDictionary);
+        }
+    }];
+    
+    [dataTask resume];
+}
 
 @end

@@ -43,6 +43,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/RestoEntero.php"];
     
     NSError *error = nil; // This so that we can access the error if something goes wrong
@@ -56,12 +60,15 @@
     if (error1) {
         NSLog(@"Error: %@", error1.localizedDescription);
     } else {
+        ApplicationDelegate.opcionDeJuego = @"Jugadores";
         ApplicationDelegate.numeroPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"partida"];
         ApplicationDelegate.tiempoPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"tiempo"];
-            NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
+        NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
         [self empezar];
     }
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {

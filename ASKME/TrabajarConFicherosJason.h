@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSMutableArray *preguntasArray;
 
 
-- (BOOL) recogerYGrabarDatosEnFicheroJSON;
+- (BOOL) recogerYGrabarDatosEnFicheroJSON:(NSString*)urlParaTraerDatos;
 - (void) sacarDatosFicheroJSON;
 
 @end

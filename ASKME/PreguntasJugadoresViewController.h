@@ -12,7 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *partidaJugadoresLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tiempoJugadoresLabel;
+@property (weak, nonatomic) IBOutlet UILabel *esperarJugarLabel;
+@property (weak, nonatomic) IBOutlet UIButton *jugarJugadoresLabel;
 
 - (IBAction)casaBoton:(id)sender;
+- (IBAction)jugarJugadoresBoton:(id)sender;
 
 @end

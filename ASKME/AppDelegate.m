@@ -18,6 +18,7 @@
     self.configuracionUsuario = [[NSMutableDictionary alloc]init];
     self.numeroPartidaJugadores = [[NSString alloc]init];
     self.tiempoPartidaJugadores = [[NSString alloc]init];
+    self.opcionDeJuego = [[NSString alloc]init];
     
     return YES;
 }

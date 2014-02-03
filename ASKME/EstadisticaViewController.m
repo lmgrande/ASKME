@@ -8,18 +8,20 @@
 
 #import "EstadisticaViewController.h"
 #import "TrabajarConFicherosPlist.h"
+#import "GestionarDatosYPuntosPartida.h"
 
 
 @interface EstadisticaViewController ()
 
     @property TrabajarConFicherosPlist *trabajarFicherosPlist;
+    @property GestionarDatosYPuntosPartida *gestionarDatosYPuntosPartida;
 
 
 @end
 
 @implementation EstadisticaViewController
 
-    @synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO;
+    @synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO, textoEsperarLabel, numerosEsperarLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,9 +43,20 @@
 //    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
 //    nickLabel.text = result;
     nickLabel.text = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
+    
     self.trabajarFicherosPlist = [[TrabajarConFicherosPlist alloc]init];
+    self.gestionarDatosYPuntosPartida = [[GestionarDatosYPuntosPartida alloc]init];
+    
     [self leerDatosPartida];
-
+    
+    if ([ApplicationDelegate.opcionDeJuego  isEqual: @"Jugador"]) {
+        textoEsperarLabel.hidden=TRUE;
+        numerosEsperarLabel.hidden=TRUE;
+    }else if ([ApplicationDelegate.opcionDeJuego  isEqual: @"Jugadores"]){
+        textoEsperarLabel.hidden=FALSE;
+        numerosEsperarLabel.hidden=FALSE;
+        [self.gestionarDatosYPuntosPartida enviarPuntos:preguntasMaximoPartidaLabel.text :puntosMaximoPartidaLabel.text :preguntasContestadasLabel.text :preguntasAcertadasLabel.text :preguntasFalladasLabel.text :preguntasPasadasLabel.text :puntosPartidaTODOLabel.text];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,7 +69,7 @@
 
 - (IBAction)casaBoton:(id)sender
 {
-    
+    ApplicationDelegate.opcionDeJuego = @"Jugador";
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];

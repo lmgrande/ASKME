@@ -16,16 +16,16 @@
 @interface PreguntasViewController ()
 {
     Pregunta *miPreguntaMateria;
-
+    
     CGFloat contador;
     NSTimer *timerPartida;
     NSTimer *timerPregunta;
     int numero,j,segundosParaPuntos;
     BOOL acertada;
-
+    
 }
-    @property GestionarDatosYPuntosPartida *datosPuntosPartida;
-    @property TrabajarConFicherosJason *trabajarFicherosJason;
+@property GestionarDatosYPuntosPartida *datosPuntosPartida;
+@property TrabajarConFicherosJason *trabajarFicherosJason;
 
 @end
 
@@ -52,10 +52,18 @@
     [self.datosPuntosPartida inicializarPartida];
     [self.datosPuntosPartida inicializarPartidas];
     
-
+    
     nickLabel.text = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
     proximaPreguntaButton.hidden=YES;
-    partidaLinearProgressView.progress = 0.0;
+    
+    if ([ApplicationDelegate.tiempoPartidaJugadores integerValue]>140) {
+        partidaLinearProgressView.progress = 0.0;
+    }else{
+        float inicioBarraPartida = (([ApplicationDelegate.tiempoPartidaJugadores floatValue]*270)/144)/270;
+        NSLog(@"inicioBarraPartida: %f", inicioBarraPartida);
+        partidaLinearProgressView.progress = inicioBarraPartida;
+    }
+    
     preguntaLinearProgressView.progress = 0.0;
     [self performSelectorOnMainThread:@selector(moverProgressBarPartida) withObject:nil waitUntilDone:NO];
     numero = 16;
@@ -88,13 +96,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     NSString *cellTextoRespuesta = [tableData objectAtIndex:indexPath.row];
     NSString *cellIdentifier =@"CeldaRespuesta";
     RespuestaTableViewCell *cell = nil;
     cell = (RespuestaTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     [tableView setSeparatorInset:UIEdgeInsetsZero];
-
+    
     if (!cell) {
         cell = [[RespuestaTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
@@ -114,7 +122,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RespuestaTableViewCell *cell = (RespuestaTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-
+    
     Pregunta *preguntaActual = [self.trabajarFicherosJason.preguntasArray objectAtIndex:j-1];
     
     if ([[tableData objectAtIndex:indexPath.row] isEqualToString:preguntaActual.textoCorrecta]) {
@@ -160,10 +168,10 @@
     NSArray *opcionesMateria;
     
     opcionesMateria = [self.datosPuntosPartida comprobarMateria:miPreguntaMateria.textoMateria];
-
-        fondoPiePreguntaImageView.image = [UIImage imageNamed:[opcionesMateria objectAtIndex:0]];
-        iconoPreguntaUIImageView.image = [UIImage imageNamed:[opcionesMateria objectAtIndex:1]];
-        materiaPreguntaLabel.text = [opcionesMateria objectAtIndex:2];
+    
+    fondoPiePreguntaImageView.image = [UIImage imageNamed:[opcionesMateria objectAtIndex:0]];
+    iconoPreguntaUIImageView.image = [UIImage imageNamed:[opcionesMateria objectAtIndex:1]];
+    materiaPreguntaLabel.text = [opcionesMateria objectAtIndex:2];
     
     j++;
     
@@ -176,6 +184,7 @@
 {
     [timerPregunta invalidate];
     [timerPartida invalidate];
+    ApplicationDelegate.opcionDeJuego = @"Jugador";
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
@@ -206,13 +215,13 @@
         
         numerosContadorLabel.hidden=NO;
         preguntaLinearProgressView.progress = 0.0;
-    
+        
         timerPregunta = [NSTimer timerWithTimeInterval:0.1
                                                 target:self
                                               selector:@selector(counterdownCircle)
                                               userInfo:nil
                                                repeats:YES];
-    
+        
         [[NSRunLoop currentRunLoop] addTimer:timerPregunta
                                      forMode:NSDefaultRunLoopMode];
     }
@@ -291,7 +300,7 @@
         }
         
         [self.datosPuntosPartida acumularPuntosAciertos:miPreguntaMateria.textoMateria andAcertada:acertada andPuntosPregunta:puntosPregunta];
-
+        
     }
     
     self.datosPuntosPartida.puntosTotalesPartida = self.datosPuntosPartida.puntosTotalesPartida+puntosPregunta;
@@ -300,16 +309,23 @@
     preguntasAcertadasLabel.text = [NSString stringWithFormat:@"%d",self.datosPuntosPartida.preguntasAcertadas];
     preguntasNoContestadasLabel.text = [NSString stringWithFormat:@"%d",self.datosPuntosPartida.preguntasNoContestadas];
     preguntasFalladasLabel.text = [NSString stringWithFormat:@"%d",self.datosPuntosPartida.preguntasFalladas];
-
+    
 }
 
 - (void) empezarContadorPartida
 {
-    timerPartida = [NSTimer scheduledTimerWithTimeInterval:128.0         // El timer se ejcuta cada segundo
-                                             target:self        // Se ejecuta este timer en este view
-                                           selector:@selector(pasarPantalla)      // Se ejecuta el método contar
-                                           userInfo:nil
-                                            repeats:NO];
+    float tiempoPartida;
+    if ([ApplicationDelegate.tiempoPartidaJugadores integerValue]==180) {
+        tiempoPartida=144.0;
+    }else{
+        tiempoPartida=144-[ApplicationDelegate.tiempoPartidaJugadores floatValue];
+    }
+    NSLog(@"ApplicationDelegate.tiempoPartidaJugadores: %f",tiempoPartida);
+    timerPartida = [NSTimer scheduledTimerWithTimeInterval:tiempoPartida         // El timer se ejcuta cada segundo
+                                                    target:self        // Se ejecuta este timer en este view
+                                                  selector:@selector(pasarPantalla)      // Se ejecuta el método contar
+                                                  userInfo:nil
+                                                   repeats:NO];
 }
 
 -(void) pasarPantalla
@@ -338,7 +354,7 @@
     float actual = [partidaLinearProgressView progress];
     if (actual < 1) {
         partidaLinearProgressView.progress = actual + 0.01;
-        [NSTimer scheduledTimerWithTimeInterval:1.28 target:self selector:@selector(moverProgressBarPartida) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:1.44 target:self selector:@selector(moverProgressBarPartida) userInfo:nil repeats:NO];
     }
 }
 

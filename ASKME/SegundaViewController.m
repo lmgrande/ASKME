@@ -45,9 +45,10 @@
     
     self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
     
-    BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON];
+    BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:@"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php"];
     
     if (guardadoJason) {
+        ApplicationDelegate.opcionDeJuego = @"Jugador";
         [self empezar];
     }else{
         NSLog(@"No se ha podido grabar el fichero JASON");
@@ -74,6 +75,7 @@
 }
 
 -(void) pasarPantalla{
+    ApplicationDelegate.tiempoPartidaJugadores=@"180";
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Preguntas"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];

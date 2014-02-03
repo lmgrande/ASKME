@@ -44,7 +44,6 @@
 		704805F5186B024300240AC3 /* fondo_deg_verde_celda.png in Resources */ = {isa = PBXBuildFile; fileRef = 704805F2186B024300240AC3 /* fondo_deg_verde_celda.png */; };
 		70488B491867382000952732 /* fondo_jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 70488B481867382000952732 /* fondo_jugador.png */; };
 		7056C1821877452B00B82221 /* EstadisticaTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7056C1811877452B00B82221 /* EstadisticaTodoViewController.m */; };
-		7056C18518774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png in Resources */ = {isa = PBXBuildFile; fileRef = 7056C18418774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png */; };
 		7057B87E188A9AFC001C204B /* TrabajarConFicherosPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057B87D188A9AFC001C204B /* TrabajarConFicherosPlist.m */; };
 		70639E0F184D32490028A98B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E0E184D32490028A98B /* Foundation.framework */; };
 		70639E11184D32490028A98B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70639E10184D32490028A98B /* CoreGraphics.framework */; };
@@ -89,6 +88,9 @@
 		70B3395C1854C2320072A60D /* NickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B3395B1854C2320072A60D /* NickViewController.m */; };
 		70B3395F1854D74B0072A60D /* usuario.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70B3395E1854D74B0072A60D /* usuario.plist */; };
 		70B339621854F79A0072A60D /* OpcionesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B339611854F79A0072A60D /* OpcionesViewController.m */; };
+		70C1E0C4189D5DF60035BB33 /* boton_estadistica.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C1E0C1189D5DF60035BB33 /* boton_estadistica.png */; };
+		70C1E0C5189D5DF60035BB33 /* ESTADISTICA-cabecera.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C1E0C2189D5DF60035BB33 /* ESTADISTICA-cabecera.png */; };
+		70C1E0C6189D5DF60035BB33 /* ESTADISTICA-materias.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C1E0C3189D5DF60035BB33 /* ESTADISTICA-materias.png */; };
 		70D828A3186A647300A7F2DE /* FONDO-PIE-JUGADOR-historia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D828A2186A647300A7F2DE /* FONDO-PIE-JUGADOR-historia.png */; };
 		70EB93981869EDF900A71BB7 /* EstadisticaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EB93971869EDF900A71BB7 /* EstadisticaViewController.m */; };
 		70EF263418573FF400E3CD0F /* pant_bienvenida_cuerpo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EF263318573FF400E3CD0F /* pant_bienvenida_cuerpo.png */; };
@@ -100,7 +102,6 @@
 		70F3F4141875A5EF002E7991 /* barra-OCIO.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F3F40C1875A5EF002E7991 /* barra-OCIO.png */; };
 		70F3F4151875A5EF002E7991 /* barra-OTROS.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F3F40D1875A5EF002E7991 /* barra-OTROS.png */; };
 		70F3F4161875A5EF002E7991 /* barra-TODOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F3F40E1875A5EF002E7991 /* barra-TODOS.png */; };
-		70F3F41C1875E9C3002E7991 /* fondo-pantalla-ESTADISTICA.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F3F41B1875E9C3002E7991 /* fondo-pantalla-ESTADISTICA.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,7 +162,6 @@
 		70488B481867382000952732 /* fondo_jugador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fondo_jugador.png; sourceTree = "<group>"; };
 		7056C1801877452B00B82221 /* EstadisticaTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstadisticaTodoViewController.h; sourceTree = "<group>"; };
 		7056C1811877452B00B82221 /* EstadisticaTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EstadisticaTodoViewController.m; sourceTree = "<group>"; };
-		7056C18418774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fondo-pantalla-todo-ESTADISTICA.png"; sourceTree = "<group>"; };
 		7057B87C188A9AFC001C204B /* TrabajarConFicherosPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrabajarConFicherosPlist.h; sourceTree = "<group>"; };
 		7057B87D188A9AFC001C204B /* TrabajarConFicherosPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrabajarConFicherosPlist.m; sourceTree = "<group>"; };
 		70639E0B184D32490028A98B /* ASKME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASKME.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +218,9 @@
 		70B3395E1854D74B0072A60D /* usuario.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usuario.plist; sourceTree = "<group>"; };
 		70B339601854F79A0072A60D /* OpcionesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpcionesViewController.h; sourceTree = "<group>"; };
 		70B339611854F79A0072A60D /* OpcionesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpcionesViewController.m; sourceTree = "<group>"; };
+		70C1E0C1189D5DF60035BB33 /* boton_estadistica.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boton_estadistica.png; sourceTree = "<group>"; };
+		70C1E0C2189D5DF60035BB33 /* ESTADISTICA-cabecera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ESTADISTICA-cabecera.png"; sourceTree = "<group>"; };
+		70C1E0C3189D5DF60035BB33 /* ESTADISTICA-materias.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ESTADISTICA-materias.png"; sourceTree = "<group>"; };
 		70D828A2186A647300A7F2DE /* FONDO-PIE-JUGADOR-historia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FONDO-PIE-JUGADOR-historia.png"; sourceTree = "<group>"; };
 		70EB93961869EDF900A71BB7 /* EstadisticaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstadisticaViewController.h; sourceTree = "<group>"; };
 		70EB93971869EDF900A71BB7 /* EstadisticaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EstadisticaViewController.m; sourceTree = "<group>"; };
@@ -230,7 +233,6 @@
 		70F3F40C1875A5EF002E7991 /* barra-OCIO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barra-OCIO.png"; sourceTree = "<group>"; };
 		70F3F40D1875A5EF002E7991 /* barra-OTROS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barra-OTROS.png"; sourceTree = "<group>"; };
 		70F3F40E1875A5EF002E7991 /* barra-TODOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barra-TODOS.png"; sourceTree = "<group>"; };
-		70F3F41B1875E9C3002E7991 /* fondo-pantalla-ESTADISTICA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fondo-pantalla-ESTADISTICA.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,8 +538,7 @@
 		70B3395318549B700072A60D /* imagenes */ = {
 			isa = PBXGroup;
 			children = (
-				7056C18418774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png */,
-				70F3F41B1875E9C3002E7991 /* fondo-pantalla-ESTADISTICA.png */,
+				70C1E0C0189D5D0C0035BB33 /* fondos estadistica */,
 				70F3F4061875A5C6002E7991 /* barrasEstadistica */,
 				703F01B3186EED2D004A1D30 /* boton-siguiente-pregunta.png */,
 				70069DC2186CDC7A006BE094 /* punto-verde-correcta.png */,
@@ -582,6 +583,16 @@
 				70B339611854F79A0072A60D /* OpcionesViewController.m */,
 			);
 			name = OpcionesViewController;
+			sourceTree = "<group>";
+		};
+		70C1E0C0189D5D0C0035BB33 /* fondos estadistica */ = {
+			isa = PBXGroup;
+			children = (
+				70C1E0C1189D5DF60035BB33 /* boton_estadistica.png */,
+				70C1E0C2189D5DF60035BB33 /* ESTADISTICA-cabecera.png */,
+				70C1E0C3189D5DF60035BB33 /* ESTADISTICA-materias.png */,
+			);
+			name = "fondos estadistica";
 			sourceTree = "<group>";
 		};
 		70EB93991869EDFF00A71BB7 /* EstadisticaViewController */ = {
@@ -711,6 +722,7 @@
 				7099D5E6185E22C300241684 /* icono-casa.png in Resources */,
 				7007265D186126080028734A /* icono-arte-literatura.png in Resources */,
 				70F3F4121875A5EF002E7991 /* barra-GEOGRAFIA.png in Resources */,
+				70C1E0C6189D5DF60035BB33 /* ESTADISTICA-materias.png in Resources */,
 				70072657186126080028734A /* FONDO-PIE-JUGADOR-ciencias.png in Resources */,
 				70488B491867382000952732 /* fondo_jugador.png in Resources */,
 				70F3F4101875A5EF002E7991 /* barra-CIENCIAS.png in Resources */,
@@ -730,12 +742,13 @@
 				70B3395818549E6C0072A60D /* pant_inicio_cuerpo_carga.png in Resources */,
 				70072661186126080028734A /* icono-geografia.png in Resources */,
 				70B3395F1854D74B0072A60D /* usuario.plist in Resources */,
-				7056C18518774E8200B82221 /* fondo-pantalla-todo-ESTADISTICA.png in Resources */,
 				70F3F4151875A5EF002E7991 /* barra-OTROS.png in Resources */,
+				70C1E0C4189D5DF60035BB33 /* boton_estadistica.png in Resources */,
 				70639E19184D32490028A98B /* InfoPlist.strings in Resources */,
 				701D596A18595DD800DF3A68 /* OPCION-INFO-configuracion.png in Resources */,
 				709B67561858D6BA0052C344 /* ico-Tab-Bar-Configuracion@x2.png in Resources */,
 				70B3395918549E6C0072A60D /* pant_inicio_pie.png in Resources */,
+				70C1E0C5189D5DF60035BB33 /* ESTADISTICA-cabecera.png in Resources */,
 				70072656186126080028734A /* FONDO-PIE-JUGADOR-base.png in Resources */,
 				70A1BA49185CD18A003FD579 /* OPCION-Jugador.png in Resources */,
 				70072662186126080028734A /* icono-historia.png in Resources */,
@@ -748,7 +761,6 @@
 				709B675C1858D6BA0052C344 /* ico-Tab-Bar-Usuario@x2.png in Resources */,
 				709B675A1858D6BA0052C344 /* ico-Tab-Bar-Info@x2.png in Resources */,
 				70072658186126080028734A /* FONDO-PIE-JUGADOR-deportes.png in Resources */,
-				70F3F41C1875E9C3002E7991 /* fondo-pantalla-ESTADISTICA.png in Resources */,
 				70639E22184D32490028A98B /* Main.storyboard in Resources */,
 				701D596E18595DD800DF3A68 /* OPCION-INFO-Jugadores.png in Resources */,
 				709B67641858E7090052C344 /* linea-superior-Tab-Bar-1x1.png in Resources */,
