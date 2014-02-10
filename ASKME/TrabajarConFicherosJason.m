@@ -18,11 +18,12 @@
 }
 
 @synthesize preguntasArray;
+@synthesize listadoArray;
 
 
 #pragma mark - Metodos
 
-- (BOOL) recogerYGrabarDatosEnFicheroJSON:(NSString*)urlParaTraerDatos
+- (BOOL) recogerYGrabarDatosEnFicheroJSON:(NSString*)urlParaTraerDatos andNombreFichero:(NSString*)nombreFichero
 {
     NSURL *url = [NSURL URLWithString:urlParaTraerDatos];
     
@@ -45,7 +46,7 @@
         NSArray *documentsSearchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [documentsSearchPaths count] == 0 ? nil : [documentsSearchPaths objectAtIndex:0];
         
-        NSString *fileName = @"preguntas.json";
+        NSString *fileName = nombreFichero;
         
         NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
         
@@ -104,6 +105,16 @@
         [preguntasArray addObject:miPregunta];
     }
     
+}
+
+- (void) sacarDatosListadoJSON
+{
+    NSString *jsonPath=[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingFormat:@"/listadoPartida.json"];
+    NSLog(@"Path JSON leer: %@",jsonPath);
+    NSData *data = [NSData dataWithContentsOfFile:jsonPath];
+    NSLog(@"Data JSON leer: %@",data);
+    listadoArray = [[NSMutableArray alloc] init];
+    listadoArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 }
 
 

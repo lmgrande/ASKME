@@ -7,8 +7,11 @@
 //
 
 #import "TerceraViewController.h"
+#import "TrabajarConFicherosJason.h"
 
 @interface TerceraViewController ()
+
+    @property TrabajarConFicherosJason *trabajarFicherosJason;
 
 @end
 
@@ -47,25 +50,26 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/RestoEntero.php"];
-    
-    NSError *error = nil; // This so that we can access the error if something goes wrong
-    NSData *jsonData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
-    
-    NSError *error1;
-    
-    // array of dictionary
-    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&error1];
-    
-    if (error1) {
-        NSLog(@"Error: %@", error1.localizedDescription);
-    } else {
+//    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/RestoEntero.php"];
+//    
+//    NSError *error = nil; // This so that we can access the error if something goes wrong
+//    NSData *jsonData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
+//    
+//    NSError *error1;
+//    
+//    // array of dictionary
+//    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&error1];
+//    
+//    if (error1) {
+//        NSLog(@"Error: %@", error1.localizedDescription);
+//    } else {
         ApplicationDelegate.opcionDeJuego = @"Jugadores";
-        ApplicationDelegate.numeroPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"partida"];
-        ApplicationDelegate.tiempoPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"tiempo"];
-        NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
+        //ApplicationDelegate.numeroPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"partida"];
+        //ApplicationDelegate.tiempoPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"tiempo"];
+        //NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
+        self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
         [self empezar];
-    }
+    //}
     
 }
 
@@ -89,8 +93,18 @@
 
 -(void) pasarPantalla{
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
-    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Jugadores"];
-    [self presentViewController:cambiarViewController animated:YES completion:nil];
+    if (ApplicationDelegate.tiempoBase>0 && ApplicationDelegate.tiempoBase<5) {
+        BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:[NSString stringWithFormat:@"http://www.askmeapp.com/jasonsHora/jason%d.json",ApplicationDelegate.numeroPartidaJugadores] andNombreFichero:@"preguntas.json"];
+        if (guardadoJason==YES) {
+            UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Preguntas"];
+            [self presentViewController:cambiarViewController animated:YES completion:nil];
+        }else{
+            NSLog(@"No se ha podido grabar el fichero JASON");
+        }
+    }else{
+        UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Jugadores"];
+        [self presentViewController:cambiarViewController animated:YES completion:nil];
+    }
     
 }
 

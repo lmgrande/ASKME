@@ -56,14 +56,17 @@
     nickLabel.text = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
     proximaPreguntaButton.hidden=YES;
     
-    if ([ApplicationDelegate.tiempoPartidaJugadores integerValue]>140) {
+    if ([ApplicationDelegate.opcionDeJuego isEqualToString:@"Jugador"]) {
         partidaLinearProgressView.progress = 0.0;
     }else{
-        float inicioBarraPartida = (([ApplicationDelegate.tiempoPartidaJugadores floatValue]*270)/144)/270;
-        NSLog(@"inicioBarraPartida: %f", inicioBarraPartida);
-        partidaLinearProgressView.progress = inicioBarraPartida;
+        if (ApplicationDelegate.tiempoBase>140) {
+            partidaLinearProgressView.progress = 0.0;
+        }else{
+            float inicioBarraPartida = ((ApplicationDelegate.tiempoBase*270)/144)/270.0;
+            NSLog(@"inicioBarraPartida: %f", inicioBarraPartida);
+            partidaLinearProgressView.progress = inicioBarraPartida;
+        }
     }
-    
     preguntaLinearProgressView.progress = 0.0;
     [self performSelectorOnMainThread:@selector(moverProgressBarPartida) withObject:nil waitUntilDone:NO];
     numero = 16;
@@ -315,10 +318,14 @@
 - (void) empezarContadorPartida
 {
     float tiempoPartida;
-    if ([ApplicationDelegate.tiempoPartidaJugadores integerValue]==180) {
-        tiempoPartida=144.0;
+    if ([ApplicationDelegate.opcionDeJuego isEqualToString:@"Jugador"]) {
+        tiempoPartida=148;
     }else{
-        tiempoPartida=144-[ApplicationDelegate.tiempoPartidaJugadores floatValue];
+        if (ApplicationDelegate.tiempoBase==180) {
+            tiempoPartida=144.0;
+        }else{
+            tiempoPartida=144-ApplicationDelegate.tiempoBase;
+        }
     }
     NSLog(@"ApplicationDelegate.tiempoPartidaJugadores: %f",tiempoPartida);
     timerPartida = [NSTimer scheduledTimerWithTimeInterval:tiempoPartida         // El timer se ejcuta cada segundo

@@ -32,6 +32,8 @@
 		701D596D18595DD800DF3A68 /* OPCION-INFO-Jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596818595DD800DF3A68 /* OPCION-INFO-Jugador.png */; };
 		701D596E18595DD800DF3A68 /* OPCION-INFO-Jugadores.png in Resources */ = {isa = PBXBuildFile; fileRef = 701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */; };
 		702494321887208400CAD9AA /* TrabajarConFicherosJason.m in Sources */ = {isa = PBXBuildFile; fileRef = 702494311887208400CAD9AA /* TrabajarConFicherosJason.m */; };
+		7026EBC718A7EA180019C308 /* Cabecera_LISTADO.png in Resources */ = {isa = PBXBuildFile; fileRef = 7026EBC518A7EA180019C308 /* Cabecera_LISTADO.png */; };
+		7026EBCA18A7EA4D0019C308 /* Cuerpo_LISTADO.png in Resources */ = {isa = PBXBuildFile; fileRef = 7026EBC918A7EA4D0019C308 /* Cuerpo_LISTADO.png */; };
 		70332D64185A190F00CC61C3 /* PrimeraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D63185A190F00CC61C3 /* PrimeraViewController.m */; };
 		70332D68185A1BD400CC61C3 /* SegundaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D67185A1BD400CC61C3 /* SegundaViewController.m */; };
 		70332D6C185A1D4900CC61C3 /* TerceraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70332D6B185A1D4900CC61C3 /* TerceraViewController.m */; };
@@ -91,6 +93,12 @@
 		70C1E0C4189D5DF60035BB33 /* boton_estadistica.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C1E0C1189D5DF60035BB33 /* boton_estadistica.png */; };
 		70C1E0C5189D5DF60035BB33 /* ESTADISTICA-cabecera.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C1E0C2189D5DF60035BB33 /* ESTADISTICA-cabecera.png */; };
 		70C1E0C6189D5DF60035BB33 /* ESTADISTICA-materias.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C1E0C3189D5DF60035BB33 /* ESTADISTICA-materias.png */; };
+		70C604B018A2A28C00791691 /* base-celda-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C604AC18A2A28C00791691 /* base-celda-normal.png */; };
+		70C604B118A2A28C00791691 /* base-celda-usuario.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C604AD18A2A28C00791691 /* base-celda-usuario.png */; };
+		70C604B218A2A28C00791691 /* carcasa-principal.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C604AE18A2A28C00791691 /* carcasa-principal.png */; };
+		70C604B318A2A28C00791691 /* panel-superior.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C604AF18A2A28C00791691 /* panel-superior.png */; };
+		70C604B618A2A2CE00791691 /* ListadoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C604B518A2A2CE00791691 /* ListadoViewController.m */; };
+		70C604BA18A2A3D100791691 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C604B918A2A3D100791691 /* CustomCell.m */; };
 		70D828A3186A647300A7F2DE /* FONDO-PIE-JUGADOR-historia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D828A2186A647300A7F2DE /* FONDO-PIE-JUGADOR-historia.png */; };
 		70EB93981869EDF900A71BB7 /* EstadisticaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EB93971869EDF900A71BB7 /* EstadisticaViewController.m */; };
 		70EF263418573FF400E3CD0F /* pant_bienvenida_cuerpo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EF263318573FF400E3CD0F /* pant_bienvenida_cuerpo.png */; };
@@ -143,6 +151,8 @@
 		701D596918595DD800DF3A68 /* OPCION-INFO-Jugadores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-INFO-Jugadores.png"; sourceTree = "<group>"; };
 		702494301887208400CAD9AA /* TrabajarConFicherosJason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrabajarConFicherosJason.h; sourceTree = "<group>"; };
 		702494311887208400CAD9AA /* TrabajarConFicherosJason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrabajarConFicherosJason.m; sourceTree = "<group>"; };
+		7026EBC518A7EA180019C308 /* Cabecera_LISTADO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabecera_LISTADO.png; sourceTree = "<group>"; };
+		7026EBC918A7EA4D0019C308 /* Cuerpo_LISTADO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cuerpo_LISTADO.png; sourceTree = "<group>"; };
 		70332D62185A190F00CC61C3 /* PrimeraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimeraViewController.h; sourceTree = "<group>"; };
 		70332D63185A190F00CC61C3 /* PrimeraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimeraViewController.m; sourceTree = "<group>"; };
 		70332D66185A1BD400CC61C3 /* SegundaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegundaViewController.h; sourceTree = "<group>"; };
@@ -221,6 +231,14 @@
 		70C1E0C1189D5DF60035BB33 /* boton_estadistica.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boton_estadistica.png; sourceTree = "<group>"; };
 		70C1E0C2189D5DF60035BB33 /* ESTADISTICA-cabecera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ESTADISTICA-cabecera.png"; sourceTree = "<group>"; };
 		70C1E0C3189D5DF60035BB33 /* ESTADISTICA-materias.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ESTADISTICA-materias.png"; sourceTree = "<group>"; };
+		70C604AC18A2A28C00791691 /* base-celda-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "base-celda-normal.png"; sourceTree = "<group>"; };
+		70C604AD18A2A28C00791691 /* base-celda-usuario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "base-celda-usuario.png"; sourceTree = "<group>"; };
+		70C604AE18A2A28C00791691 /* carcasa-principal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carcasa-principal.png"; sourceTree = "<group>"; };
+		70C604AF18A2A28C00791691 /* panel-superior.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "panel-superior.png"; sourceTree = "<group>"; };
+		70C604B418A2A2CE00791691 /* ListadoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListadoViewController.h; sourceTree = "<group>"; };
+		70C604B518A2A2CE00791691 /* ListadoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListadoViewController.m; sourceTree = "<group>"; };
+		70C604B818A2A3D100791691 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		70C604B918A2A3D100791691 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		70D828A2186A647300A7F2DE /* FONDO-PIE-JUGADOR-historia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FONDO-PIE-JUGADOR-historia.png"; sourceTree = "<group>"; };
 		70EB93961869EDF900A71BB7 /* EstadisticaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstadisticaViewController.h; sourceTree = "<group>"; };
 		70EB93971869EDF900A71BB7 /* EstadisticaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EstadisticaViewController.m; sourceTree = "<group>"; };
@@ -423,6 +441,8 @@
 				70639E1D184D32490028A98B /* AppDelegate.h */,
 				70639E1E184D32490028A98B /* AppDelegate.m */,
 				70639E20184D32490028A98B /* Main.storyboard */,
+				70C604B718A2A2DD00791691 /* ListadoViewController */,
+				70C604BB18A2A3DF00791691 /* CustomCell */,
 				7057B87F188A9B04001C204B /* TrabajarConFicherosPlist */,
 				702494331887208D00CAD9AA /* TrabajarConFicherosJason */,
 				709ED99E1881BFE3007F2961 /* GestionarDatosYPuntosPartida */,
@@ -538,6 +558,7 @@
 		70B3395318549B700072A60D /* imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				70C604AB18A2A25900791691 /* imagenes_listado */,
 				70C1E0C0189D5D0C0035BB33 /* fondos estadistica */,
 				70F3F4061875A5C6002E7991 /* barrasEstadistica */,
 				703F01B3186EED2D004A1D30 /* boton-siguiente-pregunta.png */,
@@ -593,6 +614,37 @@
 				70C1E0C3189D5DF60035BB33 /* ESTADISTICA-materias.png */,
 			);
 			name = "fondos estadistica";
+			sourceTree = "<group>";
+		};
+		70C604AB18A2A25900791691 /* imagenes_listado */ = {
+			isa = PBXGroup;
+			children = (
+				7026EBC918A7EA4D0019C308 /* Cuerpo_LISTADO.png */,
+				7026EBC518A7EA180019C308 /* Cabecera_LISTADO.png */,
+				70C604AC18A2A28C00791691 /* base-celda-normal.png */,
+				70C604AD18A2A28C00791691 /* base-celda-usuario.png */,
+				70C604AE18A2A28C00791691 /* carcasa-principal.png */,
+				70C604AF18A2A28C00791691 /* panel-superior.png */,
+			);
+			name = imagenes_listado;
+			sourceTree = "<group>";
+		};
+		70C604B718A2A2DD00791691 /* ListadoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70C604B418A2A2CE00791691 /* ListadoViewController.h */,
+				70C604B518A2A2CE00791691 /* ListadoViewController.m */,
+			);
+			name = ListadoViewController;
+			sourceTree = "<group>";
+		};
+		70C604BB18A2A3DF00791691 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				70C604B818A2A3D100791691 /* CustomCell.h */,
+				70C604B918A2A3D100791691 /* CustomCell.m */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		70EB93991869EDFF00A71BB7 /* EstadisticaViewController */ = {
@@ -709,10 +761,14 @@
 				709B674A1858D2B70052C344 /* FONDO_Tab_Bar_Opciones.png in Resources */,
 				700A21251867146F00624E9A /* fondo-circulo-contador.png in Resources */,
 				70069DC3186CDC7A006BE094 /* punto-verde-correcta.png in Resources */,
+				70C604B318A2A28C00791691 /* panel-superior.png in Resources */,
+				70C604B118A2A28C00791691 /* base-celda-usuario.png in Resources */,
 				70F3F4131875A5EF002E7991 /* barra-HISTORIA.png in Resources */,
 				701D596D18595DD800DF3A68 /* OPCION-INFO-Jugador.png in Resources */,
+				70C604B018A2A28C00791691 /* base-celda-normal.png in Resources */,
 				70072666186126920028734A /* icono-ciencias.png in Resources */,
 				708E528F1874B54100BCC411 /* datosPartidas.plist in Resources */,
+				7026EBCA18A7EA4D0019C308 /* Cuerpo_LISTADO.png in Resources */,
 				7007265E186126080028734A /* icono-base.png in Resources */,
 				703F01B4186EED2D004A1D30 /* boton-siguiente-pregunta.png in Resources */,
 				70639E27184D32490028A98B /* Images.xcassets in Resources */,
@@ -758,10 +814,12 @@
 				709B67481858D18A0052C344 /* FONDO_Tab_Bar_Opciones@2x.png in Resources */,
 				70F3F40F1875A5EF002E7991 /* barra-ARTELITERATURA.png in Resources */,
 				709B675B1858D6BA0052C344 /* ico-Tab-Bar-Usuario.png in Resources */,
+				7026EBC718A7EA180019C308 /* Cabecera_LISTADO.png in Resources */,
 				709B675C1858D6BA0052C344 /* ico-Tab-Bar-Usuario@x2.png in Resources */,
 				709B675A1858D6BA0052C344 /* ico-Tab-Bar-Info@x2.png in Resources */,
 				70072658186126080028734A /* FONDO-PIE-JUGADOR-deportes.png in Resources */,
 				70639E22184D32490028A98B /* Main.storyboard in Resources */,
+				70C604B218A2A28C00791691 /* carcasa-principal.png in Resources */,
 				701D596E18595DD800DF3A68 /* OPCION-INFO-Jugadores.png in Resources */,
 				709B67641858E7090052C344 /* linea-superior-Tab-Bar-1x1.png in Resources */,
 			);
@@ -799,10 +857,12 @@
 				70332D78185A227900CC61C3 /* TabBarViewController.m in Sources */,
 				70B3395C1854C2320072A60D /* NickViewController.m in Sources */,
 				70332D70185A1E5700CC61C3 /* CuartaViewController.m in Sources */,
+				70C604BA18A2A3D100791691 /* CustomCell.m in Sources */,
 				7056C1821877452B00B82221 /* EstadisticaTodoViewController.m in Sources */,
 				70332D6C185A1D4900CC61C3 /* TerceraViewController.m in Sources */,
 				70A1BA4C185D3DB5003FD579 /* Pregunta.m in Sources */,
 				702494321887208400CAD9AA /* TrabajarConFicherosJason.m in Sources */,
+				70C604B618A2A2CE00791691 /* ListadoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

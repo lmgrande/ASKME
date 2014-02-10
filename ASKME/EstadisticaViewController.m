@@ -12,6 +12,9 @@
 
 
 @interface EstadisticaViewController ()
+{
+    NSTimer *timerEsperaListado;
+}
 
     @property TrabajarConFicherosPlist *trabajarFicherosPlist;
     @property GestionarDatosYPuntosPartida *gestionarDatosYPuntosPartida;
@@ -53,9 +56,14 @@
         textoEsperarLabel.hidden=TRUE;
         numerosEsperarLabel.hidden=TRUE;
     }else if ([ApplicationDelegate.opcionDeJuego  isEqual: @"Jugadores"]){
+        numerosEsperarLabel.text=[NSString stringWithFormat:@"%d",180-(ApplicationDelegate.tiempoBase+20)];
         textoEsperarLabel.hidden=FALSE;
         numerosEsperarLabel.hidden=FALSE;
-        [self.gestionarDatosYPuntosPartida enviarPuntos:preguntasMaximoPartidaLabel.text :puntosMaximoPartidaLabel.text :preguntasContestadasLabel.text :preguntasAcertadasLabel.text :preguntasFalladasLabel.text :preguntasPasadasLabel.text :puntosPartidaTODOLabel.text];
+        [self empezarContadorEsperaListado];
+        //if ([ApplicationDelegate.tiempoEsperaListadoPartida isEqualToString:@"16"]) {
+            [self.gestionarDatosYPuntosPartida enviarPuntos:preguntasMaximoPartidaLabel.text :puntosMaximoPartidaLabel.text :preguntasContestadasLabel.text :preguntasAcertadasLabel.text :preguntasFalladasLabel.text :preguntasPasadasLabel.text :puntosPartidaTODOLabel.text];
+        //}
+        
     }
 }
 
@@ -69,6 +77,7 @@
 
 - (IBAction)casaBoton:(id)sender
 {
+    //ApplicationDelegate.tiempoEsperaListadoPartida=@"16";
     ApplicationDelegate.opcionDeJuego = @"Jugador";
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
@@ -80,6 +89,7 @@
 
 - (IBAction)estadisticaTodasLasPartidasBoton:(id)sender
 {
+    //ApplicationDelegate.tiempoEsperaListadoPartida=numerosEsperarLabel.text;
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"pantallaTodoEstadisticas"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
@@ -198,6 +208,29 @@
     XdeYenOcio.text=[NSString stringWithFormat:@"%@ de %@",[temp objectForKey:@"ocio-acertadas"],[temp objectForKey:@"ocio-contestadas"]];
     XdeYenOtros.text=[NSString stringWithFormat:@"%@ de %@",[temp objectForKey:@"otros-acertadas"],[temp objectForKey:@"otros-contestadas"]];
     XdeYenTODO.text=[NSString stringWithFormat:@"%@ de %@",[temp objectForKey:@"total-preguntas-acertadas"],[temp objectForKey:@"total-preguntas-contestadas"]];
+    
+}
+
+- (void) empezarContadorEsperaListado
+{
+    timerEsperaListado = [NSTimer scheduledTimerWithTimeInterval:1         // El timer se ejcuta cada segundo
+                                                    target:self        // Se ejecuta este timer en este view
+                                                  selector:@selector(pasarPantalla)      // Se ejecuta el método contar
+                                                  userInfo:nil
+                                                   repeats:YES];
+}
+
+-(void) pasarPantalla
+{
+    if ([numerosEsperarLabel.text integerValue]!=0) {
+        numerosEsperarLabel.text=[NSString stringWithFormat:@"%d",180-(ApplicationDelegate.tiempoBase+20)];
+    }else{
+        [timerEsperaListado invalidate];
+        //ApplicationDelegate.tiempoEsperaListadoPartida=@"16";
+        UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+        UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Listado"];
+        [self presentViewController:cambiarViewController animated:YES completion:nil];
+    }
     
 }
 

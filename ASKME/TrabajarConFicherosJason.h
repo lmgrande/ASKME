@@ -11,9 +11,11 @@
 @interface TrabajarConFicherosJason : NSObject
 
 @property (nonatomic, strong) NSMutableArray *preguntasArray;
+@property (nonatomic, strong) NSMutableArray *listadoArray;
 
 
-- (BOOL) recogerYGrabarDatosEnFicheroJSON:(NSString*)urlParaTraerDatos;
+- (BOOL) recogerYGrabarDatosEnFicheroJSON:(NSString*)urlParaTraerDatos andNombreFichero:(NSString*)nombreFichero;
 - (void) sacarDatosFicheroJSON;
+- (void) sacarDatosListadoJSON;
 
 @end

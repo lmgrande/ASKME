@@ -45,7 +45,7 @@
     
     self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
     
-    BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:@"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php"];
+    BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:@"http://www.askmeapp.com/php_IOS/leerPreguntasJugador.php" andNombreFichero:@"preguntas.json"];
     
     if (guardadoJason) {
         ApplicationDelegate.opcionDeJuego = @"Jugador";
