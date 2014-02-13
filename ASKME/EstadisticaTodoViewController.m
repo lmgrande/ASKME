@@ -190,7 +190,7 @@
 
 -(void) pasarPantalla
 {
-    if ([numerosEsperarLabel.text integerValue]!=0) {
+    if ([numerosEsperarLabel.text integerValue]>0) {
         numerosEsperarLabel.text=[NSString stringWithFormat:@"%d",180-(ApplicationDelegate.tiempoBase+20)];
     }else{
         [timerEsperaListado invalidate];

@@ -17,5 +17,6 @@
     @property (weak, nonatomic) IBOutlet UILabel *contadorListado;
 
 - (IBAction)casaBoton:(id)sender;
+- (IBAction)mostrarSoloJugadoresSeleccionadosBoton:(id)sender;
 
 @end

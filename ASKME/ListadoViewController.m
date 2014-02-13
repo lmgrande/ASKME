@@ -16,6 +16,8 @@
     NSMutableArray *PosicionLabel;
     NSMutableArray *UsuarioLabel;
     NSMutableArray *PuntuacionLabel;
+    
+    NSMutableArray *usuariosSeleccionados;
 }
 
 @property TrabajarConFicherosJason *trabajarFicherosJason;
@@ -45,6 +47,7 @@
         NSLog(@"No se ha podido grabar el fichero JASON");
     }else{
         [self.trabajarFicherosJason sacarDatosListadoJSON];
+        usuariosSeleccionados=[self leerSeleccionadosListadoPlist];
     }
     
     jugadoresLabel.text=[NSString stringWithFormat:@"%d",[self.trabajarFicherosJason.listadoArray count]];
@@ -53,27 +56,6 @@
     PosicionLabel = [[NSMutableArray alloc]init];
     UsuarioLabel = [[NSMutableArray alloc] init];
     PuntuacionLabel = [[NSMutableArray alloc]init];
-    
-//    NSSortDescriptor * puntosDescriptor = [[NSSortDescriptor alloc] initWithKey:@"puntosConseguidos" ascending:NO];
-//    
-//    id obj;
-//    NSEnumerator * enumerator = [self.trabajarFicherosJason.listadoArray objectEnumerator];
-//    while ((obj = [enumerator nextObject])) NSLog(@"%@", obj);
-//    
-//    NSArray * descriptors = [NSArray arrayWithObjects:puntosDescriptor, nil];
-//    NSArray * sortedArray = [self.trabajarFicherosJason.listadoArray sortedArrayUsingDescriptors:descriptors];
-//    
-//    NSLog(@"\nSorted ...");
-//    
-//    enumerator = [sortedArray objectEnumerator];
-//    int i=0;
-//    while ((obj = [enumerator nextObject])){
-//        NSLog(@"%@", obj);
-//        [PosicionLabel addObject:[NSString stringWithFormat:@"%d",i+1]];
-//        [UsuarioLabel addObject:[obj objectForKey:@"nombre"]];
-//        [PuntuacionLabel addObject:[obj objectForKey:@"puntosConseguidos"]];
-//        i=i+1;
-//    }
     
     NSSortDescriptor * puntosDescriptor = [[NSSortDescriptor alloc] initWithKey:@"puntosConseguidos" ascending:NO comparator:^(id obj1, id obj2)
                                            {
@@ -94,14 +76,6 @@
         [UsuarioLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"nombre"]];
         [PuntuacionLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"puntosConseguidos"]];
     }];
-
-    
-//    for (int i =0; i<self.trabajarFicherosJason.listadoArray.count; i++) {
-//        [PosicionLabel addObject:@"1"];
-//        [UsuarioLabel addObject:[[self.trabajarFicherosJason.listadoArray objectAtIndex:i] objectForKey:@"nombre"]];
-//        [PuntuacionLabel addObject:[[self.trabajarFicherosJason.listadoArray objectAtIndex:i] objectForKey:@"puntosConseguidos"]];
-//    }
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -119,8 +93,6 @@
     if (error1) {
         NSLog(@"Error: %@", error1.localizedDescription);
     } else {
-        //ApplicationDelegate.opcionDeJuego = @"Jugadores";
-        //ApplicationDelegate.numeroPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"partida"];
         tiempoRestante = [[[array objectAtIndex:0] objectForKey:@"tiempo"]floatValue];
         NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
         [self empezar];
@@ -156,21 +128,78 @@
     if (!Cell) {
         Cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     Cell.PosicionUsuarioLabel.text = [PosicionLabel objectAtIndex:indexPath.row];
     Cell.NombreUsuarioLabel.text = [UsuarioLabel objectAtIndex:indexPath.row];
     Cell.PuntuacionUsuarioLabel.text = [PuntuacionLabel objectAtIndex:indexPath.row];
     
+    for (int i=0; i<usuariosSeleccionados.count; i++) {
+        //NSLog(@"PosicionUsuarioLabel: %@ ",Cell.PosicionUsuarioLabel.text);
+        if ([Cell.NombreUsuarioLabel.text isEqualToString:[usuariosSeleccionados objectAtIndex:i]]) {
+            Cell.marcaSeleccionarJugador.tag=1;
+            Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
+        }
+    }
+    
     return  Cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CustomCell *Cell = (CustomCell*)[tableView cellForRowAtIndexPath:indexPath];
+    
+    if (Cell.marcaSeleccionarJugador.tag==0) {
+        [usuariosSeleccionados addObject:Cell.NombreUsuarioLabel.text];
+        Cell.marcaSeleccionarJugador.tag=1;
+        Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
+    }else if (Cell.marcaSeleccionarJugador.tag==1){
+        for (int i=0; i<usuariosSeleccionados.count; i++) {
+            //NSLog(@"PosicionUsuarioLabel: %@ ",Cell.PosicionUsuarioLabel.text);
+            if (![Cell.NombreUsuarioLabel.text isEqualToString:[ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"]]) {
+                if ([Cell.NombreUsuarioLabel.text isEqualToString:[usuariosSeleccionados objectAtIndex:i]]) {
+                    [usuariosSeleccionados removeObjectAtIndex:i];
+                    Cell.marcaSeleccionarJugador.tag=0;
+                    Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_off.png"];
+                }
+            }
+        }
+    }
+    
+//    Pregunta *preguntaActual = [self.trabajarFicherosJason.preguntasArray objectAtIndex:j-1];
+//    
+//    if ([[tableData objectAtIndex:indexPath.row] isEqualToString:preguntaActual.textoCorrecta]) {
+//        Cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fondo_deg_verde_celda.png"]];
+//        acertada=YES;
+//    }else{
+//        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fondo_deg_rojo_celda.png"]];
+//        acertada=NO;
+//    }
+//    for (int i=0; i<tableData.count; i++) {
+//        if ([[tableData objectAtIndex:i] isEqualToString:preguntaActual.textoCorrecta]) {
+//            RespuestaTableViewCell *cell1 =(RespuestaTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+//            cell1.puntoVerdeView.image=[UIImage imageNamed:@"punto-verde-correcta.png"];
+//        }
+//    }
+//    tableView.allowsSelection = NO;
+//    segundosParaPuntos=[numerosContadorLabel.text intValue];
+//    numerosContadorLabel.hidden=YES;
+//    proximaPreguntaButton.hidden=NO;
+//    [self calcularPuntos];
+}
+
+
 - (IBAction)casaBoton:(id)sender
 {
-    //ApplicationDelegate.tiempoEsperaListadoPartida=@"16";
+    [timerParaEmpezarJugadores invalidate];
     ApplicationDelegate.opcionDeJuego = @"Jugador";
+    [self grabarSeleccionadosListadoPlist:usuariosSeleccionados];
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
+}
+
+- (IBAction)mostrarSoloJugadoresSeleccionadosBoton:(id)sender {
+    NSLog(@"Jugadores Selececionados: %@",usuariosSeleccionados);
 }
 
 #pragma mark - pasarPantalla
@@ -195,11 +224,66 @@
 
 -(void) pasarPantalla{
     [timerParaEmpezarJugadores invalidate];
-    //ApplicationDelegate.tiempoPartidaJugadores = @"0";
+    [self grabarSeleccionadosListadoPlist:usuariosSeleccionados];
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Tercera"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
     
+}
+
+#pragma mark - leer y grabar Datos en Plist
+
+- (NSMutableArray*)leerSeleccionadosListadoPlist{
+    
+    // instanciamos el filemanager
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // obtenemos la ruta de la carpeta Documents
+    NSArray *appPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [appPaths objectAtIndex:0];
+    
+    NSString *plistPath = [documentPath stringByAppendingPathComponent:@"seleccionadosListado.plist"];
+    
+    // comprobamos si el plist ya existe en la carpeta documents
+    BOOL success = [fileManager fileExistsAtPath:plistPath];
+    NSMutableArray *plistContent = [[NSMutableArray alloc]initWithObjects:[ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"], nil];
+    if (success)
+    {
+        // si ya existe metemos el contenido en un array
+        plistContent = [NSMutableArray arrayWithContentsOfFile:plistPath];
+    }
+    else {
+        // si no existe copiamos el plist vacío desde nuestro bundle
+        //NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"seleccionadosListado" ofType:@"plist"];
+        
+        // copiamos el plist a la carpeta documents
+        success = [fileManager createFileAtPath:plistPath contents:nil attributes:nil];
+        if (success)
+        {
+            // si todo fue bien metemos el contenido del NSMutableArray plistContent en seleccionadosListado.plist
+            [plistContent writeToFile:plistPath atomically: YES];
+        }
+    }
+    return plistContent;
+}
+
+-(void)grabarSeleccionadosListadoPlist:(NSMutableArray*)seleccionadosListado
+{
+    NSString *error;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *plistPath = [rootPath stringByAppendingPathComponent:@"seleccionadosListado.plist"];
+    NSLog(@"PATH seleccionadosListado: %@",plistPath);
+    
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:usuariosSeleccionados
+                                                                   format:NSPropertyListXMLFormat_v1_0
+                                                         errorDescription:&error];
+    if(plistData) {
+        [plistData writeToFile:plistPath atomically:YES];
+    }
+    else {
+        NSLog(@"%@d",error);
+    }
+
 }
 
 

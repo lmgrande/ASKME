@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *PosicionUsuarioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *NombreUsuarioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *PuntuacionUsuarioLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *marcaSeleccionarJugador;
+
 
 @end

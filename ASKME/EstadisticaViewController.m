@@ -46,7 +46,6 @@
 //    NSString *result=[NSString stringWithFormat:@"%@", nickNombreViewController.nickNombre];
 //    nickLabel.text = result;
     nickLabel.text = [ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"];
-    
     self.trabajarFicherosPlist = [[TrabajarConFicherosPlist alloc]init];
     self.gestionarDatosYPuntosPartida = [[GestionarDatosYPuntosPartida alloc]init];
     
@@ -60,7 +59,7 @@
         textoEsperarLabel.hidden=FALSE;
         numerosEsperarLabel.hidden=FALSE;
         [self empezarContadorEsperaListado];
-        //if ([ApplicationDelegate.tiempoEsperaListadoPartida isEqualToString:@"16"]) {
+        //if ([numerosEsperarLabel.text integerValue]>15) {
             [self.gestionarDatosYPuntosPartida enviarPuntos:preguntasMaximoPartidaLabel.text :puntosMaximoPartidaLabel.text :preguntasContestadasLabel.text :preguntasAcertadasLabel.text :preguntasFalladasLabel.text :preguntasPasadasLabel.text :puntosPartidaTODOLabel.text];
         //}
         
