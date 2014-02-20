@@ -52,6 +52,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *textoEsperarLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numerosEsperarLabel;
 
+//@property (weak, nonatomic) IBOutlet UIImageView *barraCienciasUIImageView;
 
 - (IBAction)casaBoton:(id)sender;
 - (IBAction)estadisticaPartidaActualBoton:(id)sender;

@@ -273,7 +273,7 @@
         NSString *error;
         NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *plistPath = [rootPath stringByAppendingPathComponent:@"datosPartidas.plist"];
-        NSLog(@"PATH datosPartidas: %@",plistPath);
+        //NSLog(@"PATH datosPartidas: %@",plistPath);
         
         NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:self.partidas
                                                                        format:NSPropertyListXMLFormat_v1_0
@@ -382,7 +382,7 @@
 //    NSString *preguntas_Pasadas = [NSString stringWithFormat:@"%d", preguntasNoContestadas];
 //    NSString *puntos_Conseguidos = [NSString stringWithFormat:@"%d", puntosTotalesPartida];
     
-    NSLog(@"nombreUsuario=%@&preguntasPartida=%@&puntosPartida=%@&preguntasContestadas=%@&preguntasAcertadas=%@&preguntasFalladas=%@&preguntasPasadas=%@&puntosConseguidos=%@", nombre_Usuario, preguntas_Partida, puntos_Partida, preguntas_Contestadas, preguntas_Acertadas, preguntas_Falladas, preguntas_Pasadas, puntos_Conseguidos);
+    //NSLog(@"nombreUsuario=%@&preguntasPartida=%@&puntosPartida=%@&preguntasContestadas=%@&preguntasAcertadas=%@&preguntasFalladas=%@&preguntasPasadas=%@&puntosConseguidos=%@", nombre_Usuario, preguntas_Partida, puntos_Partida, preguntas_Contestadas, preguntas_Acertadas, preguntas_Falladas, preguntas_Pasadas, puntos_Conseguidos);
     
     NSURLSessionConfiguration *configuracionConexion = [NSURLSessionConfiguration defaultSessionConfiguration];
     configuracionConexion.timeoutIntervalForRequest = 10.0;

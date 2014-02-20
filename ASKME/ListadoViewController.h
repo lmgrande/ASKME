@@ -15,6 +15,8 @@
     @property (nonatomic, strong) NSArray *tableData;
     @property (weak, nonatomic) IBOutlet UILabel *jugadoresLabel;
     @property (weak, nonatomic) IBOutlet UILabel *contadorListado;
+    @property (weak, nonatomic) IBOutlet UIButton *mostrarSoloJugadoresSeleccionadosBoton;
+
 
 - (IBAction)casaBoton:(id)sender;
 - (IBAction)mostrarSoloJugadoresSeleccionadosBoton:(id)sender;

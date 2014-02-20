@@ -63,7 +63,7 @@
         }
     }
     tiempoBase++;
-    NSLog(@"TIEMPOBASE: %ld PARTIDA: %ld",(long)tiempoBase,(long)numeroPartidaJugadores);
+    //NSLog(@"TIEMPOBASE: %ld PARTIDA: %ld",(long)tiempoBase,(long)numeroPartidaJugadores);
 }
 
 - (void) verAlertaNoConecta

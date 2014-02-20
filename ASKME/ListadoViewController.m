@@ -16,6 +16,9 @@
     NSMutableArray *PosicionLabel;
     NSMutableArray *UsuarioLabel;
     NSMutableArray *PuntuacionLabel;
+    NSMutableArray *PosicionSeleccionadoLabel;
+    NSMutableArray *UsuarioSeleccionadoLabel;
+    NSMutableArray *PuntuacionSeleccionadoLabel;
     
     NSMutableArray *usuariosSeleccionados;
 }
@@ -31,7 +34,7 @@
 }
 
 
-@synthesize tableData, jugadoresLabel,contadorListado;
+@synthesize myTableView, jugadoresLabel,contadorListado, mostrarSoloJugadoresSeleccionadosBoton;
 
 - (void)viewDidLoad
 {
@@ -56,6 +59,9 @@
     PosicionLabel = [[NSMutableArray alloc]init];
     UsuarioLabel = [[NSMutableArray alloc] init];
     PuntuacionLabel = [[NSMutableArray alloc]init];
+    PosicionSeleccionadoLabel = [[NSMutableArray alloc]init];
+    UsuarioSeleccionadoLabel = [[NSMutableArray alloc] init];
+    PuntuacionSeleccionadoLabel = [[NSMutableArray alloc]init];
     
     NSSortDescriptor * puntosDescriptor = [[NSSortDescriptor alloc] initWithKey:@"puntosConseguidos" ascending:NO comparator:^(id obj1, id obj2)
                                            {
@@ -76,6 +82,8 @@
         [UsuarioLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"nombre"]];
         [PuntuacionLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"puntosConseguidos"]];
     }];
+    mostrarSoloJugadoresSeleccionadosBoton.selected=FALSE;
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -116,7 +124,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return PosicionLabel.count;
+    if (mostrarSoloJugadoresSeleccionadosBoton.selected==FALSE) {
+        return PosicionLabel.count;
+        NSLog(@"PosicionLabel.count: %d",PosicionLabel.count);
+    } else {
+        return PosicionSeleccionadoLabel.count;
+        NSLog(@"PosicionSeleccionadoLabel.count: %d",PosicionSeleccionadoLabel.count);
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -128,17 +143,28 @@
     if (!Cell) {
         Cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
-    Cell.PosicionUsuarioLabel.text = [PosicionLabel objectAtIndex:indexPath.row];
-    Cell.NombreUsuarioLabel.text = [UsuarioLabel objectAtIndex:indexPath.row];
-    Cell.PuntuacionUsuarioLabel.text = [PuntuacionLabel objectAtIndex:indexPath.row];
     
-    for (int i=0; i<usuariosSeleccionados.count; i++) {
-        //NSLog(@"PosicionUsuarioLabel: %@ ",Cell.PosicionUsuarioLabel.text);
-        if ([Cell.NombreUsuarioLabel.text isEqualToString:[usuariosSeleccionados objectAtIndex:i]]) {
-            Cell.marcaSeleccionarJugador.tag=1;
-            Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
+    if (mostrarSoloJugadoresSeleccionadosBoton.selected==FALSE) {
+        Cell.PosicionUsuarioLabel.text = [PosicionLabel objectAtIndex:indexPath.row];
+        Cell.NombreUsuarioLabel.text = [UsuarioLabel objectAtIndex:indexPath.row];
+        Cell.PuntuacionUsuarioLabel.text = [PuntuacionLabel objectAtIndex:indexPath.row];
+        
+        Cell.marcaSeleccionarJugador.tag=0;
+        Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_off.png"];
+        
+        for (int i=0; i<usuariosSeleccionados.count; i++) {
+            if ([Cell.NombreUsuarioLabel.text isEqualToString:[usuariosSeleccionados objectAtIndex:i]]) {
+                Cell.marcaSeleccionarJugador.tag=1;
+                Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
+            }
         }
+    } else {
+        Cell.PosicionUsuarioLabel.text = [PosicionSeleccionadoLabel objectAtIndex:indexPath.row];
+        Cell.NombreUsuarioLabel.text = [UsuarioSeleccionadoLabel objectAtIndex:indexPath.row];
+        Cell.PuntuacionUsuarioLabel.text = [PuntuacionSeleccionadoLabel objectAtIndex:indexPath.row];
+        
+        Cell.marcaSeleccionarJugador.tag=1;
+        Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
     }
     
     return  Cell;
@@ -147,44 +173,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomCell *Cell = (CustomCell*)[tableView cellForRowAtIndexPath:indexPath];
-    
-    if (Cell.marcaSeleccionarJugador.tag==0) {
-        [usuariosSeleccionados addObject:Cell.NombreUsuarioLabel.text];
-        Cell.marcaSeleccionarJugador.tag=1;
-        Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
-    }else if (Cell.marcaSeleccionarJugador.tag==1){
-        for (int i=0; i<usuariosSeleccionados.count; i++) {
-            //NSLog(@"PosicionUsuarioLabel: %@ ",Cell.PosicionUsuarioLabel.text);
-            if (![Cell.NombreUsuarioLabel.text isEqualToString:[ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"]]) {
-                if ([Cell.NombreUsuarioLabel.text isEqualToString:[usuariosSeleccionados objectAtIndex:i]]) {
-                    [usuariosSeleccionados removeObjectAtIndex:i];
-                    Cell.marcaSeleccionarJugador.tag=0;
-                    Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_off.png"];
+    if (mostrarSoloJugadoresSeleccionadosBoton.selected==FALSE) {
+        if (Cell.marcaSeleccionarJugador.tag==0) {
+            [usuariosSeleccionados addObject:Cell.NombreUsuarioLabel.text];
+            Cell.marcaSeleccionarJugador.tag=1;
+            Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_on.png"];
+        }else if (Cell.marcaSeleccionarJugador.tag==1){
+            for (int i=0; i<usuariosSeleccionados.count; i++) {
+                if (![Cell.NombreUsuarioLabel.text isEqualToString:[ApplicationDelegate.configuracionUsuario objectForKey:@"nombre_nick"]]) {
+                    if ([Cell.NombreUsuarioLabel.text isEqualToString:[usuariosSeleccionados objectAtIndex:i]]) {
+                        Cell.marcaSeleccionarJugador.tag=0;
+                        Cell.marcaSeleccionarJugador.image=[UIImage imageNamed:@"boton_celda_listado_off.png"];
+                        NSLog(@"usuariosSelececionados ANTES: %d",usuariosSeleccionados.count);
+                        [usuariosSeleccionados removeObjectAtIndex:i];
+                        NSLog(@"usuariosSelececionados DESPUES: %d",usuariosSeleccionados.count);
+                    }
                 }
             }
         }
     }
-    
-//    Pregunta *preguntaActual = [self.trabajarFicherosJason.preguntasArray objectAtIndex:j-1];
-//    
-//    if ([[tableData objectAtIndex:indexPath.row] isEqualToString:preguntaActual.textoCorrecta]) {
-//        Cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fondo_deg_verde_celda.png"]];
-//        acertada=YES;
-//    }else{
-//        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fondo_deg_rojo_celda.png"]];
-//        acertada=NO;
-//    }
-//    for (int i=0; i<tableData.count; i++) {
-//        if ([[tableData objectAtIndex:i] isEqualToString:preguntaActual.textoCorrecta]) {
-//            RespuestaTableViewCell *cell1 =(RespuestaTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-//            cell1.puntoVerdeView.image=[UIImage imageNamed:@"punto-verde-correcta.png"];
-//        }
-//    }
-//    tableView.allowsSelection = NO;
-//    segundosParaPuntos=[numerosContadorLabel.text intValue];
-//    numerosContadorLabel.hidden=YES;
-//    proximaPreguntaButton.hidden=NO;
-//    [self calcularPuntos];
 }
 
 
@@ -199,6 +206,31 @@
 }
 
 - (IBAction)mostrarSoloJugadoresSeleccionadosBoton:(id)sender {
+    mostrarSoloJugadoresSeleccionadosBoton.selected=!mostrarSoloJugadoresSeleccionadosBoton.selected;
+    if (mostrarSoloJugadoresSeleccionadosBoton.selected==FALSE) {
+        //self.trabajarFicherosJason.listadoArray=nil;
+        [self ordenarListadoTodos];
+    }else{
+        PosicionSeleccionadoLabel = [[NSMutableArray alloc]init];
+        UsuarioSeleccionadoLabel = [[NSMutableArray alloc] init];
+        PuntuacionSeleccionadoLabel = [[NSMutableArray alloc]init];
+        for (int contaTodosLosJugadores=0; contaTodosLosJugadores<UsuarioLabel.count; contaTodosLosJugadores++) {
+            
+            for (int contaLosJugadoresSeleccionados=0; contaLosJugadoresSeleccionados<usuariosSeleccionados.count; contaLosJugadoresSeleccionados++) {
+                if ([[UsuarioLabel objectAtIndex:contaTodosLosJugadores] isEqualToString:[usuariosSeleccionados objectAtIndex:contaLosJugadoresSeleccionados]]) {
+                    [PosicionSeleccionadoLabel addObject:[PosicionLabel objectAtIndex:contaTodosLosJugadores]];
+                    [UsuarioSeleccionadoLabel addObject:[UsuarioLabel objectAtIndex:contaTodosLosJugadores]];
+                    [PuntuacionSeleccionadoLabel addObject:[PuntuacionLabel objectAtIndex:contaTodosLosJugadores]];
+                    NSLog(@"--- INDICE: %d", contaLosJugadoresSeleccionados);
+                    NSLog(@"PosicionSeleccionadoLabel: %@", [PosicionSeleccionadoLabel objectAtIndex:PosicionSeleccionadoLabel.count-1]);
+                    NSLog(@"UsuarioSeleccionadoLabel: %@", [UsuarioSeleccionadoLabel objectAtIndex:UsuarioSeleccionadoLabel.count-1]);
+                    NSLog(@"PuntuacionSeleccionadoLabel: %@", [PuntuacionSeleccionadoLabel objectAtIndex:UsuarioSeleccionadoLabel.count-1]);
+                }
+            }
+        }
+    }
+    
+    [myTableView reloadData];
     NSLog(@"Jugadores Selececionados: %@",usuariosSeleccionados);
 }
 
@@ -284,6 +316,40 @@
         NSLog(@"%@d",error);
     }
 
+}
+
+#pragma mark - otros métodos
+
+-(void)ordenarListadoTodos
+{
+    [self.trabajarFicherosJason sacarDatosListadoJSON];
+    PosicionLabel=[[NSMutableArray alloc]init];
+    UsuarioLabel=[[NSMutableArray alloc]init];
+    PuntuacionLabel=[[NSMutableArray alloc]init];
+    NSSortDescriptor * puntosDescriptor = [[NSSortDescriptor alloc] initWithKey:@"puntosConseguidos" ascending:NO comparator:^(id obj1, id obj2)
+                                           {
+                                               return [obj1 compare:obj2 options:NSNumericSearch];
+                                           }
+                                           ];
+    
+    NSArray *sortDescriptors = @[puntosDescriptor];
+    NSArray * sortedArray = [self.trabajarFicherosJason.listadoArray sortedArrayUsingDescriptors:sortDescriptors];
+    
+    NSLog(@"\nSorted ...");
+    
+    [sortedArray enumerateObjectsUsingBlock: ^(id objeto, NSUInteger indice, BOOL *stop) {
+        // Hacemos lo que queramos con el objeto
+        
+        NSLog(@"%@", sortedArray);
+        [PosicionLabel addObject:[NSString stringWithFormat:@"%d",indice+1]];
+        [UsuarioLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"nombre"]];
+        [PuntuacionLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"puntosConseguidos"]];
+        NSLog(@"--- INDICE: %d", indice);
+        NSLog(@"PosicionLabel: %@", [PosicionLabel objectAtIndex:indice]);
+        NSLog(@"UsuarioLabel: %@", [UsuarioLabel objectAtIndex:indice]);
+        NSLog(@"PuntuacionLabel: %@", [PuntuacionLabel objectAtIndex:indice]);
+        
+    }];
 }
 
 

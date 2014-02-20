@@ -272,7 +272,7 @@
         }
         [self empezarContadorPregunta];
     }
-    NSLog(@"contador: %f",contador);
+    //NSLog(@"contador: %f",contador);
     //}
 }
 

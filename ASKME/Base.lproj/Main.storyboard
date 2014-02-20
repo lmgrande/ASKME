@@ -458,7 +458,6 @@
         <!--Listado View Controller-->
         <scene sceneID="wV6-BZ-Ku0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kc1-Ka-e3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Listado" id="KHE-Lx-04c" customClass="ListadoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xWM-Lw-PFr"/>
@@ -585,9 +584,11 @@
                     <connections>
                         <outlet property="contadorListado" destination="zwX-xA-lPW" id="rqn-gB-vc7"/>
                         <outlet property="jugadoresLabel" destination="5go-J3-2f0" id="cDv-A4-AII"/>
+                        <outlet property="mostrarSoloJugadoresSeleccionadosBoton" destination="oum-bo-tIv" id="fJb-MW-2BF"/>
                         <outlet property="myTableView" destination="5hm-Qf-l84" id="gEE-ew-hyy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kc1-Ka-e3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2491" y="1834"/>
         </scene>

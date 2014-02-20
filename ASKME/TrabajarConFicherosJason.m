@@ -65,7 +65,7 @@
                                      options:kNilOptions
                                        error:&error1];
         [outputStream close];
-        NSLog(@"Path JSON: %@",filePath);
+        //NSLog(@"Path JSON: %@",filePath);
         correcto = YES;
     }
     
@@ -76,9 +76,9 @@
 - (void) sacarDatosFicheroJSON
 {
     NSString *jsonPath=[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingFormat:@"/preguntas.json"];
-    NSLog(@"Path JSON leer: %@",jsonPath);
+    //NSLog(@"Path JSON leer: %@",jsonPath);
     NSData *data = [NSData dataWithContentsOfFile:jsonPath];
-    NSLog(@"Data JSON leer: %@",data);
+    //NSLog(@"Data JSON leer: %@",data);
     json = [[NSMutableArray alloc] init];
     json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     
@@ -86,19 +86,19 @@
     
     for (int i = 0; i<json.count; i++)
     {
-        NSLog(@"REGISTRO JSON: %D",i);
+        //NSLog(@"REGISTRO JSON: %D",i);
         NSString *textPregunta = [[json objectAtIndex:i] objectForKey:@"pregunta"];
-        NSLog(@"Pregunta JSON: %@",textPregunta);
+        //NSLog(@"Pregunta JSON: %@",textPregunta);
         NSString *textMateria = [[json objectAtIndex:i] objectForKey:@"materia"];
-        NSLog(@"Materia JSON: %@",textMateria);
+        //NSLog(@"Materia JSON: %@",textMateria);
         NSString *textCorrecta = [[json objectAtIndex:i] objectForKey:@"correcta"];
-        NSLog(@"Correcta JSON: %@",textCorrecta);
+        //NSLog(@"Correcta JSON: %@",textCorrecta);
         NSString *textIncorrecta1 = [[json objectAtIndex:i] objectForKey:@"incorrecta1"];
-        NSLog(@"Incorrecta1 JSON: %@",textIncorrecta1);
+        //NSLog(@"Incorrecta1 JSON: %@",textIncorrecta1);
         NSString *textIncorrecta2 = [[json objectAtIndex:i] objectForKey:@"incorrecta2"];
-        NSLog(@"Incorrecta2 JSON: %@",textIncorrecta2);
+        //NSLog(@"Incorrecta2 JSON: %@",textIncorrecta2);
         NSString *textIncorrecta3 = [[json objectAtIndex:i] objectForKey:@"incorrecta3"];
-        NSLog(@"Incorrecta3 JSON: %@",textIncorrecta3);
+        //NSLog(@"Incorrecta3 JSON: %@",textIncorrecta3);
         
         Pregunta *miPregunta = [[Pregunta alloc] initWithTextoPregunta:textPregunta andTextoMateria:textMateria andTextoCorrecta:textCorrecta andTextoIncorrecta1:textIncorrecta1 andTextoIncorrecta2:textIncorrecta2 andTextoIncorrecta3:textIncorrecta3];
         
@@ -110,9 +110,9 @@
 - (void) sacarDatosListadoJSON
 {
     NSString *jsonPath=[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingFormat:@"/listadoPartida.json"];
-    NSLog(@"Path JSON leer: %@",jsonPath);
+    //NSLog(@"Path JSON leer: %@",jsonPath);
     NSData *data = [NSData dataWithContentsOfFile:jsonPath];
-    NSLog(@"Data JSON leer: %@",data);
+    //NSLog(@"Data JSON leer: %@",data);
     listadoArray = [[NSMutableArray alloc] init];
     listadoArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 }

@@ -22,7 +22,7 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
         plistPath = [[NSBundle mainBundle] pathForResource:nombreFichero ofType:@"plist"];
     }
-    NSLog(@"PATH: %@",plistPath);
+    //NSLog(@"PATH: %@",plistPath);
     NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
     NSDictionary *temporal = (NSDictionary *)[NSPropertyListSerialization
                                           propertyListFromData:plistXML

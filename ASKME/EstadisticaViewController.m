@@ -18,13 +18,13 @@
 
     @property TrabajarConFicherosPlist *trabajarFicherosPlist;
     @property GestionarDatosYPuntosPartida *gestionarDatosYPuntosPartida;
-
+    @property (weak, nonatomic) IBOutlet UIImageView *barraTodosUIImageView;
 
 @end
 
 @implementation EstadisticaViewController
 
-    @synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO, textoEsperarLabel, numerosEsperarLabel;
+    @synthesize nickLabel,numeroPartidaLabel,puntosMaximoPartidaLabel,preguntasMaximoPartidaLabel,preguntasContestadasLabel, preguntasAcertadasLabel,preguntasNoAcertadasLabel,preguntasFalladasLabel,preguntasPasadasLabel,puntosPartidaArteLiteraturaLabel,puntosPartidaCienciasLabel,puntosPartidaDeportesLabel,puntosPartidaGeografiaLabel,puntosPartidaHistoriaLabel,puntosPartidaOcioLabel,puntosPartidaOtrosLabel,puntosPartidaTODOLabel,porcentajePartidaArteLiteraturaLabel,porcentajePartidaCienciasLabel,porcentajePartidaDeportesLabel,porcentajePartidaGeografiaLabel,porcentajePartidaHistoriaLabel,porcentajePartidaOcioLabel,porcentajePartidaOtrosLabel,porcentajePartidaTODOLabel,XdeYenArteLiteratura,XdeYenCiencias,XdeYenDeportes,XdeYenGeografia,XdeYenHistoria,XdeYenOcio,XdeYenOtros,XdeYenTODO, textoEsperarLabel, numerosEsperarLabel, barraTodosUIImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,7 +49,6 @@
     self.trabajarFicherosPlist = [[TrabajarConFicherosPlist alloc]init];
     self.gestionarDatosYPuntosPartida = [[GestionarDatosYPuntosPartida alloc]init];
     
-    [self leerDatosPartida];
     
     if ([ApplicationDelegate.opcionDeJuego  isEqual: @"Jugador"]) {
         textoEsperarLabel.hidden=TRUE;
@@ -64,6 +63,11 @@
         //}
         
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self leerDatosPartida];
 }
 
 - (void)didReceiveMemoryWarning
@@ -189,13 +193,45 @@
         porcentajePartidaOtrosLabel.text=[NSString stringWithFormat:@"%d",porcentajeOtros];
     }
     
+//    if ([[temp objectForKey:@"total-preguntas-contestadas"] integerValue]!=0) {
+//        NSInteger porcentajeTODO = ([[temp objectForKey:@"total-preguntas-acertadas"] integerValue]*100)/[[temp objectForKey:@"total-preguntas-contestadas"] integerValue];
+//        UIImageView *barraTODO = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeTODO/100)-140, 447, 140, 23)];
+//        UIImage *imgbarraTODO = [UIImage imageNamed:@"barra-TODOS"];
+//        barraTODO.image = imgbarraTODO;
+//        [self.view addSubview:barraTODO];
+//        [self.view setNeedsDisplay];
+//        porcentajePartidaTODOLabel.text=[NSString stringWithFormat:@"%d",porcentajeTODO];
+//    }
+    
     if ([[temp objectForKey:@"total-preguntas-contestadas"] integerValue]!=0) {
         NSInteger porcentajeTODO = ([[temp objectForKey:@"total-preguntas-acertadas"] integerValue]*100)/[[temp objectForKey:@"total-preguntas-contestadas"] integerValue];
-        UIImageView *barraTODO = [[UIImageView alloc] initWithFrame:CGRectMake((140*porcentajeTODO/100)-140, 447, 140, 23)];
+        UIImageView *barraTODO = [[UIImageView alloc] initWithFrame:CGRectMake(-140, 447, 140, 23)];
         UIImage *imgbarraTODO = [UIImage imageNamed:@"barra-TODOS"];
         barraTODO.image = imgbarraTODO;
+        barraTodosUIImageView=barraTODO;
         [self.view addSubview:barraTODO];
-        [self.view setNeedsDisplay];
+        //[self.view setNeedsDisplay];
+        
+        CGPoint posicionTotal = CGPointMake((140*porcentajeTODO/100)-70, 458.5);
+        UIViewAnimationOptions option = UIViewAnimationOptionCurveEaseInOut;
+        
+        [UIView animateWithDuration:1.0 delay:0 options:option animations:^{
+            
+            [self.barraTodosUIImageView setAlpha:0.5];
+            self.barraTodosUIImageView.center = posicionTotal;
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration:1.0 animations:^{
+                
+                [self.barraTodosUIImageView setAlpha:1];
+                
+                
+            } completion:nil];
+            
+        }];
+        
+        
         porcentajePartidaTODOLabel.text=[NSString stringWithFormat:@"%d",porcentajeTODO];
     }
     
