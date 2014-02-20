@@ -59,7 +59,7 @@
         numerosEsperarLabel.hidden=FALSE;
         [self empezarContadorEsperaListado];
         //if ([numerosEsperarLabel.text integerValue]>15) {
-            [self.gestionarDatosYPuntosPartida enviarPuntos:preguntasMaximoPartidaLabel.text :puntosMaximoPartidaLabel.text :preguntasContestadasLabel.text :preguntasAcertadasLabel.text :preguntasFalladasLabel.text :preguntasPasadasLabel.text :puntosPartidaTODOLabel.text];
+        
         //}
         
     }
@@ -68,6 +68,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self leerDatosPartida];
+    [self.gestionarDatosYPuntosPartida enviarPuntos:preguntasMaximoPartidaLabel.text :puntosMaximoPartidaLabel.text :preguntasContestadasLabel.text :preguntasAcertadasLabel.text :preguntasFalladasLabel.text :preguntasPasadasLabel.text :puntosPartidaTODOLabel.text];
 }
 
 - (void)didReceiveMemoryWarning
