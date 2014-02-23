@@ -398,11 +398,11 @@
     
     NSURLSessionDataTask *dataTask = [conexionSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        NSDictionary *respuestaDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        //NSDictionary *respuestaDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         
         if (!error) {
             NSLog(@"%@", response);
-            NSLog(@"%@", respuestaDictionary);
+            //NSLog(@"%@", respuestaDictionary);
         }
     }];
     

@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SegundaViewController : UIViewController
-{
-    NSTimer *timer;
-}
+
 
 @end

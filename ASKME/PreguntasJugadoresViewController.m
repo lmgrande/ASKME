@@ -12,7 +12,6 @@
 @interface PreguntasJugadoresViewController ()
 {
     NSTimer *timerTiempo;
-    NSInteger contadortiempo;
     NSInteger ceroUno;
 }
 
@@ -38,25 +37,45 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     timerTiempo=nil;
-    contadortiempo=[ApplicationDelegate.tiempoPartidaJugadores integerValue];
     partidaJugadoresLabel.text=@"";
     tiempoJugadoresLabel.text=@"";
     esperarJugarLabel.text = @"";
-
+    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/RestoEntero.php"];
+    
+    NSError *error = nil; // This so that we can access the error if something goes wrong
+    NSData *jsonData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
+    
+    NSError *error1;
+    
+    // array of dictionary
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&error1];
+    
+    if (error1) {
+        NSLog(@"Error: %@", error1.localizedDescription);
+    } else {
+        ApplicationDelegate.tiempoBase=[[[array objectAtIndex:0] objectForKey:@"tiempo"] integerValue];
+        ApplicationDelegate.numeroPartidaJugadores=[[[array objectAtIndex:0] objectForKey:@"partida"] integerValue];
+    }
+}
+-(void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appEnteredBackground:)
+                                                 name: UIApplicationDidEnterBackgroundNotification
+                                               object: nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    timerTiempo=[[NSTimer alloc]init];
      jugarJugadoresLabel.hidden=TRUE;
     partidaJugadoresLabel.text = [NSString stringWithFormat:@"%d",ApplicationDelegate.numeroPartidaJugadores];
     //tiempoJugadoresLabel.text = [NSString stringWithFormat:@"%d",180 - ApplicationDelegate.tiempoBase];
-    //tiempoJugadoresLabel.text = ApplicationDelegate.tiempoPartidaJugadores;
     self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
     NSLog(@"tiempoJugadoresLabel: %@",tiempoJugadoresLabel.text);
 //    if (ApplicationDelegate.tiempoBase<5) {
 //        [self pasarPantalla];
 //    }else
-    if (ApplicationDelegate.tiempoBase>=5 && ApplicationDelegate.tiempoBase<140) {
+    if (ApplicationDelegate.tiempoBase<140) {
         
         BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:[NSString stringWithFormat:@"http://www.askmeapp.com/jasonsHora/jason%d.json",ApplicationDelegate.numeroPartidaJugadores] andNombreFichero:@"preguntas.json"];
         
@@ -91,6 +110,10 @@
     [self empezarContadorTiempo];
 }
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -114,11 +137,10 @@
 }
 
 -(void) counterDown{
-    //contadortiempo++;
-    //NSLog(@"Contador:%d TiempoEspera:%@", contadortiempo, tiempoJugadoresLabel.text);
     
     if (ApplicationDelegate.tiempoBase==180) {
-        [self pasarPantalla];
+        //[self pasarPantalla];
+        [self performSelector:@selector(pasarPantalla) withObject:nil afterDelay:0.1];
     }else if (ApplicationDelegate.tiempoBase>140){
         tiempoJugadoresLabel.text=[NSString stringWithFormat:@"%d",180 - ApplicationDelegate.tiempoBase];
     }else if (ApplicationDelegate.tiempoBase==140){
@@ -140,15 +162,15 @@
         jugarJugadoresLabel.hidden=TRUE;
         esperarJugarLabel.text = @"Tiempo para comenzar la partida ...";
     }else if (ApplicationDelegate.tiempoBase<140){
+        jugarJugadoresLabel.hidden=FALSE;
         tiempoJugadoresLabel.text=[NSString stringWithFormat:@"%d",140 - ApplicationDelegate.tiempoBase];
     }
-    
+    NSLog(@"timerTiempo (preguntasJugadoresViewController): %@", tiempoJugadoresLabel.text);
 }
 
 
 -(void) pasarPantalla{
     [timerTiempo invalidate];
-    //ApplicationDelegate.tiempoPartidaJugadores = [NSString stringWithFormat:@"%d",contadortiempo];
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Preguntas"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
@@ -170,7 +192,20 @@
 - (IBAction)jugarJugadoresBoton:(id)sender
 {
     [timerTiempo invalidate];
-    [self pasarPantalla];
+    [self performSelector:@selector(pasarPantalla) withObject:nil afterDelay:0.1];
+    //[self pasarPantalla];
+}
+
+#pragma mark - otros métodos
+
+-(void)appEnteredBackground:(NSNotification *)appEnteredBackgroundNotification {
+    if(timerTiempo)
+    {
+        [timerTiempo invalidate];
+        timerTiempo = nil;
+    }
+    //[ApplicationDelegate obtenerTiempo];
+    
 }
 
 @end

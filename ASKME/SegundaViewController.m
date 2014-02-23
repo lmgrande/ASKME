@@ -10,6 +10,9 @@
 #import "TrabajarConFicherosJason.h"
 
 @interface SegundaViewController ()
+{
+    NSTimer *timer;
+}
 
 @property TrabajarConFicherosJason *trabajarFicherosJason;
 
@@ -75,7 +78,6 @@
 }
 
 -(void) pasarPantalla{
-    ApplicationDelegate.tiempoPartidaJugadores=@"180";
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Preguntas"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];

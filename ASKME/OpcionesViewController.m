@@ -9,7 +9,9 @@
 #import "OpcionesViewController.h"
 
 @interface OpcionesViewController ()
-
+{
+    NSTimer *timer;
+}
 @end
 
 @implementation OpcionesViewController

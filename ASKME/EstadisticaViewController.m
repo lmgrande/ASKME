@@ -81,7 +81,6 @@
 
 - (IBAction)casaBoton:(id)sender
 {
-    //ApplicationDelegate.tiempoEsperaListadoPartida=@"16";
     ApplicationDelegate.opcionDeJuego = @"Jugador";
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpcionesTapBar"];
@@ -93,7 +92,6 @@
 
 - (IBAction)estadisticaTodasLasPartidasBoton:(id)sender
 {
-    //ApplicationDelegate.tiempoEsperaListadoPartida=numerosEsperarLabel.text;
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
     UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"pantallaTodoEstadisticas"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
@@ -260,9 +258,9 @@
 {
     if ([numerosEsperarLabel.text integerValue]!=0) {
         numerosEsperarLabel.text=[NSString stringWithFormat:@"%d",180-(ApplicationDelegate.tiempoBase+20)];
+        NSLog(@"timerEsperaListado: %@", numerosEsperarLabel.text);
     }else{
         [timerEsperaListado invalidate];
-        //ApplicationDelegate.tiempoEsperaListadoPartida=@"16";
         UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
         UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Listado"];
         [self presentViewController:cambiarViewController animated:YES completion:nil];

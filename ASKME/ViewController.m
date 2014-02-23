@@ -9,9 +9,10 @@
 #import "ViewController.h"
 
 
-@interface ViewController (){
+@interface ViewController ()
+{
     NSString *pantalla;
-
+    NSTimer *timer;
 }
 
 @end
@@ -83,30 +84,54 @@
 
 - (void) leerUsuarioMysql
 {
-    // CFURLCreateStringByAddingPercentEscapes se utiliza para comvertir caracteres especiales (ej: el espacio) por códigos entendibles al enviar por una url
-    NSString *nombre = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)nickNombre,NULL,CFSTR("!*'();:@&=+$,/?%#[]\" "),kCFStringEncodingUTF8));
-    NSString *strURL = [NSString stringWithFormat:@"http://www.askmeapp.com/php_IOS/leeruser.php?nombre=%@",nombre];
-    NSLog(@"%@",strURL);
+    NSURLSessionConfiguration *configuracionConexion = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuracionConexion.timeoutIntervalForRequest = 2.0;
+    configuracionConexion.timeoutIntervalForResource = 2.0;
     
-    NSData *dataURL = [NSData dataWithContentsOfURL:[NSURL URLWithString:strURL]];
-    NSLog(@"dataURL: %@",dataURL);
+    NSURLSession *conexionSession = [NSURLSession sessionWithConfiguration:configuracionConexion];
     
-    NSString *strResult = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
-    NSLog(@"strResult: %@",strResult);
+    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/php_IOS/leeruser.php"];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"nombre=%@", nickNombre] dataUsingEncoding:NSUTF8StringEncoding]];
+    urlRequest.HTTPMethod = @"POST";
+    urlRequest.HTTPBody = body;
     
-    if (![strResult  isEqual: nickNombre]) {
-        if ([strResult isEqual:@""]) {
-            NSLog(@"No puede conectarse.");
-            [self verAlertaNoConecta];
-        }else{
-            NSLog(@"No existe en la Base de Datos del Servidor");
-            pantalla = @"CrearUsuario";
-            [self empezar];
-        }
-    }else{
-        pantalla = @"Opciones";
-        [self empezar];
-    }
+    NSURLSessionDataTask *dataTask = [conexionSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSData *dataURL = data;
+        NSString *strResult = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
+        
+        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!error){
+                if (HTTPResponse.statusCode == 200){
+                    
+                    if (![strResult  isEqual: nickNombre]){
+                        if ([strResult isEqual:@""]){
+                            NSLog(@"No puede conectarse a la Base de Datos.");
+                            [self verAlertaNoConecta];
+                        }else{
+                            NSLog(@"No existe en la Base de Datos del Servidor");
+                            pantalla = @"CrearUsuario";
+                            [self empezar];
+                        }
+                    }else{
+                        pantalla = @"Opciones";
+                        [self empezar];
+                    }
+                }else{
+                    [ApplicationDelegate obtenerTiempo];
+                }
+            }else{
+                [ApplicationDelegate obtenerTiempo];
+            }
+        });
+        
+    }];
+    
+    [dataTask resume];
 }
 
 
@@ -132,7 +157,8 @@
 
 - (void) verAlertaNoConecta
 {
-    UIAlertView *alerta = [[UIAlertView alloc] initWithTitle:@"Conexión"
+    dispatch_async(dispatch_get_main_queue(), ^{
+    UIAlertView *alerta = [[UIAlertView alloc] initWithTitle:@"Conexión a Usuarios"
                                                      message:@"No puede conectarse."
                                                     delegate:self
                                            cancelButtonTitle:@"Volver a Intentar"
@@ -140,6 +166,7 @@
     
     [alerta setTag:0];
     [alerta show];
+    });
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

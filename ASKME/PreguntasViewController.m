@@ -225,8 +225,7 @@
                                               userInfo:nil
                                                repeats:YES];
         
-        [[NSRunLoop currentRunLoop] addTimer:timerPregunta
-                                     forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop currentRunLoop] addTimer:timerPregunta forMode:NSDefaultRunLoopMode];
     }
     
 }
@@ -272,7 +271,7 @@
         }
         [self empezarContadorPregunta];
     }
-    //NSLog(@"contador: %f",contador);
+    NSLog(@"timerPregunta: %f",contador);
     //}
 }
 
@@ -327,7 +326,7 @@
             tiempoPartida=144-ApplicationDelegate.tiempoBase;
         }
     }
-    NSLog(@"ApplicationDelegate.tiempoPartidaJugadores: %f",tiempoPartida);
+    NSLog(@"tiempo de Partida para Jugadores: %f",tiempoPartida);
     timerPartida = [NSTimer scheduledTimerWithTimeInterval:tiempoPartida         // El timer se ejcuta cada segundo
                                                     target:self        // Se ejecuta este timer en este view
                                                   selector:@selector(pasarPantalla)      // Se ejecuta el método contar
@@ -359,6 +358,7 @@
 - (void)moverProgressBarPartida
 {
     float actual = [partidaLinearProgressView progress];
+    NSLog(@"partidaLinearProgressView: %f",actual);
     if (actual < 1) {
         partidaLinearProgressView.progress = actual + 0.01;
         [NSTimer scheduledTimerWithTimeInterval:1.44 target:self selector:@selector(moverProgressBarPartida) userInfo:nil repeats:NO];

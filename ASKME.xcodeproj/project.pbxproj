@@ -84,8 +84,9 @@
 		709B675D1858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67531858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png */; };
 		709B675E1858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67541858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png */; };
 		709B67641858E7090052C344 /* linea-superior-Tab-Bar-1x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 709B67601858E7090052C344 /* linea-superior-Tab-Bar-1x1.png */; };
+		709D03D418BA268800CB3803 /* Default-480h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709D03D318BA268800CB3803 /* Default-480h@2x.png */; };
+		709D03D618BA26AB00CB3803 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709D03D518BA26AB00CB3803 /* Default-568h@2x.png */; };
 		709ED99D1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m in Sources */ = {isa = PBXBuildFile; fileRef = 709ED99C1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m */; };
-		70A1BA47185CCAEC003FD579 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A1BA46185CCAEC003FD579 /* Default-568h@2x.png */; };
 		70A1BA49185CD18A003FD579 /* OPCION-Jugador.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A1BA48185CD18A003FD579 /* OPCION-Jugador.png */; };
 		70A1BA4C185D3DB5003FD579 /* Pregunta.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A1BA4B185D3DB5003FD579 /* Pregunta.m */; };
 		70B3395718549E6C0072A60D /* pant_inicio_cabecera.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B3395418549E6C0072A60D /* pant_inicio_cabecera.png */; };
@@ -222,9 +223,10 @@
 		709B67531858D6BA0052C344 /* ico-Tab-Bar-Usuarios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico-Tab-Bar-Usuarios.png"; sourceTree = "<group>"; };
 		709B67541858D6BA0052C344 /* ico-Tab-Bar-Usuarios@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico-Tab-Bar-Usuarios@x2.png"; sourceTree = "<group>"; };
 		709B67601858E7090052C344 /* linea-superior-Tab-Bar-1x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linea-superior-Tab-Bar-1x1.png"; sourceTree = "<group>"; };
+		709D03D318BA268800CB3803 /* Default-480h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-480h@2x.png"; path = "ASKME/Default-480h@2x.png"; sourceTree = "<group>"; };
+		709D03D518BA26AB00CB3803 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "ASKME/Default-568h@2x.png"; sourceTree = "<group>"; };
 		709ED99B1881BFD9007F2961 /* GestionarDatosYPuntosPartida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestionarDatosYPuntosPartida.h; sourceTree = "<group>"; };
 		709ED99C1881BFD9007F2961 /* GestionarDatosYPuntosPartida.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestionarDatosYPuntosPartida.m; sourceTree = "<group>"; };
-		70A1BA46185CCAEC003FD579 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		70A1BA48185CD18A003FD579 /* OPCION-Jugador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OPCION-Jugador.png"; sourceTree = "<group>"; };
 		70A1BA4A185D3DB5003FD579 /* Pregunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pregunta.h; sourceTree = "<group>"; };
 		70A1BA4B185D3DB5003FD579 /* Pregunta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pregunta.m; sourceTree = "<group>"; };
@@ -414,7 +416,8 @@
 		70639E02184D32490028A98B = {
 			isa = PBXGroup;
 			children = (
-				70A1BA46185CCAEC003FD579 /* Default-568h@2x.png */,
+				709D03D318BA268800CB3803 /* Default-480h@2x.png */,
+				709D03D518BA26AB00CB3803 /* Default-568h@2x.png */,
 				70639E14184D32490028A98B /* ASKME */,
 				70639E33184D324A0028A98B /* ASKMETests */,
 				70639E0D184D32490028A98B /* Frameworks */,
@@ -774,6 +777,7 @@
 				700A21251867146F00624E9A /* fondo-circulo-contador.png in Resources */,
 				70069DC3186CDC7A006BE094 /* punto-verde-correcta.png in Resources */,
 				70C604B318A2A28C00791691 /* panel-superior.png in Resources */,
+				709D03D618BA26AB00CB3803 /* Default-568h@2x.png in Resources */,
 				70C604B118A2A28C00791691 /* base-celda-usuario.png in Resources */,
 				70F3F4131875A5EF002E7991 /* barra-HISTORIA.png in Resources */,
 				701D596D18595DD800DF3A68 /* OPCION-INFO-Jugador.png in Resources */,
@@ -782,10 +786,10 @@
 				708E528F1874B54100BCC411 /* datosPartidas.plist in Resources */,
 				7026EBCA18A7EA4D0019C308 /* Cuerpo_LISTADO.png in Resources */,
 				7007265E186126080028734A /* icono-base.png in Resources */,
+				709D03D418BA268800CB3803 /* Default-480h@2x.png in Resources */,
 				703F01B4186EED2D004A1D30 /* boton-siguiente-pregunta.png in Resources */,
 				70639E27184D32490028A98B /* Images.xcassets in Resources */,
 				70F3F4111875A5EF002E7991 /* barra-DEPORTES.png in Resources */,
-				70A1BA47185CCAEC003FD579 /* Default-568h@2x.png in Resources */,
 				701D596B18595DD800DF3A68 /* OPCION-INFO-graficas.png in Resources */,
 				7099D5E6185E22C300241684 /* icono-casa.png in Resources */,
 				7007265D186126080028734A /* icono-arte-literatura.png in Resources */,

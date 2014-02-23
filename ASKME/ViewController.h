@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController <UIAlertViewDelegate>
-{
-    NSTimer *timer;
-}
 
 @property (strong, nonatomic) NSString *nickNombre;
 

@@ -19,7 +19,7 @@
     NSMutableArray *PosicionSeleccionadoLabel;
     NSMutableArray *UsuarioSeleccionadoLabel;
     NSMutableArray *PuntuacionSeleccionadoLabel;
-    
+    int numeroDePartida;
     NSMutableArray *usuariosSeleccionados;
 }
 
@@ -44,50 +44,7 @@
     
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
-    BOOL guardadoJason = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:@"http://www.askmeapp.com/php_IOS/leerListadoJson.php" andNombreFichero:@"listadoPartida.json"];
     
-    if (!guardadoJason) {
-        NSLog(@"No se ha podido grabar el fichero JASON");
-    }else{
-        [self.trabajarFicherosJason sacarDatosListadoJSON];
-        usuariosSeleccionados=[self leerSeleccionadosListadoPlist];
-    }
-    
-    jugadoresLabel.text=[NSString stringWithFormat:@"%d",[self.trabajarFicherosJason.listadoArray count]];
-    contadorListado.text=[NSString stringWithFormat:@"%d",180-ApplicationDelegate.tiempoBase];
-
-    PosicionLabel = [[NSMutableArray alloc]init];
-    UsuarioLabel = [[NSMutableArray alloc] init];
-    PuntuacionLabel = [[NSMutableArray alloc]init];
-    PosicionSeleccionadoLabel = [[NSMutableArray alloc]init];
-    UsuarioSeleccionadoLabel = [[NSMutableArray alloc] init];
-    PuntuacionSeleccionadoLabel = [[NSMutableArray alloc]init];
-    
-    NSSortDescriptor * puntosDescriptor = [[NSSortDescriptor alloc] initWithKey:@"puntosConseguidos" ascending:NO comparator:^(id obj1, id obj2)
-                                           {
-                                               return [obj1 compare:obj2 options:NSNumericSearch];
-                                           }
-                                        ];
-    
-    NSArray *sortDescriptors = @[puntosDescriptor];
-    NSArray * sortedArray = [self.trabajarFicherosJason.listadoArray sortedArrayUsingDescriptors:sortDescriptors];
-    
-    NSLog(@"\nSorted ...");
-    
-    [sortedArray enumerateObjectsUsingBlock: ^(id objeto, NSUInteger indice, BOOL *stop) {
-        // Hacemos lo que queramos con el objeto
-    
-        NSLog(@"%@", sortedArray);
-        [PosicionLabel addObject:[NSString stringWithFormat:@"%d",indice+1]];
-        [UsuarioLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"nombre"]];
-        [PuntuacionLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"puntosConseguidos"]];
-    }];
-    mostrarSoloJugadoresSeleccionadosBoton.selected=FALSE;
-
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
     NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/RestoEntero.php"];
     
     NSError *error = nil; // This so that we can access the error if something goes wrong
@@ -103,8 +60,70 @@
     } else {
         tiempoRestante = [[[array objectAtIndex:0] objectForKey:@"tiempo"]floatValue];
         NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
+        ApplicationDelegate.tiempoBase=[[[array objectAtIndex:0] objectForKey:@"tiempo"] integerValue];
+
+        if ([[[array objectAtIndex:0] objectForKey:@"partida"] isEqualToString:@"19"]) {
+            numeroDePartida=0;
+        }else{
+            numeroDePartida=[[[array objectAtIndex:0] objectForKey:@"partida"] integerValue]+1;
+        }
+
+        BOOL guardadoJasonPartida = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:[NSString stringWithFormat:@"http://www.askmeapp.com/jasonsHora/jason%d.json",numeroDePartida] andNombreFichero:@"preguntas.json"];
+        
+        if (guardadoJasonPartida==YES) {
+            
+            BOOL guardadoJasonListado = [self.trabajarFicherosJason recogerYGrabarDatosEnFicheroJSON:@"http://www.askmeapp.com/php_IOS/leerListadoJson.php" andNombreFichero:@"listadoPartida.json"];
+            
+            if (!guardadoJasonListado) {
+                NSLog(@"No se ha podido grabar el fichero JASON LISTADO");
+            }else{
+                [self.trabajarFicherosJason sacarDatosListadoJSON];
+                usuariosSeleccionados=[self leerSeleccionadosListadoPlist];
+            }
+            
+        }else{
+            NSLog(@"No se ha podido grabar el fichero JASON PARTIDA");
+        }
+        
+        
+        
+        jugadoresLabel.text=[NSString stringWithFormat:@"%d",[self.trabajarFicherosJason.listadoArray count]];
+        contadorListado.text=[NSString stringWithFormat:@"%d",180-ApplicationDelegate.tiempoBase];
+        
+        PosicionLabel = [[NSMutableArray alloc]init];
+        UsuarioLabel = [[NSMutableArray alloc] init];
+        PuntuacionLabel = [[NSMutableArray alloc]init];
+        PosicionSeleccionadoLabel = [[NSMutableArray alloc]init];
+        UsuarioSeleccionadoLabel = [[NSMutableArray alloc] init];
+        PuntuacionSeleccionadoLabel = [[NSMutableArray alloc]init];
+        
+        NSSortDescriptor * puntosDescriptor = [[NSSortDescriptor alloc] initWithKey:@"puntosConseguidos" ascending:NO comparator:^(id obj1, id obj2)
+                                               {
+                                                   return [obj1 compare:obj2 options:NSNumericSearch];
+                                               }
+                                               ];
+        
+        NSArray *sortDescriptors = @[puntosDescriptor];
+        NSArray * sortedArray = [self.trabajarFicherosJason.listadoArray sortedArrayUsingDescriptors:sortDescriptors];
+        
+        NSLog(@"\nSorted ...");
+        
+        [sortedArray enumerateObjectsUsingBlock: ^(id objeto, NSUInteger indice, BOOL *stop) {
+            // Hacemos lo que queramos con el objeto
+            
+            NSLog(@"%@", sortedArray);
+            [PosicionLabel addObject:[NSString stringWithFormat:@"%d",indice+1]];
+            [UsuarioLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"nombre"]];
+            [PuntuacionLabel addObject:[[sortedArray objectAtIndex:indice] objectForKey:@"puntosConseguidos"]];
+        }];
+        mostrarSoloJugadoresSeleccionadosBoton.selected=FALSE;
+
         [self empezar];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     
 }
 
@@ -251,6 +270,7 @@
         [self pasarPantalla];
     } else {
         contadorListado.text=[NSString stringWithFormat:@"%d",180-ApplicationDelegate.tiempoBase];
+        NSLog(@"timerEsperaListado: %@", contadorListado.text);
     }
 }
 
@@ -258,7 +278,7 @@
     [timerParaEmpezarJugadores invalidate];
     [self grabarSeleccionadosListadoPlist:usuariosSeleccionados];
     UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
-    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Tercera"];
+    UIViewController *cambiarViewController = [storyboard instantiateViewControllerWithIdentifier:@"Preguntas"];
     [self presentViewController:cambiarViewController animated:YES completion:nil];
     
 }

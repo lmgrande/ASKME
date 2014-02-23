@@ -10,10 +10,6 @@
 #import "ViewController.h"
 
 @interface OpcionesViewController : UIViewController
-{
-    NSTimer *timer;
-}
-
 
 @property (weak, nonatomic) IBOutlet UILabel *nombreUsuarioLabel;
 

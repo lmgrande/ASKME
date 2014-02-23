@@ -10,15 +10,16 @@
 #import "TrabajarConFicherosJason.h"
 
 @interface TerceraViewController ()
+{
+    NSTimer *timer;
+}
 
     @property TrabajarConFicherosJason *trabajarFicherosJason;
 
 @end
 
 @implementation TerceraViewController
-{
-    NSTimer *timer;
-}
+
 
 #pragma mark - customizando icono tab bar
 
@@ -65,7 +66,6 @@
 //    } else {
         ApplicationDelegate.opcionDeJuego = @"Jugadores";
         //ApplicationDelegate.numeroPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"partida"];
-        //ApplicationDelegate.tiempoPartidaJugadores = [[array objectAtIndex:0] objectForKey:@"tiempo"];
         //NSLog(@"partida:%@ tiempo:%@",[[array objectAtIndex:0] objectForKey:@"partida"],[[array objectAtIndex:0] objectForKey:@"tiempo"]);
         self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
         [self empezar];

@@ -7,11 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
+{
+    NSTimer *notificationTimer;
+}
 
 
-@synthesize notificationTimer,tiempoBase,numeroPartidaJugadores;
+@synthesize tiempoBase,numeroPartidaJugadores;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -27,6 +31,7 @@
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
@@ -35,11 +40,33 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+   
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
+    
+    imageView.tag = 101;    // Give some decent tagvalue or keep a reference of imageView in self
+    //    imageView.backgroundColor = [UIColor redColor];
+    [imageView setImage:[UIImage imageNamed:@"Default-480h@2x.png"]];   // assuming Default.png is your splash image's name
+    
+    [UIApplication.sharedApplication.keyWindow.subviews.lastObject addSubview:imageView];
+    
+    if(notificationTimer)
+    {
+        [notificationTimer invalidate];
+        //notificationTimer = nil;
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    UIImageView *imageView = (UIImageView *)[UIApplication.sharedApplication.keyWindow.subviews.lastObject viewWithTag:101];   // search by the same tag value
+    [imageView removeFromSuperview];
+    
+    [self obtenerTiempo];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    ViewController *cambiarViewController = (ViewController*)[storyboard instantiateViewControllerWithIdentifier:@"Inicio"];
+    self.window.rootViewController = cambiarViewController;
+    //[self presentViewController:cambiarViewController animated:YES completion:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -63,19 +90,19 @@
         }
     }
     tiempoBase++;
-    //NSLog(@"TIEMPOBASE: %ld PARTIDA: %ld",(long)tiempoBase,(long)numeroPartidaJugadores);
+    NSLog(@"TIEMPOBASE: %ld PARTIDA: %ld",(long)tiempoBase,(long)numeroPartidaJugadores);
 }
 
 - (void) verAlertaNoConecta
 {
-    UIAlertView *alerta = [[UIAlertView alloc] initWithTitle:@"Conexión"
+    UIAlertView *alertaConexionServer = [[UIAlertView alloc] initWithTitle:@"Conexión"
                                                      message:@"No puede conectarse."
                                                     delegate:self
                                            cancelButtonTitle:@"Volver a Intentar"
                                            otherButtonTitles:nil, nil];
     
-    [alerta setTag:0];
-    [alerta show];
+    [alertaConexionServer setTag:0];
+    [alertaConexionServer show];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -111,13 +138,11 @@
             tiempoBase = [[[array objectAtIndex:0] objectForKey:@"tiempo"]integerValue];
         }
     }
-    self.notificationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForNotifications) userInfo:nil repeats:YES];
+    notificationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForNotifications) userInfo:nil repeats:YES];
     
     self.configuracionUsuario = [[NSMutableDictionary alloc]init];
-    self.tiempoPartidaJugadores = [[NSString alloc]init];
     self.opcionDeJuego = [[NSString alloc]init];
-    self.tiempoEsperaListadoPartida =[[NSString alloc]init];
-    self.tiempoEsperaListadoPartida =@"16";
 }
+
 
 @end

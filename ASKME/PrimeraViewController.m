@@ -11,7 +11,7 @@
 @interface PrimeraViewController ()
 {
     NSInteger w;
-    
+    NSTimer *timer;
 }
 
 @property (nonatomic, strong) NSArray *pageImages;
@@ -197,6 +197,7 @@
     
     self.pageControl.currentPage++;
     
+    NSLog(@"TIMER PrimeraViewController: %d",w);
     
 }
 
