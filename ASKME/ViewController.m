@@ -7,12 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "ConexionServidor.h"
 
 
 @interface ViewController ()
 {
     NSString *pantalla;
     NSTimer *timer;
+    ConexionServidor *mConexionServidor;
 }
 
 @end
@@ -26,9 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    //NSString *pantalla =[[NSString alloc]init];
-    
-    // leemos de usuario.plist
+    mConexionServidor=[[ConexionServidor alloc]init];
     
     [self leerUsuarioPlist];
     
@@ -84,23 +84,9 @@
 
 - (void) leerUsuarioMysql
 {
-    NSURLSessionConfiguration *configuracionConexion = [NSURLSessionConfiguration defaultSessionConfiguration];
-    configuracionConexion.timeoutIntervalForRequest = 2.0;
-    configuracionConexion.timeoutIntervalForResource = 2.0;
-    
-    NSURLSession *conexionSession = [NSURLSession sessionWithConfiguration:configuracionConexion];
-    
-    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/php_IOS/leeruser.php"];
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    NSMutableData *body = [NSMutableData data];
-    [body appendData:[[NSString stringWithFormat:@"nombre=%@", nickNombre] dataUsingEncoding:NSUTF8StringEncoding]];
-    urlRequest.HTTPMethod = @"POST";
-    urlRequest.HTTPBody = body;
-    
-    NSURLSessionDataTask *dataTask = [conexionSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        NSData *dataURL = data;
-        NSString *strResult = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
+    NSDictionary *parametros =[[NSDictionary alloc] initWithObjectsAndKeys:nickNombre,@"nombre", nil];
+    [mConexionServidor enviarAURL:@"http://www.askmeapp.com/php_IOS/leeruser.php" conParametrosPost:parametros delegate:self completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSString *strResult = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
         NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
         
@@ -128,10 +114,55 @@
                 [ApplicationDelegate obtenerTiempo];
             }
         });
-        
     }];
-    
-    [dataTask resume];
+//    NSURLSessionConfiguration *configuracionConexion = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    configuracionConexion.timeoutIntervalForRequest = 2.0;
+//    configuracionConexion.timeoutIntervalForResource = 2.0;
+//    
+//    NSURLSession *conexionSession = [NSURLSession sessionWithConfiguration:configuracionConexion];
+//    
+//    NSURL *url = [NSURL URLWithString:@"http://www.askmeapp.com/php_IOS/leeruser.php"];
+//    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+//    NSMutableData *body = [NSMutableData data];
+//    [body appendData:[[NSString stringWithFormat:@"nombre=%@", nickNombre] dataUsingEncoding:NSUTF8StringEncoding]];
+//    urlRequest.HTTPMethod = @"POST";
+//    urlRequest.HTTPBody = body;
+//    
+//    NSURLSessionDataTask *dataTask = [conexionSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        
+//        NSData *dataURL = data;
+//        NSString *strResult = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
+//        
+//        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (!error){
+//                if (HTTPResponse.statusCode == 200){
+//                    
+//                    if (![strResult  isEqual: nickNombre]){
+//                        if ([strResult isEqual:@""]){
+//                            NSLog(@"No puede conectarse a la Base de Datos.");
+//                            [self verAlertaNoConecta];
+//                        }else{
+//                            NSLog(@"No existe en la Base de Datos del Servidor");
+//                            pantalla = @"CrearUsuario";
+//                            [self empezar];
+//                        }
+//                    }else{
+//                        pantalla = @"Opciones";
+//                        [self empezar];
+//                    }
+//                }else{
+//                    [ApplicationDelegate obtenerTiempo];
+//                }
+//            }else{
+//                [ApplicationDelegate obtenerTiempo];
+//            }
+//        });
+//        
+//    }];
+//    
+//    [dataTask resume];
 }
 
 

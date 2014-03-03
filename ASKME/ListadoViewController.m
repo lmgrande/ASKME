@@ -24,6 +24,7 @@
 }
 
 @property TrabajarConFicherosJason *trabajarFicherosJason;
+@property (weak, nonatomic) IBOutlet UIImageView *cajaDetrasListadoUIImageView;
 
 @end
 
@@ -34,12 +35,20 @@
 }
 
 
-@synthesize myTableView, jugadoresLabel,contadorListado, mostrarSoloJugadoresSeleccionadosBoton;
+@synthesize myTableView, jugadoresLabel,contadorListado, mostrarSoloJugadoresSeleccionadosBoton, cajaDetrasListadoUIImageView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    if (self.view.frame.size.height>480) {
+        NSLog(@"Es un IPHONE 5: %f",self.view.frame.size.height);
+        cajaDetrasListadoUIImageView.hidden=FALSE;
+    }else{
+        NSLog(@"Es un IPHONE 4: %f",self.view.frame.size.height);
+        cajaDetrasListadoUIImageView.hidden=TRUE;
+    }
+    
     self.trabajarFicherosJason = [[TrabajarConFicherosJason alloc]init];
     
     self.myTableView.dataSource = self;
@@ -124,7 +133,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
+
 }
 
 
